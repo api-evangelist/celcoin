@@ -1,0 +1,103 @@
+{
+  "examples": [
+    {
+      "name": "Boleto Settlement",
+      "description": "Submit a boleto (payment slip) settlement/cancellation via POST /settlement",
+      "api": "celcoin-billissuance-settlement-openapi",
+      "method": "POST",
+      "path": "/settlement",
+      "summary": "Inclusão da baixa do boleto — Register the settlement of a boleto",
+      "request": {
+        "method": "POST",
+        "url": "https://api.openfinance.celcoin.com.br/billissuance/v1/settlement",
+        "headers": {
+          "Authorization": "Bearer {access_token}",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "barCode": "34191090067500100001900007799175100000015000",
+          "paymentDate": "2026-06-13",
+          "dueDate": "2026-06-13",
+          "amount": 150.00
+        }
+      }
+    },
+    {
+      "name": "Retrieve Boleto Settlement",
+      "description": "Retrieve the status of a previously submitted boleto settlement by ID",
+      "api": "celcoin-billissuance-settlement-openapi",
+      "method": "GET",
+      "path": "/settlement/{id}",
+      "summary": "Consulta da baixa do boleto — Query boleto settlement status",
+      "request": {
+        "method": "GET",
+        "url": "https://api.openfinance.celcoin.com.br/billissuance/v1/settlement/12345",
+        "headers": {
+          "Authorization": "Bearer {access_token}"
+        }
+      }
+    },
+    {
+      "name": "Create Bank Correspondent Agent",
+      "description": "Create a new bank correspondent agent record in the credit platform",
+      "api": "celcoin-credit-openapi",
+      "method": "POST",
+      "path": "/correspAgent",
+      "summary": "Creates a new bank correspondent agent",
+      "request": {
+        "method": "POST",
+        "url": "https://sandbox.openfinance.celcoin.dev/credit/v1/correspAgent",
+        "headers": {
+          "Authorization": "Bearer {access_token}",
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "name": "Create Legal Person Onboarding Proposal",
+      "description": "Submit an account opening proposal for a legal entity (PJ) in Celcoin's onboarding flow",
+      "api": "celcoin-onboarding-openapi",
+      "method": "POST",
+      "path": "/onboarding-proposal/legal-person",
+      "summary": "Cria uma nova proposta de criação de conta Pessoa Jurídica",
+      "request": {
+        "method": "POST",
+        "url": "https://api.openfinance.celcoin.com.br/onboarding/v1/onboarding-proposal/legal-person",
+        "headers": {
+          "Authorization": "Bearer {access_token}",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "documentNumber": "12345678000195",
+          "companyName": "Empresa Exemplo LTDA",
+          "tradingName": "Exemplo",
+          "email": "contato@exemplo.com.br",
+          "phoneNumber": "+5511999999999"
+        }
+      }
+    },
+    {
+      "name": "Create Natural Person Onboarding Proposal",
+      "description": "Submit an account opening proposal for an individual (PF) in Celcoin's onboarding flow",
+      "api": "celcoin-onboarding-openapi",
+      "method": "POST",
+      "path": "/onboarding-proposal/natural-person",
+      "summary": "Cria uma nova proposta de criação de conta Pessoa Física",
+      "request": {
+        "method": "POST",
+        "url": "https://api.openfinance.celcoin.com.br/onboarding/v1/onboarding-proposal/natural-person",
+        "headers": {
+          "Authorization": "Bearer {access_token}",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "documentNumber": "12345678900",
+          "name": "João da Silva",
+          "birthDate": "1990-01-15",
+          "email": "joao.silva@exemplo.com.br",
+          "phoneNumber": "+5511988888888"
+        }
+      }
+    }
+  ]
+}

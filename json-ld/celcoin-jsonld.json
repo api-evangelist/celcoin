@@ -1,0 +1,97 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aid": "https://apis.io/aid#"
+  },
+  "@type": "Organization",
+  "@id": "https://www.celcoin.com.br/",
+  "name": "Celcoin",
+  "description": "Celcoin is a Brazilian Banking-as-a-Service (BaaS) infratech platform that provides REST APIs for Pix, boleto, TED transfers, bill payments, prepaid and post-paid cards, digital account opening, open banking integration, and credit operations. Processing over R$30 billion monthly across 6,000+ clients, Celcoin enables fintechs, digital banks, and enterprises to embed financial services without a banking license.",
+  "url": "https://www.celcoin.com.br/",
+  "sameAs": [
+    "https://github.com/celcoincell",
+    "https://www.linkedin.com/company/celcoin-financial-hub/",
+    "https://x.com/celcoinbr"
+  ],
+  "hasAPI": [
+    {
+      "@type": "WebAPI",
+      "@id": "https://developers.celcoin.com.br/docs/sobre-o-baas",
+      "name": "Celcoin BaaS and Core Banking API",
+      "description": "Full-stack banking infrastructure APIs covering digital account creation and KYC onboarding, balance inquiries, statements, Pix (cash-in, cash-out, Pix Automático, Pix Inteligente, Pix Recorrente), TED transfers, boleto issuance and CNAB processing, inter-account transfers, vehicle debt collection, mobile recharges, judicial freezes, and income statements.",
+      "documentation": "https://developers.celcoin.com.br/docs/sobre-o-baas",
+      "termsOfService": "https://developers.celcoin.com.br/reference/integrando-na-celcoin",
+      "provider": {
+        "@type": "Organization",
+        "name": "Celcoin"
+      }
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developers.celcoin.com.br/docs#cards",
+      "name": "Celcoin Card Solutions API",
+      "description": "APIs for white-label card account creation and management, card issuance and tracking, transaction simulation, post-paid invoice management, recurring subscriptions, and webhook-driven card event notifications.",
+      "documentation": "https://developers.celcoin.com.br/docs",
+      "provider": {
+        "@type": "Organization",
+        "name": "Celcoin"
+      }
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developers.celcoin.com.br/docs/pagamento-de-contas-1",
+      "name": "Celcoin Payments API",
+      "description": "Embedded payment APIs covering bill payments, mobile recharges, vehicle debit, payment gateway with multi-acquirer support, Pix instant payments, withdrawals and deposits, and Payment Initiation (ITP) under the Brazilian Open Finance framework.",
+      "documentation": "https://developers.celcoin.com.br/docs/pagamento-de-contas-1",
+      "provider": {
+        "@type": "Organization",
+        "name": "Celcoin"
+      }
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developers.celcoin.com.br/docs#open-finance",
+      "name": "Celcoin Open Finance API",
+      "description": "Open Finance and Open Banking APIs for Payment Initiation (ITP with and without redirect), account linking with FIDO biometrics, data sharing and consent management, and sweeping accounts for intelligent automated transfers.",
+      "documentation": "https://developers.celcoin.com.br/docs",
+      "provider": {
+        "@type": "Organization",
+        "name": "Celcoin"
+      }
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developers.celcoin.com.br/docs#credit",
+      "name": "Celcoin Credit as a Service API",
+      "description": "Credit infrastructure APIs for CCB (Cédula de Crédito Bancário) issuance, escrow account management, consigned credit (Consignado as a Service), credit portability, commercial notes (CCA), and portfolio management and collections.",
+      "documentation": "https://developers.celcoin.com.br/docs",
+      "provider": {
+        "@type": "Organization",
+        "name": "Celcoin"
+      }
+    }
+  ],
+  "openAPISpecs": [
+    {
+      "@type": "DataDownload",
+      "name": "Celcoin Bill Issuance Settlement OpenAPI",
+      "contentUrl": "https://sandbox.openfinance.celcoin.dev/billissuance-settlement-webservice/v1/swagger/v1/swagger.json",
+      "encodingFormat": "application/json",
+      "version": "v1.0.0"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Celcoin Credit API OpenAPI",
+      "contentUrl": "https://sandbox.openfinance.celcoin.dev/credit/v1/swagger/v1/swagger.json",
+      "encodingFormat": "application/json",
+      "version": "1.0.0.0"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Celcoin Onboarding OpenAPI",
+      "contentUrl": "https://sandbox.openfinance.celcoin.dev/onboarding/v1/swagger/v1/swagger.json",
+      "encodingFormat": "application/json",
+      "version": "v1.0.0"
+    }
+  ]
+}

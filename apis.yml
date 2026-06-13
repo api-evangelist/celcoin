@@ -41,6 +41,10 @@ apis:
         url: https://developers.celcoin.com.br/docs/sobre-o-baas
       - type: Reference
         url: https://developers.celcoin.com.br/reference/integrando-na-celcoin
+      - type: OpenAPI
+        url: openapi/celcoin-billissuance-settlement-openapi.json
+      - type: OpenAPI
+        url: openapi/celcoin-onboarding-openapi.json
   - aid: celcoin:cards
     name: Celcoin Card Solutions API
     description: APIs for white-label card account creation and management, card issuance and tracking, transaction simulation, post-paid invoice management, recurring subscriptions, and webhook-driven card event notifications.
@@ -108,6 +112,8 @@ apis:
         url: https://developers.celcoin.com.br/docs
       - type: Reference
         url: https://developers.celcoin.com.br/reference
+      - type: OpenAPI
+        url: openapi/celcoin-credit-openapi.json
 common:
   - type: Website
     url: https://www.celcoin.com.br/
@@ -133,6 +139,12 @@ common:
     url: rate-limits/celcoin-rate-limits.yml
   - type: FinOps
     url: finops/celcoin-finops.yml
+  - type: Vocabulary
+    url: vocabulary/celcoin-vocabulary.json
+  - type: Examples
+    url: examples/celcoin-examples.json
+  - type: JSONLd
+    url: json-ld/celcoin-jsonld.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

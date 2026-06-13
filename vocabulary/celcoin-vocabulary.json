@@ -1,0 +1,102 @@
+{
+  "vocabulary": {
+    "name": "Celcoin API Vocabulary",
+    "description": "Key terms, tags, and concepts extracted from Celcoin OpenAPI specifications",
+    "source": "celcoin",
+    "tags": [
+      "AnnotationCompetenceCalendar",
+      "BankCorrespondentAgent",
+      "Consignee",
+      "Files",
+      "Guarantee",
+      "LegacyGuarantee",
+      "LegalPerson",
+      "NaturalPerson",
+      "OutstandingBalance",
+      "Proposal",
+      "Settlement",
+      "TaggingJourney"
+    ],
+    "domainTerms": [
+      {
+        "term": "Pix",
+        "definition": "Brazil's instant payment system operated by the Central Bank of Brazil (BCB), enabling 24/7 real-time transfers"
+      },
+      {
+        "term": "Boleto",
+        "definition": "Brazilian payment slip used for bill payment and cash collection, widely used in e-commerce and B2B payments"
+      },
+      {
+        "term": "TED",
+        "definition": "Transferência Eletrônica Disponível — Brazilian bank wire transfer, typically same-day during business hours"
+      },
+      {
+        "term": "CCB",
+        "definition": "Cédula de Crédito Bancário — Brazilian bank credit note instrument for loan formalization"
+      },
+      {
+        "term": "BaaS",
+        "definition": "Banking as a Service — embedded financial infrastructure enabling non-bank companies to offer banking products"
+      },
+      {
+        "term": "ITP",
+        "definition": "Iniciador de Transação de Pagamento — Payment Transaction Initiator under Brazil's Open Finance framework"
+      },
+      {
+        "term": "KYC",
+        "definition": "Know Your Customer — identity verification and onboarding processes required for financial account opening"
+      },
+      {
+        "term": "FIDO",
+        "definition": "Fast Identity Online — biometric authentication standard used in Celcoin's account linking for Open Finance"
+      },
+      {
+        "term": "CNAB",
+        "definition": "Centro Nacional de Automação Bancária — Brazilian banking automation standard for batch payment file processing"
+      },
+      {
+        "term": "Consignado",
+        "definition": "Consigned credit — payroll-deducted loan product, automatically deducted from salary or benefits"
+      },
+      {
+        "term": "CCA",
+        "definition": "Cédula de Crédito ao Agronegócio or Comercial Aceleradora — commercial credit note for financial operations"
+      },
+      {
+        "term": "Open Finance",
+        "definition": "Brazil's open banking/finance initiative mandated by BCB, enabling data sharing and payment initiation across institutions"
+      },
+      {
+        "term": "Settlement",
+        "definition": "Baixa de boleto — the settlement/cancellation process for boletos (payment slips) after payment is received"
+      },
+      {
+        "term": "NaturalPerson",
+        "definition": "Pessoa Física — individual (human) person in Brazilian financial/legal context"
+      },
+      {
+        "term": "LegalPerson",
+        "definition": "Pessoa Jurídica — corporate/business entity in Brazilian financial/legal context"
+      },
+      {
+        "term": "Escrow",
+        "definition": "Conta escrow — a controlled financial account holding funds on behalf of a third party during a transaction"
+      },
+      {
+        "term": "Proposal",
+        "definition": "Proposta — credit or account onboarding proposal submitted for approval in the Celcoin platform"
+      },
+      {
+        "term": "OutstandingBalance",
+        "definition": "Saldo devedor — the remaining balance owed on a credit instrument such as CCB"
+      }
+    ],
+    "apiProducts": [
+      "BaaS Core Banking",
+      "Card Solutions",
+      "Payments",
+      "Open Finance",
+      "Credit as a Service"
+    ]
+  }
+}
