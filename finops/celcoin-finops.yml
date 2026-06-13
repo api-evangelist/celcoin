@@ -1,0 +1,43 @@
+name: Celcoin FinOps
+description: Financial operations considerations for teams integrating Celcoin's Banking-as-a-Service APIs. Celcoin processes over R$30 billion per month and 400+ million transactions monthly across 6,000+ clients.
+url: https://www.celcoin.com.br/developers/
+cost_drivers:
+  - name: Transaction Volume
+    description: Primary cost driver. Each Pix, TED, boleto, bill payment, or card transaction carries a per-transaction fee negotiated in the commercial agreement.
+    unit: per transaction
+    notes: High-volume clients typically receive lower per-transaction rates.
+  - name: Account Maintenance
+    description: Monthly or per-account fees may apply for digital accounts maintained on the BaaS platform, including KYC onboarding costs.
+    unit: per account / per month
+    notes: Fees vary by account tier and KYC complexity.
+  - name: Card Issuance
+    description: Physical and virtual card issuance fees plus card processing fees per transaction.
+    unit: per card issued + per transaction
+    notes: Post-paid card invoice management may carry additional fees.
+  - name: Credit Operations
+    description: CCB issuance, escrow account setup, and consigned credit operations carry fees proportional to credit volume.
+    unit: per operation / % of credit volume
+    notes: Commercial notes (CCA) may have separate fee structures.
+  - name: Open Finance / ITP
+    description: Payment Initiation (ITP) and data-sharing consent operations under Open Finance may carry per-call fees.
+    unit: per API call
+    notes: Subject to Brazilian Central Bank Open Finance regulatory framework.
+  - name: mybenk White-Label Platform
+    description: Platform licensing fee in addition to per-transaction costs for clients using the white-label banking app.
+    unit: monthly license
+    notes: Includes backoffice and mobile app infrastructure.
+optimization_strategies:
+  - Cache OAuth 2.0 tokens for the full 2400-second lifetime to avoid unnecessary authentication calls.
+  - Use sandbox environment extensively during development to avoid production transaction costs.
+  - Consolidate transaction types under a single commercial agreement to maximize volume discounts.
+  - Monitor transaction volumes via balance and statement APIs to identify anomalies early.
+  - Use webhooks for event-driven processing rather than polling, reducing API call volume.
+  - Align Pix scheduling with off-peak hours where possible to optimize settlement timing.
+cost_visibility:
+  - Celcoin provides balance and statement APIs that can be used to reconcile transaction costs.
+  - No self-serve cost dashboard is documented publicly; cost tracking relies on API-level transaction reports and commercial invoices from Celcoin.
+compliance_notes:
+  - Celcoin operates under Brazilian Central Bank (Bacen) regulatory oversight.
+  - KYC/AML compliance is embedded in the onboarding infrastructure, reducing client compliance costs.
+  - All production integrations require mTLS certificates, which should be managed and rotated securely.
+  - Open Finance operations are governed by the Brazilian Open Finance ecosystem regulatory standards.

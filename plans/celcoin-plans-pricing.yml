@@ -1,0 +1,49 @@
+name: Celcoin Plans and Pricing
+description: Celcoin offers enterprise-grade Banking-as-a-Service infrastructure priced through direct commercial agreements. Pricing is not publicly listed and is negotiated based on transaction volume, product mix, and client profile. Contact Celcoin's commercial team for a custom quote.
+url: https://www.celcoin.com.br/developers/
+plans:
+  - name: BaaS - Banking as a Service
+    description: Full-stack banking infrastructure for fintechs and digital banks. Includes digital accounts, Pix, TED, boleto, card issuance, and KYC/onboarding.
+    pricing_model: custom
+    pricing_notes: Pricing negotiated per volume of transactions and products enabled. Contact commercial team.
+    features:
+      - Digital account opening and KYC
+      - Pix (cash-in, cash-out, Pix Automático, Pix Inteligente)
+      - TED transfers
+      - Boleto issuance and CNAB processing
+      - White-label card issuance (prepaid and post-paid)
+      - Open Finance / Open Banking integration
+      - Webhooks for real-time event notifications
+      - Sandbox environment for development and testing
+      - Homologation support before production go-live
+  - name: cel_payments - Payment Solutions
+    description: Embedded payment APIs for bill payments, Pix, vehicle debit, mobile recharges, and payment gateway.
+    pricing_model: custom
+    pricing_notes: Per-transaction fees negotiated commercially.
+    features:
+      - Bill payments (Pagamento de Contas)
+      - Mobile recharges
+      - Vehicle debit (Débito Veicular)
+      - Payment gateway with multi-acquirer support
+      - Withdrawals and deposits
+  - name: cel_credit - Credit as a Service
+    description: Credit infrastructure for CCB issuance, escrow accounts, consigned credit, and portfolio management.
+    pricing_model: custom
+    pricing_notes: Fees based on credit volume and product configuration.
+    features:
+      - CCB (Cédula de Crédito Bancário) issuance
+      - Escrow accounts
+      - Consigned credit (Consignado as a Service)
+      - Credit portability
+      - Portfolio management and collections
+  - name: mybenk - White-Label Banking Platform
+    description: Turnkey white-label digital banking app and backoffice for companies wanting a fully branded banking experience.
+    pricing_model: custom
+    pricing_notes: Includes platform licensing and transaction fees.
+    features:
+      - White-label mobile banking app
+      - Backoffice management portal
+      - Banking and credit features bundled
+contact:
+  url: https://www.celcoin.com.br/developers/
+  notes: Contact via the developer hub or account manager to obtain a commercial proposal.

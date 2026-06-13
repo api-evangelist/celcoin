@@ -1,0 +1,24 @@
+name: Celcoin API Rate Limits
+description: Celcoin does not publish specific rate limit figures publicly. Rate limits are enforced per client and negotiated as part of the commercial agreement. The following reflects known technical constraints and sandbox behavior.
+url: https://developers.celcoin.com.br/docs/obtendo-acesso-%C3%A0s-apis
+rate_limits:
+  - scope: OAuth 2.0 Token
+    notes: Access tokens are valid for 2400 seconds (40 minutes). Clients should cache the token and re-authenticate only when expired rather than requesting a new token per API call.
+    limit: 1 token per client_credentials grant
+    window: 2400 seconds
+  - scope: Sandbox Environment
+    notes: Sandbox uses shared default credentials for initial testing. Responses in sandbox are emulated and may not reflect production timing or rate constraints. Custom sandbox credentials are available on request.
+    limit: Not publicly specified
+    window: N/A
+  - scope: Production Environment
+    notes: Production rate limits are defined per client as part of the commercial agreement and enforced at the API gateway level. mTLS certificates are mandatory for production access.
+    limit: Negotiated per client
+    window: Negotiated per client
+  - scope: Pix Transactions
+    notes: Pix operations are subject to Brazilian Central Bank (Bacen) operating hours and system limits in addition to Celcoin gateway limits.
+    limit: Subject to Bacen rules
+    window: 24/7 for standard Pix; Bacen scheduled windows for specific operations
+general_notes:
+  - Rate limit headers (e.g., X-RateLimit-Limit, X-RateLimit-Remaining) are not documented publicly.
+  - Clients experiencing rate limit issues should contact suporte.celcoin.com.br.
+  - Status and uptime for all Celcoin services can be monitored at redecelcoin.statuspage.io.
