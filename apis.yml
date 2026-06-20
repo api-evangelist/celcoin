@@ -1,7 +1,7 @@
 aid: celcoin
 name: Celcoin
 description: Celcoin is a Brazilian Banking-as-a-Service (BaaS) infratech platform that provides REST APIs for Pix, boleto, TED transfers, bill payments, prepaid and post-paid cards, digital account opening, open banking integration, and credit operations. Processing over R$30 billion monthly across 6,000+ clients, Celcoin enables fintechs, digital banks, and enterprises to embed financial services without a banking license.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/celcoin/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -26,7 +26,7 @@ apis:
   - aid: celcoin:baas-core-banking
     name: Celcoin BaaS and Core Banking API
     description: Full-stack banking infrastructure APIs covering digital account creation and KYC onboarding, balance inquiries, statements, Pix (cash-in, cash-out, Pix Automático, Pix Inteligente, Pix Recorrente), TED transfers, boleto issuance and CNAB processing, inter-account transfers, vehicle debt collection, mobile recharges, judicial freezes, and income statements.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.celcoin.com.br/docs/sobre-o-baas
     baseURL: https://api.openfinance.celcoin.com.br/
     tags:
@@ -48,7 +48,7 @@ apis:
   - aid: celcoin:cards
     name: Celcoin Card Solutions API
     description: APIs for white-label card account creation and management, card issuance and tracking, transaction simulation, post-paid invoice management, recurring subscriptions, and webhook-driven card event notifications.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.celcoin.com.br/docs
     baseURL: https://api.openfinance.celcoin.com.br/
     tags:
@@ -64,7 +64,7 @@ apis:
   - aid: celcoin:payments
     name: Celcoin Payments API
     description: Embedded payment APIs covering bill payments, mobile recharges, vehicle debit, payment gateway with multi-acquirer support, Pix instant payments, withdrawals and deposits, and Payment Initiation (ITP) under the Brazilian Open Finance framework.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.celcoin.com.br/docs/pagamento-de-contas-1
     baseURL: https://api.openfinance.celcoin.com.br/
     tags:
@@ -81,7 +81,7 @@ apis:
   - aid: celcoin:open-finance
     name: Celcoin Open Finance API
     description: Open Finance and Open Banking APIs for Payment Initiation (ITP with and without redirect), account linking with FIDO biometrics, data sharing and consent management, and sweeping accounts for intelligent automated transfers.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.celcoin.com.br/docs
     baseURL: https://tpp.opb.celcoin.com.br/
     tags:
@@ -98,7 +98,7 @@ apis:
   - aid: celcoin:credit
     name: Celcoin Credit as a Service API
     description: Credit infrastructure APIs for CCB (Cédula de Crédito Bancário) issuance, escrow account management, consigned credit (Consignado as a Service), credit portability, commercial notes (CCA), and portfolio management and collections.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.celcoin.com.br/docs
     baseURL: https://platform.flowfinance.com.br/banking/
     tags:
