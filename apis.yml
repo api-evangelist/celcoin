@@ -143,7 +143,7 @@ common:
     url: vocabulary/celcoin-vocabulary.json
   - type: Examples
     url: examples/celcoin-examples.json
-  - type: JSONLd
+  - type: JSONLD
     url: json-ld/celcoin-jsonld.json
 maintainers:
   - FN: Kin Lane
