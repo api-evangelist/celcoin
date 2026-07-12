@@ -1,0 +1,34 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/celcoin-billissuance-settlement-openapi.json, openapi/celcoin-credit-openapi.json,
+  openapi/celcoin-onboarding-openapi.json
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: Bearer
+  type: http
+  scheme: Bearer
+  bearerFormat: JWT
+  description: Autenticação utilizando JTW Bearer Token
+  sources:
+  - openapi/celcoin-billissuance-settlement-openapi.json
+- name: Bearer
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer
+    {token}"'
+  sources:
+  - openapi/celcoin-credit-openapi.json
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: '[API V5] - Please enter into field the word ''Bearer'' following by space and
+    the access_token (JWT)'
+  sources:
+  - openapi/celcoin-onboarding-openapi.json

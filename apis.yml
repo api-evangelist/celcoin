@@ -115,6 +115,10 @@ apis:
       - type: OpenAPI
         url: openapi/celcoin-credit-openapi.json
 common:
+  - type: DomainSecurity
+    url: security/celcoin-domain-security.yml
+  - type: Authentication
+    url: authentication/celcoin-authentication.yml
   - type: Website
     url: https://www.celcoin.com.br/
   - type: Documentation
