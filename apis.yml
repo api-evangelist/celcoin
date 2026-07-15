@@ -115,6 +115,8 @@ apis:
       - type: OpenAPI
         url: openapi/celcoin-credit-openapi.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/celcoin-agentic-access.yml
   - type: DomainSecurity
     url: security/celcoin-domain-security.yml
   - type: Authentication
