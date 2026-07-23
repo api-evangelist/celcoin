@@ -1,0 +1,130 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: AnnotationCompetenceCalendar
+paths:
+  /annotation-competence-calendar:
+    get:
+      tags:
+      - AnnotationCompetenceCalendar
+      parameters:
+      - name: QueryType
+        in: query
+        schema:
+          $ref: '#/components/schemas/AnnotationCompetenceCalendarQueryType'
+      - name: CompetencePeriod
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: ConsigneeId
+        in: query
+        schema:
+          type: string
+          format: uuid
+      - name: AgencyId
+        in: query
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnotationCompetenceCalendarResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    AnnotationCompetenceCalendarResponse:
+      type: object
+      properties:
+        consultedCompetencePeriod:
+          type: string
+          nullable: true
+        currentCompetencePeriod:
+          type: string
+          nullable: true
+        startCompetencePeriod:
+          type: string
+          nullable: true
+        endCompetencePeriod:
+          type: string
+          nullable: true
+        initNotificationInfoDate:
+          type: string
+          nullable: true
+        endNotificationInfoDate:
+          type: string
+          nullable: true
+        initLimitBookkeepingDate:
+          type: string
+          nullable: true
+        endLimitBookkeepingDate:
+          type: string
+          nullable: true
+        paymentTransferDocDate:
+          type: string
+          nullable: true
+        limitTransferDate:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Errs:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Errs'
+          nullable: true
+      additionalProperties: false
+    AnnotationCompetenceCalendarQueryType:
+      enum:
+      - COMPETENCE_INFO
+      - CALENDAR_DETAILS
+      type: string
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT

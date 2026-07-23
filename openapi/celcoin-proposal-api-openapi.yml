@@ -1,0 +1,460 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar Proposal API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: Proposal
+paths:
+  /proposal/linked-request:
+    post:
+      tags:
+      - Proposal
+      summary: Include a linked proposal
+      parameters:
+      - name: correspAgentId
+        in: header
+        description: Bank Correspondent Agent Id
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProposalLinkedRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProposalLinkedRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProposalLinkedRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProposalLinkedResponse'
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProposalLinkedResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /onboarding-proposal:
+    get:
+      tags:
+      - Proposal
+      summary: Busca uma proposta ou uma lista de propostas.
+      parameters:
+      - name: ProposalId
+        in: query
+        description: Id da proposta a ser buscada.
+        schema:
+          type: string
+          example: 3257b215-bef9-402b-a779-104441b520b4
+        example: 3257b215-bef9-402b-a779-104441b520b4
+      - name: ClientCode
+        in: query
+        description: Identificador único do cliente a ser buscado.
+        schema:
+          type: string
+          example: 7817b215-beg3-801a-a779-117771t550h2
+        example: 7817b215-beg3-801a-a779-117771t550h2
+      - name: DateFrom
+        in: query
+        description: Data inicial.
+        schema:
+          type: string
+          format: date-time
+          example: '2023-11-03T06:30:00-03:00'
+        example: '2023-11-03T06:30:00-03:00'
+      - name: DateTo
+        in: query
+        description: Data final.
+        schema:
+          type: string
+          format: date-time
+          example: '2023-11-03T06:30:00-03:00'
+        example: '2023-11-03T06:30:00-03:00'
+      - name: Status
+        in: query
+        description: "Status da proposta:\r\n- CREATED\r\n- PENDING\r\n- PENDING_DOCUMENTSCOPY\r\n- APPROVED\r\n- REPROVED\r\n- RESOURCE_ERROR\r\n- RESOURCE_CREATED\r\n- PROCESSING_DOCUMENTSCOPY"
+        schema:
+          type: string
+          example: PENDING
+        example: PENDING
+      - name: DocumentNumber
+        in: query
+        description: Documento da proposta.
+        schema:
+          maxLength: 14
+          minLength: 11
+          type: string
+          example: '12345678909'
+        example: '12345678909'
+      - name: Page
+        in: query
+        description: 'Pagina de solicitaçao, default: 1.'
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: Limit
+        in: query
+        description: Limite geral da consulta.
+        schema:
+          maximum: 200
+          minimum: 1
+          type: integer
+          format: int32
+          default: 200
+      - name: LimitPerPage
+        in: query
+        description: Total de propostas por pagina.
+        schema:
+          maximum: 200
+          minimum: 1
+          type: integer
+          format: int32
+          default: 200
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchProposalResponseSuccessResponse'
+        '400':
+          description: Error handled by the application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse_2'
+        '401':
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse_2'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse_2'
+        '500':
+          description: Unknown error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse_2'
+components:
+  schemas:
+    SearchProposalResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/SearchProposalResponse'
+      additionalProperties: false
+    Contact:
+      required:
+      - contactValue
+      type: object
+      properties:
+        contactType:
+          $ref: '#/components/schemas/ProposalContact'
+        contactValue:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ErrorResponse_2:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    ProposalLinkedRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        proposalNumber:
+          type: string
+          nullable: true
+        proposalValidity:
+          type: string
+          format: date-time
+        installmentQuantity:
+          type: integer
+          format: int32
+        installmentAmount:
+          type: number
+          format: double
+        availableBalance:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+        iof:
+          type: number
+          format: double
+        anualTax:
+          type: number
+          format: double
+        cet:
+          type: number
+          format: double
+        interestTax:
+          type: number
+          format: double
+        monthlyCet:
+          type: number
+          format: double
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          nullable: true
+      additionalProperties: false
+    ProposalLinkedResponse:
+      type: object
+      properties:
+        proposalId:
+          type: string
+          format: uuid
+          nullable: true
+        proposalNumber:
+          type: string
+          nullable: true
+        balanceCheckId:
+          type: string
+          format: uuid
+          nullable: true
+        proposalValidity:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    ProposalContact:
+      enum:
+      - URL
+      - WHATSAPP
+      - PHONE
+      - EMAIL
+      - OTHER
+      type: string
+    SearchProposalResponse:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: Total de propostas.
+          format: int32
+        currentPage:
+          type: integer
+          description: Página atual.
+          format: int32
+        limitPerPage:
+          type: integer
+          description: Total de propostas por página.
+          format: int32
+        totalPages:
+          type: integer
+          description: Total de páginas retornadas.
+          format: int32
+        totalItems:
+          type: integer
+          description: Total de propostas retornadas.
+          format: int32
+        proposal:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProposalResponse'
+          nullable: true
+      additionalProperties: false
+    RejectedReasonResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Código de erro referente à rejeição da proposta.
+          nullable: true
+        message:
+          type: string
+          description: Motivo da rejeição da proposta.
+          nullable: true
+      additionalProperties: false
+      description: Motivo pelo qual a proposta foi rejeitada.
+    DocumentscopyResponse:
+      type: object
+      properties:
+        proposalId:
+          type: string
+          description: Identificador da proposta.
+          nullable: true
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        documentNumber:
+          type: string
+          description: CPF ou CNPJ da pessoa que teve o(s) documento(s) analisado(s).
+          nullable: true
+        documentscopyId:
+          type: string
+          description: Identificador único da documentoscopia.
+          nullable: true
+          example: 12a1e9a958fab500088a8901
+        status:
+          type: string
+          description: "Status da documentoscopia:\r\n- CREATED\r\n- PENDING\r\n- APPROVED\r\n- REPROVED\r\n- PROCESSING"
+          nullable: true
+          example: APPROVED
+        url:
+          type: string
+          description: URL utilizada para o usuário encaminhar os seus documentos.
+          nullable: true
+        createdAt:
+          type: string
+          description: Data de criação da documentoscopia.
+          format: date-time
+        updateAt:
+          type: string
+          description: Data de atualização da documentoscopia.
+          format: date-time
+          nullable: true
+      additionalProperties: false
+      description: Documentoscopia(s) retornada(s).
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Errs'
+          nullable: true
+      additionalProperties: false
+    ProposalResponse:
+      type: object
+      properties:
+        proposalId:
+          type: string
+          description: Identificador da proposta.
+          nullable: true
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          nullable: true
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type: string
+          description: CPF ou CNPJ da proposta.
+          nullable: true
+        status:
+          type: string
+          description: "Status da proposta:\r\n- CREATED\r\n- PENDING\r\n- PENDING_DOCUMENTSCOPY\r\n- APPROVED\r\n- REPPROVED\r\n- RESOURCE_CREATED\r\n- RESOURCE_ERROR\r\n- PROCESSING_DOCUMENTSCOPY"
+          nullable: true
+        proposalType:
+          type: string
+          description: "Tipo da proposta:\r\n- PF\r\n- PJ"
+          nullable: true
+          example: PF
+        createdAt:
+          type: string
+          description: Data de criação da proposta.
+          format: date-time
+          nullable: true
+        updatedAt:
+          type: string
+          description: Data de atualização da proposta.
+          format: date-time
+          nullable: true
+        rejectedReason:
+          $ref: '#/components/schemas/RejectedReasonResponse'
+        documentscopys:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentscopyResponse'
+          nullable: true
+      additionalProperties: false
+      description: Proposta(s) retornada(s).
+    Errs:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT

@@ -1,0 +1,356 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar BankCorrespondentAgent API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: BankCorrespondentAgent
+paths:
+  /correspAgent:
+    post:
+      tags:
+      - BankCorrespondentAgent
+      summary: Creates a new bank correspondent agent.
+      requestBody:
+        description: Data required to create the bank correspondent agent.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCorrespAgentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateCorrespAgentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateCorrespAgentRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCorrespAgentResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      tags:
+      - BankCorrespondentAgent
+      parameters:
+      - name: id
+        in: query
+        schema:
+          type: string
+          format: uuid
+      - name: correspAgentId
+        in: query
+        schema:
+          type: string
+      - name: consigneeId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: document
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCorrespAgentResponse'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /bankcorrespondentagent/{correspAgentId}:
+    put:
+      tags:
+      - BankCorrespondentAgent
+      summary: Update an existing bank correspondent agent
+      parameters:
+      - name: correspAgentId
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBankCorrespondentAgentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBankCorrespondentAgentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateBankCorrespondentAgentRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankCorrespondentAgentResponse'
+        '304':
+          description: Not Modified
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+      - BankCorrespondentAgent
+      summary: Inactivate an existing bank correspondent agent
+      parameters:
+      - name: correspAgentId
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankCorrespondentAgentResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CreateCorrespAgentRequest:
+      required:
+      - consigneeId
+      - correspondentAgencyId
+      - document
+      - socialName
+      type: object
+      properties:
+        correspondentAgencyId:
+          type: string
+          nullable: true
+        consigneeId:
+          type: string
+          format: uuid
+        socialName:
+          type: string
+          nullable: true
+        document:
+          type: string
+          nullable: true
+      additionalProperties: false
+    BankCorrespondentAgentResponse:
+      required:
+      - consigneeId
+      - correspAgentId
+      - createdAt
+      - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        correspAgentId:
+          type: string
+          nullable: true
+        consigneeId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    UpdateBankCorrespondentAgentRequest:
+      type: object
+      properties:
+        socialName:
+          type: string
+          nullable: true
+        document:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GetCorrespAgentResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+        pageCount:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int32
+        totalItens:
+          type: integer
+          format: int64
+        correspondents:
+          type: array
+          items:
+            $ref: '#/components/schemas/CorrespondentAgent'
+          nullable: true
+      additionalProperties: false
+    Errs:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Errs'
+          nullable: true
+      additionalProperties: false
+    CreateCorrespAgentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        correspondentAgencyId:
+          type: string
+          nullable: true
+        consigneeId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+      additionalProperties: false
+    CorrespondentAgent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        correspAgentId:
+          type: string
+          nullable: true
+        consigneeId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT

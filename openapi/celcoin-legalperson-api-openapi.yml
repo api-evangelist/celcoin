@@ -1,0 +1,385 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar LegalPerson API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: LegalPerson
+paths:
+  /onboarding-proposal/legal-person:
+    post:
+      tags:
+      - LegalPerson
+      summary: Cria uma nova proposta de criação de conta Pessoa Jurídica.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalPersonRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/LegalPersonRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/LegalPersonRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalPersonResponseProcessingResponse'
+        '400':
+          description: Error handled by the application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unknown error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+components:
+  schemas:
+    OwnerRequest:
+      required:
+      - address
+      - birthDate
+      - documentNumber
+      - email
+      - fullName
+      - ownerType
+      - phoneNumber
+      type: object
+      properties:
+        ownerType:
+          minLength: 1
+          type: string
+          description: "Tipo de Owner:\r\n- REPRESENTANTE\r\n- SOCIO\r\n- DEMAIS SOCIOS"
+          example: REPRESENTANTE
+        documentNumber:
+          maxLength: 14
+          minLength: 11
+          type: string
+          description: Número do CPF ou CNPJ do representante/sócio da empresa.
+          example: '33333333333'
+        fullName:
+          maxLength: 120
+          minLength: 1
+          type: string
+          description: Nome completo do representante/sócio da empresa.
+          example: Carlos Henrique da Silva
+        phoneNumber:
+          maxLength: 14
+          minLength: 1
+          type: string
+          description: Número telefone contato do representante/sócio da empresa.
+          example: '+5512981175554'
+        email:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: E-mail do representante/sócio da empresa.
+          example: email@email.com
+        motherName:
+          type: string
+          description: Nome mãe do representante/sócio da empresa.
+          nullable: true
+          example: Nome Sobrenome
+        socialName:
+          type: string
+          description: Nome social do representante/sócio da empresa.
+          nullable: true
+          example: Nome
+        birthDate:
+          minLength: 1
+          type: string
+          description: Data de nascimento do representante/sócio da empresa.
+          example: 31-12-1984
+        address:
+          $ref: '#/components/schemas/AddressRequest'
+        isPoliticallyExposedPerson:
+          type: boolean
+          description: Campo que identifica se o representante/sócio da empresa é uma pessoa politicamente exposta.
+          default: false
+          example: false
+        financialOwnerDetails:
+          $ref: '#/components/schemas/OwnerFinancialDetailsRequest'
+      additionalProperties: false
+      description: Representante/Sócio
+    LegalPersonRequest:
+      required:
+      - businessAddress
+      - businessEmail
+      - businessName
+      - clientCode
+      - contactNumber
+      - documentNumber
+      - onboardingType
+      - owner
+      - tradingName
+      type: object
+      properties:
+        clientCode:
+          minLength: 1
+          type: string
+          description: Identificador único fornecido pelo cliente. Esse valor não pode ser repetido.
+          example: '123456'
+        contactNumber:
+          maxLength: 14
+          minLength: 1
+          type: string
+          description: Telefone para contato.
+          example: '+551239215555'
+        documentNumber:
+          maxLength: 14
+          minLength: 14
+          type: string
+          description: Número do CNPJ da conta (Aceita formato Alfanumérico).
+          example: 12ABC3450001DF
+        businessEmail:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: E-mail que será vinculado a conta.
+          example: email@email.com
+        businessName:
+          maxLength: 350
+          minLength: 1
+          type: string
+          description: Nome da razão social da conta.
+          example: IP Pagamentos
+        tradingName:
+          maxLength: 120
+          minLength: 1
+          type: string
+          description: Nome fantasia da conta.
+          example: IPay
+        companyType:
+          type: string
+          description: "Tipo de empresa:\r\n- PJ\r\n- MEI\r\n- ME"
+          default: PJ
+          nullable: true
+          example: PJ
+        owner:
+          type: array
+          items:
+            $ref: '#/components/schemas/OwnerRequest'
+        businessAddress:
+          $ref: '#/components/schemas/AddressRequest'
+        onboardingType:
+          minLength: 1
+          type: string
+          description: "Tipo de Onboarding:\r\n- Se BAAS: Será criada uma proposta de pessoa jurídica para criar conta no BAAS"
+          default: BAAS
+          example: BAAS
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileRequest'
+          description: Documentos Enviados
+          nullable: true
+        financialCompanyDetails:
+          $ref: '#/components/schemas/CompanyFinancialDetailsRequest'
+      additionalProperties: false
+    AddressRequest:
+      required:
+      - city
+      - neighborhood
+      - number
+      - postalCode
+      - state
+      - street
+      type: object
+      properties:
+        postalCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+          description: Número do CEP.
+          example: '12211400'
+        street:
+          maxLength: 200
+          minLength: 1
+          type: string
+          description: Nome da rua.
+          example: Rua da Liberdade
+        number:
+          minLength: 1
+          type: string
+          description: Número do endereço.
+          example: '313'
+        addressComplement:
+          type: string
+          description: Complemento do endereço.
+          nullable: true
+          example: Em frente ao parque.
+        neighborhood:
+          maxLength: 200
+          minLength: 1
+          type: string
+          description: Nome do bairro.
+          example: Casa Verde
+        city:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Nome da Cidade.
+          example: São Paulo
+        state:
+          minLength: 1
+          type: string
+          description: Sigla do Estado referente ao endereço informado.
+          example: SP
+      additionalProperties: false
+      description: Endereço.
+    FileRequest:
+      required:
+      - data
+      - type
+      type: object
+      properties:
+        type:
+          minLength: 1
+          type: string
+          description: "Tipo de file:\r\n- OUTROS,\r\n- CNH_FRONT,\r\n- CNH_BACK,\r\n- RG_FRONT,\r\n- RG_BACK,\r\n- RNE_FRONT,\r\n- RNE_BACK,\r\n- CONTRATO_SOCIAL,\r\n- DOCUMENTO_FINANCEIRO,\r\n- PROCURACAO_PODERES,\r\n- SELFIE,\r\n- RNM_FRONT,\r\n- RNM_BACK,\r\n- CRLV_FRONT,\r\n- CRLV_BACK,\r\n- CTPS_FRONT,\r\n- CTPS_BACK,\r\n- PASSPORT_FRONT,\r\n- PASSPORT_BACK,\r\n- OUTROS_FRONT,\r\n- OUTROS_BACK,\r\n- DRE,\r\n- COMPROVANTE_RESIDENCIA,\r\n- COMPROVANTE_RENDA,\r\n- DOCUMENTO_LEGAL,\r\n- DECLARACAO_ANUAL,\r\n- DECLARACAO_CONFIRMACAO"
+          example: RG_FRONT
+        data:
+          minLength: 1
+          type: string
+          description: URL do arquivo.
+          example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
+      additionalProperties: false
+      description: Representante/Sócio
+    LegalPersonResponseProcessingResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/LegalPersonResponse'
+      additionalProperties: false
+    OwnerFinancialDetailsRequest:
+      type: object
+      properties:
+        ownerDeclaredIncome:
+          type: string
+          description: Renda declarada do sócio.
+          nullable: true
+          example: ODIB01
+        ownerPresumedIncome:
+          type: string
+          description: Renda presumida do sócio.
+          nullable: true
+          example: OPIB05
+        ownerDeclaredRevenue:
+          type: string
+          description: Faturamento declarado vinculado ao sócio.
+          nullable: true
+          example: ODRB06
+        ownerPresumedRevenue:
+          type: string
+          description: Faturamento presumido vinculado ao sócio.
+          nullable: true
+          example: OPRB01
+      additionalProperties: false
+      description: Detalhes financeiros do sócio/representante.
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
+    CompanyFinancialDetailsRequest:
+      type: object
+      properties:
+        declaredCompanyRevenue:
+          type: string
+          description: Faturamento declarado da empresa.
+          nullable: true
+          example: DCRB01
+        presumedCompanyRevenue:
+          type: string
+          description: Faturamento presumido da empresa.
+          nullable: true
+          example: PCRB01
+      additionalProperties: false
+      description: Detalhes financeiros da empresa.
+    LegalPersonResponse:
+      type: object
+      properties:
+        proposalId:
+          type: string
+          description: Identificador da proposta criada.
+          nullable: true
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          nullable: true
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type: string
+          description: CNPJ da proposta criada.
+          nullable: true
+          example: '12345678900001'
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT

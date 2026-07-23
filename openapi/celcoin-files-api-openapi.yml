@@ -1,0 +1,158 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar Files API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: Files
+paths:
+  /onboarding-proposal/files:
+    get:
+      tags:
+      - Files
+      summary: Busca um arquivo ou uma lista de arquivos.
+      parameters:
+      - name: ProposalId
+        in: query
+        description: Id da proposta a ser buscada.
+        schema:
+          type: string
+          example: 3257b215-bef9-402b-a779-104441b520b4
+        example: 3257b215-bef9-402b-a779-104441b520b4
+      - name: ClientCode
+        in: query
+        description: ClientCode da proposta a ser buscada.
+        schema:
+          type: string
+          example: 612f5412-0bd3-49b0-b136-981f0959d47e
+        example: 612f5412-0bd3-49b0-b136-981f0959d47e
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchFilesResponseSuccessResponse'
+        '400':
+          description: Error handled by the application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unknown error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    BlobFile:
+      type: object
+      properties:
+        type:
+          type: string
+          description: "Tipo do arquivo\r\n- CNH_FRONT,\r\n- CNH_BACK,\r\n- RG_FRONT,\r\n- RG_BACK,\r\n- RNE_FRONT,\r\n- RNE_BACK,\r\n- CONTRATO_SOCIAL,\r\n- DOCUMENTO_FINANCEIRO,\r\n- PROCURACAO_PODERES,\r\n- SELFIE"
+          nullable: true
+        url:
+          type: string
+          description: URL para acessar o arquivo.
+          nullable: true
+        expirationTime:
+          type: string
+          description: Tempo de expiração da URL.
+          nullable: true
+      additionalProperties: false
+      description: Arquivo do Blob
+    SearchFilesResponse:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlobFile'
+          nullable: true
+        clientCode:
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          nullable: true
+          example: 123abdgh-c11f-4c88-af6b-d227d88b5183
+        documentNumber:
+          type: string
+          description: CPF ou CNPJ vinculado à proposta.
+          nullable: true
+          example: '12345678909'
+        proposalId:
+          type: string
+          description: Identificador da proposta.
+          nullable: true
+          example: ab11113e-f123-4a7f-9010-99b064038038
+      additionalProperties: false
+    SearchFilesResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/SearchFilesResponse'
+      additionalProperties: false
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT

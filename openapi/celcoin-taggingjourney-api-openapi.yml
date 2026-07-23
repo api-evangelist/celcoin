@@ -1,0 +1,300 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar TaggingJourney API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: TaggingJourney
+paths:
+  /onboarding-proposal/tagging-journey:
+    get:
+      tags:
+      - TaggingJourney
+      summary: Busca o tageamento da jornada do webview de uma proposta.
+      parameters:
+      - name: ProposalId
+        in: query
+        description: Id da proposta a ser buscada.
+        schema:
+          type: string
+          example: 3257b215-bef9-402b-a779-104441b520b4
+        example: 3257b215-bef9-402b-a779-104441b520b4
+      - name: ClientCode
+        in: query
+        description: ClientCode da proposta a ser buscada.
+        schema:
+          type: string
+          example: 612f5412-0bd3-49b0-b136-981f0959d47e
+        example: 612f5412-0bd3-49b0-b136-981f0959d47e
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagginJourneyResponseSuccessResponse'
+        '400':
+          description: Error handled by the application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unknown error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Engine:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nome do motor do navegador.
+          nullable: true
+          example: Google
+        version:
+          type: string
+          description: Versão do motor do navegador.
+          nullable: true
+          example: 126.0.0.0
+      additionalProperties: false
+    StepFunnel:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp que iniciou a etapa.
+          nullable: true
+          example: '2024-07-25 18:19:54.11'
+        stepName:
+          type: string
+          description: "  Possíveis etapas:\r\n- STEP_CAMERA_ACCESS: Permissões de câmera.\r\n- STEP_COMPANY_ADDRESS: Endereço empresarial.\r\n- STEP_COMPANY_DATA: Dados empresariais.\r\n- STEP_CUSTOM: Etapa customizada.\r\n- STEP_CUSTOM_FORM: Formulário.\r\n- STEP_DATA_CONFIRMATION: Dados pessoais.\r\n- STEP_DD: Captura de Documento.\r\n- STEP_DD_PREVIEW: Preview do documento.\r\n- STEP_DISPATCH_ADDRESS: Endereço residencial.\r\n- STEP_DOCUMENT_TYPE: Tipo de documento.\r\n- STEP_DOCUMENT_ISSUED_COUNTRY: País de emissão do documento.\r\n- STEP_USING_TERMS: Aceite de termos de uso.\r\n- STEP_DONE: Tudo certo.\r\n- STEP_EMAIL_VALIDATION: Validar email.\r\n- STEP_EMPLOYEE_DATA: Dados do funcionário.\r\n- STEP_FLOW_CHOICE: Decisão.\r\n- STEP_INCOME: Faturamento.\r\n- STEP_INSTRUCTIONS: Instruções.\r\n- STEP_PARTNER: Quadro societário.\r\n- STEP_LIVENESS_IPROOV: Prova de vida (Nova).\r\n- STEP_LIVENESS_IPROOV_PREVIEW: Pré-visualização da Prova de Vida (Nova).\r\n- STEP_PFL: Selfie.\r\n- STEP_PFL_PREVIEW: Preview da selfie.\r\n- STEP_FA: Autenticação Facial.\r\n- STEP_FA_PREVIEW: Pré-visualização da Autenticação Facial (Antiga).\r\n- STEP_FACE_AUTH_IPROOV: Autenticação Facial (Nova).\r\n- STEP_FACE_AUTH_IPROOV_PREVIEW: Pré-visualização da Autenticação Facial (Nova).\r\n- STEP_PF_PF_DATA: Dados da pessoa relacionada.\r\n- STEP_PHONE_NUMBER_VALIDATION: Validar telefone.\r\n- STEP_QSA: Quem é você?\r\n- STEP_SEND_DOCUMENT_TYPE: Forma de envio de documento.\r\n- STEP_UPLOAD_DOCUMENT: Upload de arquivos de documento.\r\n- STEP_WELCOME: Boas vindas ao usuário.\r\n- STEP_NEW_ACCESS: Novo acesso."
+          nullable: true
+          example: STEP_DONE-1
+        secondsFromPrevious:
+          type: integer
+          description: Tempo na etapa anterior (em segundos).
+          format: int32
+          nullable: true
+          example: -32
+        secondsFromNext:
+          type: integer
+          description: Tempo na etapa informada (em segundos).
+          format: int32
+          nullable: true
+          example: 1
+        deviceBrowserName:
+          type: string
+          description: Nome do navegador.
+          nullable: true
+          example: Safari
+        deviceOsName:
+          type: string
+          description: Nome do sistema operacional.
+          nullable: true
+          example: iOS
+        deviceOsVersion:
+          type: string
+          description: Versão do sistema operacional.
+          nullable: true
+          example: 17.4.1
+        devicePlatformType:
+          type: string
+          description: Tipo da plataforma.
+          nullable: true
+          example: mobile
+      additionalProperties: false
+    Platform:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Tipo da plataforma.
+          nullable: true
+          example: Crowdfunding
+        vendor:
+          type: string
+          description: Fornecedor.
+          nullable: true
+          example: Crowdcube
+        model:
+          type: string
+          description: Modelo.
+          nullable: true
+          example: Equity-Based
+      additionalProperties: false
+    Browser:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nome do navegador.
+          nullable: true
+          example: Chrome
+        version:
+          type: string
+          description: Versão do navegador.
+          nullable: true
+          example: 126.0.0.0
+      additionalProperties: false
+    Os:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nome do sistema operacional.
+          nullable: true
+          example: Android
+        version:
+          type: string
+          description: Versão do sistema operacional.
+          nullable: true
+          example: '10'
+        versionname:
+          type: string
+          description: Nome da versão do sistema operacional.
+          nullable: true
+          example: 10.1.0
+      additionalProperties: false
+    DevicesFunnel:
+      type: object
+      properties:
+        browser:
+          $ref: '#/components/schemas/Browser'
+        os:
+          $ref: '#/components/schemas/Os'
+        platform:
+          $ref: '#/components/schemas/Platform'
+        engine:
+          $ref: '#/components/schemas/Engine'
+        useragent:
+          type: string
+          description: String de texto que contém informações sobre o navegador.
+          nullable: true
+          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+      additionalProperties: false
+    TagginJourneyResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/TagginJourneyResponse'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
+    TagginJourneyResponse:
+      type: object
+      properties:
+        proposalId:
+          type: string
+          description: Identificador da proposta.
+          nullable: true
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          nullable: true
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type: string
+          description: CPF ou CNPJ da proposta.
+          nullable: true
+          example: '12345678'
+        processedAt:
+          type: string
+          description: Data de processamento da url.
+          nullable: true
+          example: '2024-08-14 09:40:20.09'
+        status:
+          type: string
+          description: "Status da jornada:\r\n- COMPLETED\r\n- PENDING"
+          nullable: true
+          example: COMPLETED
+        link:
+          type: string
+          description: Link do webview.
+          nullable: true
+          example: https://trustyourid.cadastro.io/e32b99c477a00171716aas
+        totalDevices:
+          type: integer
+          description: Quantidade de dispositivos que acessaram o webview.
+          format: int32
+          nullable: true
+          example: 1
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/DevicesFunnel'
+          description: Dispositivos que acessaram o webview.
+          nullable: true
+        lastStep:
+          $ref: '#/components/schemas/StepFunnel'
+        stepsArray:
+          type: array
+          items:
+            $ref: '#/components/schemas/StepFunnel'
+          description: Lista das etapas da jornada.
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT

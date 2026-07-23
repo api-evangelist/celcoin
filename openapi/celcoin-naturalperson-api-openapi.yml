@@ -1,0 +1,461 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar NaturalPerson API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: NaturalPerson
+paths:
+  /onboarding-proposal/natural-person:
+    post:
+      tags:
+      - NaturalPerson
+      summary: Cria uma nova proposta de criação de conta Pessoa Física.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NaturalPersonRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NaturalPersonRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NaturalPersonRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NaturalPersonResponseProcessingResponse'
+        '400':
+          description: Error handled by the application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unknown error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+  /onboarding-proposal/account/{account}/natural-person:
+    put:
+      tags:
+      - NaturalPerson
+      summary: Criação de proposta para atualização de dados cadastrais de uma Pessoa Física.
+      parameters:
+      - name: account
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NaturalPersonUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NaturalPersonUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NaturalPersonUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NaturalPersonUpdateResponseProcessingResponse'
+        '400':
+          description: Error handled by the application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Access Denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unknown error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    AddressRequest:
+      required:
+      - city
+      - neighborhood
+      - number
+      - postalCode
+      - state
+      - street
+      type: object
+      properties:
+        postalCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+          description: Número do CEP.
+          example: '12211400'
+        street:
+          maxLength: 200
+          minLength: 1
+          type: string
+          description: Nome da rua.
+          example: Rua da Liberdade
+        number:
+          minLength: 1
+          type: string
+          description: Número do endereço.
+          example: '313'
+        addressComplement:
+          type: string
+          description: Complemento do endereço.
+          nullable: true
+          example: Em frente ao parque.
+        neighborhood:
+          maxLength: 200
+          minLength: 1
+          type: string
+          description: Nome do bairro.
+          example: Casa Verde
+        city:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Nome da Cidade.
+          example: São Paulo
+        state:
+          minLength: 1
+          type: string
+          description: Sigla do Estado referente ao endereço informado.
+          example: SP
+      additionalProperties: false
+      description: Endereço.
+    FileRequest:
+      required:
+      - data
+      - type
+      type: object
+      properties:
+        type:
+          minLength: 1
+          type: string
+          description: "Tipo de file:\r\n- OUTROS,\r\n- CNH_FRONT,\r\n- CNH_BACK,\r\n- RG_FRONT,\r\n- RG_BACK,\r\n- RNE_FRONT,\r\n- RNE_BACK,\r\n- CONTRATO_SOCIAL,\r\n- DOCUMENTO_FINANCEIRO,\r\n- PROCURACAO_PODERES,\r\n- SELFIE,\r\n- RNM_FRONT,\r\n- RNM_BACK,\r\n- CRLV_FRONT,\r\n- CRLV_BACK,\r\n- CTPS_FRONT,\r\n- CTPS_BACK,\r\n- PASSPORT_FRONT,\r\n- PASSPORT_BACK,\r\n- OUTROS_FRONT,\r\n- OUTROS_BACK,\r\n- DRE,\r\n- COMPROVANTE_RESIDENCIA,\r\n- COMPROVANTE_RENDA,\r\n- DOCUMENTO_LEGAL,\r\n- DECLARACAO_ANUAL,\r\n- DECLARACAO_CONFIRMACAO"
+          example: RG_FRONT
+        data:
+          minLength: 1
+          type: string
+          description: URL do arquivo.
+          example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
+      additionalProperties: false
+      description: Representante/Sócio
+    NaturalPersonUpdateRequest:
+      required:
+      - address
+      - clientCode
+      - email
+      - fullName
+      - motherName
+      - phoneNumber
+      type: object
+      properties:
+        clientCode:
+          minLength: 1
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          example: '123456'
+        phoneNumber:
+          maxLength: 14
+          minLength: 1
+          type: string
+          description: Número telefone contato do titular da conta.
+          example: '+5512981175554'
+        email:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: E-mail do titular da conta.
+          example: email@email.com
+        motherName:
+          minLength: 1
+          type: string
+          description: Nome da mãe do titular da conta.
+          example: Nome Sobrenome
+        fullName:
+          maxLength: 120
+          minLength: 1
+          type: string
+          description: Nome completo do titular da conta.
+          example: Nome Sobrenome
+        socialName:
+          type: string
+          description: Nome social do titular da conta.
+          nullable: true
+          example: Nome
+        address:
+          $ref: '#/components/schemas/AddressRequest'
+      additionalProperties: false
+    NaturalPersonUpdateResponse:
+      type: object
+      properties:
+        updateProposalId:
+          type: string
+          description: Identificador único da atualização criada.
+          nullable: true
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          nullable: true
+          example: '123456'
+        documentNumber:
+          type: string
+          description: Número do documento do titular da conta.
+          nullable: true
+          example: '33333333333'
+        account:
+          type: string
+          description: Número da conta.
+          nullable: true
+          example: '300539137126128'
+      additionalProperties: false
+    NaturalPersonUpdateResponseProcessingResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/NaturalPersonUpdateResponse'
+      additionalProperties: false
+    NaturalPersonResponseProcessingResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/NaturalPersonResponse'
+      additionalProperties: false
+    FinancialDetails:
+      type: object
+      properties:
+        declaredIncome:
+          type: string
+          nullable: true
+        declaredIncomeDescription:
+          type: string
+          nullable: true
+        presumedIncome:
+          type: string
+          nullable: true
+        presumedIncomeDescription:
+          type: string
+          nullable: true
+        occupation:
+          type: string
+          nullable: true
+        occupationDescription:
+          type: string
+          nullable: true
+        netWorth:
+          type: string
+          nullable: true
+        netWorthDescription:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    NaturalPersonRequest:
+      required:
+      - address
+      - birthDate
+      - clientCode
+      - documentNumber
+      - email
+      - fullName
+      - motherName
+      - onboardingType
+      - phoneNumber
+      type: object
+      properties:
+        clientCode:
+          minLength: 1
+          type: string
+          description: Identificador único fornecido pelo cliente. Esse valor não pode ser repetido.
+          example: '123456'
+        documentNumber:
+          maxLength: 11
+          minLength: 11
+          type: string
+          description: Número do CPF da conta.
+          example: '33333333333'
+        phoneNumber:
+          maxLength: 14
+          minLength: 1
+          type: string
+          description: Número telefone contato do titular da conta.
+          example: '+5512981175554'
+        email:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: E-mail do titular da conta.
+          example: email@email.com
+        motherName:
+          minLength: 1
+          type: string
+          description: Nome mãe do titular da conta.
+          example: Nome Sobrenome
+        fullName:
+          maxLength: 120
+          minLength: 1
+          type: string
+          description: Nome completo do titular da conta.
+          example: Nome Sobrenome
+        socialName:
+          type: string
+          description: Nome social do titular da conta.
+          nullable: true
+          example: Carlos
+        birthDate:
+          minLength: 1
+          type: string
+          description: Data de nascimento do titular da conta.
+          example: 31-12-1984
+        address:
+          $ref: '#/components/schemas/AddressRequest'
+        isPoliticallyExposedPerson:
+          type: boolean
+          description: Campo que identifica se o titular da conta é pessoa politicamente exposta.
+          default: false
+          example: false
+        onboardingType:
+          minLength: 1
+          type: string
+          description: "Tipo de Onboarding:\r\n- Se BAAS: Sera criada uma proposta de pessoa física para criar conta no BAAS"
+          default: BAAS
+          example: BAAS
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileRequest'
+          description: Documentos Enviados
+          nullable: true
+        financialDetails:
+          $ref: '#/components/schemas/FinancialDetails'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Versão da api.
+          nullable: true
+          example: 1.0.0
+        status:
+          type: string
+          description: Status da solicitação.
+          nullable: true
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
+    NaturalPersonResponse:
+      type: object
+      properties:
+        proposalId:
+          type: string
+          description: Identificador da proposta criada.
+          nullable: true
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          nullable: true
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type: string
+          description: CPF da proposta criada.
+          nullable: true
+          example: '12345678900'
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT

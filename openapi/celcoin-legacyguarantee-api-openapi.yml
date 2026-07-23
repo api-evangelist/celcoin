@@ -1,0 +1,181 @@
+openapi: 3.0.1
+info:
+  title: billissuance-settlement-webservice AnnotationCompetenceCalendar LegacyGuarantee API
+  version: v1.0.0
+servers:
+- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+tags:
+- name: LegacyGuarantee
+paths:
+  /guarantee/renegotiation-legacy:
+    post:
+      tags:
+      - LegacyGuarantee
+      summary: Renegotiate legacy loans (Only for CT)
+      requestBody:
+        description: Renegotiation request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenegotiationGuaranteeLegacyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RenegotiationGuaranteeLegacyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RenegotiationGuaranteeLegacyRequest'
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuaranteeResponse'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuaranteeResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Errs:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RenegotiationGuaranteeLegacyRequest:
+      required:
+      - amount
+      - anualTax
+      - balanceCheckId
+      - cet
+      - contractNumber
+      - endContractDate
+      - initContractDate
+      - initDiscountDate
+      - installmentAmount
+      - installmentQuantity
+      - interestTax
+      - iof
+      - legacyAnnotations
+      - monthlyCet
+      - netAmount
+      type: object
+      properties:
+        balanceCheckId:
+          type: string
+          format: uuid
+        contractNumber:
+          type: string
+          nullable: true
+        amount:
+          type: number
+          format: double
+        netAmount:
+          type: number
+          format: double
+        interestTax:
+          type: number
+          format: double
+        iof:
+          type: number
+          format: double
+        cet:
+          type: number
+          format: double
+        initContractDate:
+          type: string
+          format: date-time
+        endContractDate:
+          type: string
+          format: date-time
+        anualTax:
+          type: number
+          format: double
+        monthlyCet:
+          type: number
+          format: double
+        installmentAmount:
+          type: number
+          format: double
+        installmentQuantity:
+          type: integer
+          format: int32
+        initDiscountDate:
+          type: string
+          format: date-time
+        legacyAnnotations:
+          type: array
+          items:
+            type: string
+            format: uuid
+          nullable: true
+        expirationAt:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    GuaranteeResponse:
+      required:
+      - annotationType
+      - status
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          nullable: true
+        annotationType:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Errs'
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Autenticação utilizando JTW Bearer Token
+      scheme: Bearer
+      bearerFormat: JWT
