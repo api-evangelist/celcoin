@@ -1,0 +1,1855 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Onboarding.Proposal.Webservice",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://sandbox.openfinance.celcoin.dev/onboarding/v1"
+    },
+    {
+      "url": "https://api.openfinance.celcoin.com.br/onboarding/v1"
+    }
+  ],
+  "paths": {
+    "/onboarding-proposal/files": {
+      "get": {
+        "tags": [
+          "Files"
+        ],
+        "summary": "Busca um arquivo ou uma lista de arquivos.",
+        "parameters": [
+          {
+            "name": "ProposalId",
+            "in": "query",
+            "description": "Id da proposta a ser buscada.",
+            "schema": {
+              "type": "string",
+              "example": "3257b215-bef9-402b-a779-104441b520b4"
+            },
+            "example": "3257b215-bef9-402b-a779-104441b520b4"
+          },
+          {
+            "name": "ClientCode",
+            "in": "query",
+            "description": "ClientCode da proposta a ser buscada.",
+            "schema": {
+              "type": "string",
+              "example": "612f5412-0bd3-49b0-b136-981f0959d47e"
+            },
+            "example": "612f5412-0bd3-49b0-b136-981f0959d47e"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchFilesResponseSuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error handled by the application",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access Denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unknown error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/onboarding-proposal/legal-person": {
+      "post": {
+        "tags": [
+          "LegalPerson"
+        ],
+        "summary": "Cria uma nova proposta de criação de conta Pessoa Jurídica.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegalPersonRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegalPersonRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegalPersonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LegalPersonResponseProcessingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error handled by the application",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access Denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unknown error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/onboarding-proposal/natural-person": {
+      "post": {
+        "tags": [
+          "NaturalPerson"
+        ],
+        "summary": "Cria uma nova proposta de criação de conta Pessoa Física.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalPersonRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalPersonRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalPersonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NaturalPersonResponseProcessingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error handled by the application",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access Denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unknown error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/onboarding-proposal/account/{account}/natural-person": {
+      "put": {
+        "tags": [
+          "NaturalPerson"
+        ],
+        "summary": "Criação de proposta para atualização de dados cadastrais de uma Pessoa Física.",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalPersonUpdateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalPersonUpdateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaturalPersonUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NaturalPersonUpdateResponseProcessingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error handled by the application",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access Denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unknown error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/onboarding-proposal": {
+      "get": {
+        "tags": [
+          "Proposal"
+        ],
+        "summary": "Busca uma proposta ou uma lista de propostas.",
+        "parameters": [
+          {
+            "name": "ProposalId",
+            "in": "query",
+            "description": "Id da proposta a ser buscada.",
+            "schema": {
+              "type": "string",
+              "example": "3257b215-bef9-402b-a779-104441b520b4"
+            },
+            "example": "3257b215-bef9-402b-a779-104441b520b4"
+          },
+          {
+            "name": "ClientCode",
+            "in": "query",
+            "description": "Identificador único do cliente a ser buscado.",
+            "schema": {
+              "type": "string",
+              "example": "7817b215-beg3-801a-a779-117771t550h2"
+            },
+            "example": "7817b215-beg3-801a-a779-117771t550h2"
+          },
+          {
+            "name": "DateFrom",
+            "in": "query",
+            "description": "Data inicial.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-11-03T06:30:00-03:00"
+            },
+            "example": "2023-11-03T06:30:00-03:00"
+          },
+          {
+            "name": "DateTo",
+            "in": "query",
+            "description": "Data final.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-11-03T06:30:00-03:00"
+            },
+            "example": "2023-11-03T06:30:00-03:00"
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "description": "Status da proposta:\r\n- CREATED\r\n- PENDING\r\n- PENDING_DOCUMENTSCOPY\r\n- APPROVED\r\n- REPROVED\r\n- RESOURCE_ERROR\r\n- RESOURCE_CREATED\r\n- PROCESSING_DOCUMENTSCOPY",
+            "schema": {
+              "type": "string",
+              "example": "PENDING"
+            },
+            "example": "PENDING"
+          },
+          {
+            "name": "DocumentNumber",
+            "in": "query",
+            "description": "Documento da proposta.",
+            "schema": {
+              "maxLength": 14,
+              "minLength": 11,
+              "type": "string",
+              "example": "12345678909"
+            },
+            "example": "12345678909"
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "description": "Pagina de solicitaçao, default: 1.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "description": "Limite geral da consulta.",
+            "schema": {
+              "maximum": 200,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 200
+            }
+          },
+          {
+            "name": "LimitPerPage",
+            "in": "query",
+            "description": "Total de propostas por pagina.",
+            "schema": {
+              "maximum": 200,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 200
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchProposalResponseSuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error handled by the application",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access Denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unknown error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/onboarding-proposal/tagging-journey": {
+      "get": {
+        "tags": [
+          "TaggingJourney"
+        ],
+        "summary": "Busca o tageamento da jornada do webview de uma proposta.",
+        "parameters": [
+          {
+            "name": "ProposalId",
+            "in": "query",
+            "description": "Id da proposta a ser buscada.",
+            "schema": {
+              "type": "string",
+              "example": "3257b215-bef9-402b-a779-104441b520b4"
+            },
+            "example": "3257b215-bef9-402b-a779-104441b520b4"
+          },
+          {
+            "name": "ClientCode",
+            "in": "query",
+            "description": "ClientCode da proposta a ser buscada.",
+            "schema": {
+              "type": "string",
+              "example": "612f5412-0bd3-49b0-b136-981f0959d47e"
+            },
+            "example": "612f5412-0bd3-49b0-b136-981f0959d47e"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagginJourneyResponseSuccessResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error handled by the application",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access Denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unknown error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddressRequest": {
+        "required": [
+          "city",
+          "neighborhood",
+          "number",
+          "postalCode",
+          "state",
+          "street"
+        ],
+        "type": "object",
+        "properties": {
+          "postalCode": {
+            "maxLength": 8,
+            "minLength": 1,
+            "type": "string",
+            "description": "Número do CEP.",
+            "example": "12211400"
+          },
+          "street": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome da rua.",
+            "example": "Rua da Liberdade"
+          },
+          "number": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Número do endereço.",
+            "example": "313"
+          },
+          "addressComplement": {
+            "type": "string",
+            "description": "Complemento do endereço.",
+            "nullable": true,
+            "example": "Em frente ao parque."
+          },
+          "neighborhood": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome do bairro.",
+            "example": "Casa Verde"
+          },
+          "city": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome da Cidade.",
+            "example": "São Paulo"
+          },
+          "state": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Sigla do Estado referente ao endereço informado.",
+            "example": "SP"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Endereço."
+      },
+      "BlobFile": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Tipo do arquivo\r\n- CNH_FRONT,\r\n- CNH_BACK,\r\n- RG_FRONT,\r\n- RG_BACK,\r\n- RNE_FRONT,\r\n- RNE_BACK,\r\n- CONTRATO_SOCIAL,\r\n- DOCUMENTO_FINANCEIRO,\r\n- PROCURACAO_PODERES,\r\n- SELFIE",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "description": "URL para acessar o arquivo.",
+            "nullable": true
+          },
+          "expirationTime": {
+            "type": "string",
+            "description": "Tempo de expiração da URL.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Arquivo do Blob"
+      },
+      "Browser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nome do navegador.",
+            "nullable": true,
+            "example": "Chrome"
+          },
+          "version": {
+            "type": "string",
+            "description": "Versão do navegador.",
+            "nullable": true,
+            "example": "126.0.0.0"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompanyFinancialDetailsRequest": {
+        "type": "object",
+        "properties": {
+          "declaredCompanyRevenue": {
+            "type": "string",
+            "description": "Faturamento declarado da empresa.",
+            "nullable": true,
+            "example": "DCRB01"
+          },
+          "presumedCompanyRevenue": {
+            "type": "string",
+            "description": "Faturamento presumido da empresa.",
+            "nullable": true,
+            "example": "PCRB01"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Detalhes financeiros da empresa."
+      },
+      "DevicesFunnel": {
+        "type": "object",
+        "properties": {
+          "browser": {
+            "$ref": "#/components/schemas/Browser"
+          },
+          "os": {
+            "$ref": "#/components/schemas/Os"
+          },
+          "platform": {
+            "$ref": "#/components/schemas/Platform"
+          },
+          "engine": {
+            "$ref": "#/components/schemas/Engine"
+          },
+          "useragent": {
+            "type": "string",
+            "description": "String de texto que contém informações sobre o navegador.",
+            "nullable": true,
+            "example": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DocumentscopyResponse": {
+        "type": "object",
+        "properties": {
+          "proposalId": {
+            "type": "string",
+            "description": "Identificador da proposta.",
+            "nullable": true,
+            "example": "12334dfb-4c4e-43fb-ad93-fa28e3123473"
+          },
+          "documentNumber": {
+            "type": "string",
+            "description": "CPF ou CNPJ da pessoa que teve o(s) documento(s) analisado(s).",
+            "nullable": true
+          },
+          "documentscopyId": {
+            "type": "string",
+            "description": "Identificador único da documentoscopia.",
+            "nullable": true,
+            "example": "12a1e9a958fab500088a8901"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da documentoscopia:\r\n- CREATED\r\n- PENDING\r\n- APPROVED\r\n- REPROVED\r\n- PROCESSING",
+            "nullable": true,
+            "example": "APPROVED"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL utilizada para o usuário encaminhar os seus documentos.",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Data de criação da documentoscopia.",
+            "format": "date-time"
+          },
+          "updateAt": {
+            "type": "string",
+            "description": "Data de atualização da documentoscopia.",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Documentoscopia(s) retornada(s)."
+      },
+      "Engine": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nome do motor do navegador.",
+            "nullable": true,
+            "example": "Google"
+          },
+          "version": {
+            "type": "string",
+            "description": "Versão do motor do navegador.",
+            "nullable": true,
+            "example": "126.0.0.0"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Versão da api.",
+            "nullable": true,
+            "example": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da solicitação.",
+            "nullable": true,
+            "example": "SUCCESS"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ResponseError"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileRequest": {
+        "required": [
+          "data",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Tipo de file:\r\n- OUTROS,\r\n- CNH_FRONT,\r\n- CNH_BACK,\r\n- RG_FRONT,\r\n- RG_BACK,\r\n- RNE_FRONT,\r\n- RNE_BACK,\r\n- CONTRATO_SOCIAL,\r\n- DOCUMENTO_FINANCEIRO,\r\n- PROCURACAO_PODERES,\r\n- SELFIE,\r\n- RNM_FRONT,\r\n- RNM_BACK,\r\n- CRLV_FRONT,\r\n- CRLV_BACK,\r\n- CTPS_FRONT,\r\n- CTPS_BACK,\r\n- PASSPORT_FRONT,\r\n- PASSPORT_BACK,\r\n- OUTROS_FRONT,\r\n- OUTROS_BACK,\r\n- DRE,\r\n- COMPROVANTE_RESIDENCIA,\r\n- COMPROVANTE_RENDA,\r\n- DOCUMENTO_LEGAL,\r\n- DECLARACAO_ANUAL,\r\n- DECLARACAO_CONFIRMACAO",
+            "example": "RG_FRONT"
+          },
+          "data": {
+            "minLength": 1,
+            "type": "string",
+            "description": "URL do arquivo.",
+            "example": "https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Representante/Sócio"
+      },
+      "FinancialDetails": {
+        "type": "object",
+        "properties": {
+          "declaredIncome": {
+            "type": "string",
+            "nullable": true
+          },
+          "declaredIncomeDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "presumedIncome": {
+            "type": "string",
+            "nullable": true
+          },
+          "presumedIncomeDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "occupation": {
+            "type": "string",
+            "nullable": true
+          },
+          "occupationDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "netWorth": {
+            "type": "string",
+            "nullable": true
+          },
+          "netWorthDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LegalPersonRequest": {
+        "required": [
+          "businessAddress",
+          "businessEmail",
+          "businessName",
+          "clientCode",
+          "contactNumber",
+          "documentNumber",
+          "onboardingType",
+          "owner",
+          "tradingName"
+        ],
+        "type": "object",
+        "properties": {
+          "clientCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente. Esse valor não pode ser repetido.",
+            "example": "123456"
+          },
+          "contactNumber": {
+            "maxLength": 14,
+            "minLength": 1,
+            "type": "string",
+            "description": "Telefone para contato.",
+            "example": "+551239215555"
+          },
+          "documentNumber": {
+            "maxLength": 14,
+            "minLength": 14,
+            "type": "string",
+            "description": "Número do CNPJ da conta (Aceita formato Alfanumérico).",
+            "example": "12ABC3450001DF"
+          },
+          "businessEmail": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "E-mail que será vinculado a conta.",
+            "example": "email@email.com"
+          },
+          "businessName": {
+            "maxLength": 350,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome da razão social da conta.",
+            "example": "IP Pagamentos"
+          },
+          "tradingName": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome fantasia da conta.",
+            "example": "IPay"
+          },
+          "companyType": {
+            "type": "string",
+            "description": "Tipo de empresa:\r\n- PJ\r\n- MEI\r\n- ME",
+            "default": "PJ",
+            "nullable": true,
+            "example": "PJ"
+          },
+          "owner": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnerRequest"
+            }
+          },
+          "businessAddress": {
+            "$ref": "#/components/schemas/AddressRequest"
+          },
+          "onboardingType": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Tipo de Onboarding:\r\n- Se BAAS: Será criada uma proposta de pessoa jurídica para criar conta no BAAS",
+            "default": "BAAS",
+            "example": "BAAS"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileRequest"
+            },
+            "description": "Documentos Enviados",
+            "nullable": true
+          },
+          "financialCompanyDetails": {
+            "$ref": "#/components/schemas/CompanyFinancialDetailsRequest"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LegalPersonResponse": {
+        "type": "object",
+        "properties": {
+          "proposalId": {
+            "type": "string",
+            "description": "Identificador da proposta criada.",
+            "nullable": true,
+            "example": "12334dfb-4c4e-43fb-ad93-fa28e3123473"
+          },
+          "clientCode": {
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente.",
+            "nullable": true,
+            "example": "1234ab7c-2855-436b-9d19-8abcdc198e984"
+          },
+          "documentNumber": {
+            "type": "string",
+            "description": "CNPJ da proposta criada.",
+            "nullable": true,
+            "example": "12345678900001"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LegalPersonResponseProcessingResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Versão da api.",
+            "nullable": true,
+            "example": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da solicitação.",
+            "nullable": true,
+            "example": "SUCCESS"
+          },
+          "body": {
+            "$ref": "#/components/schemas/LegalPersonResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NaturalPersonRequest": {
+        "required": [
+          "address",
+          "birthDate",
+          "clientCode",
+          "documentNumber",
+          "email",
+          "fullName",
+          "motherName",
+          "onboardingType",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "clientCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente. Esse valor não pode ser repetido.",
+            "example": "123456"
+          },
+          "documentNumber": {
+            "maxLength": 11,
+            "minLength": 11,
+            "type": "string",
+            "description": "Número do CPF da conta.",
+            "example": "33333333333"
+          },
+          "phoneNumber": {
+            "maxLength": 14,
+            "minLength": 1,
+            "type": "string",
+            "description": "Número telefone contato do titular da conta.",
+            "example": "+5512981175554"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "E-mail do titular da conta.",
+            "example": "email@email.com"
+          },
+          "motherName": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome mãe do titular da conta.",
+            "example": "Nome Sobrenome"
+          },
+          "fullName": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome completo do titular da conta.",
+            "example": "Nome Sobrenome"
+          },
+          "socialName": {
+            "type": "string",
+            "description": "Nome social do titular da conta.",
+            "nullable": true,
+            "example": "Carlos"
+          },
+          "birthDate": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Data de nascimento do titular da conta.",
+            "example": "31-12-1984"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressRequest"
+          },
+          "isPoliticallyExposedPerson": {
+            "type": "boolean",
+            "description": "Campo que identifica se o titular da conta é pessoa politicamente exposta.",
+            "default": false,
+            "example": false
+          },
+          "onboardingType": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Tipo de Onboarding:\r\n- Se BAAS: Sera criada uma proposta de pessoa física para criar conta no BAAS",
+            "default": "BAAS",
+            "example": "BAAS"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileRequest"
+            },
+            "description": "Documentos Enviados",
+            "nullable": true
+          },
+          "financialDetails": {
+            "$ref": "#/components/schemas/FinancialDetails"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NaturalPersonResponse": {
+        "type": "object",
+        "properties": {
+          "proposalId": {
+            "type": "string",
+            "description": "Identificador da proposta criada.",
+            "nullable": true,
+            "example": "12334dfb-4c4e-43fb-ad93-fa28e3123473"
+          },
+          "clientCode": {
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente.",
+            "nullable": true,
+            "example": "1234ab7c-2855-436b-9d19-8abcdc198e984"
+          },
+          "documentNumber": {
+            "type": "string",
+            "description": "CPF da proposta criada.",
+            "nullable": true,
+            "example": "12345678900"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NaturalPersonResponseProcessingResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Versão da api.",
+            "nullable": true,
+            "example": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da solicitação.",
+            "nullable": true,
+            "example": "SUCCESS"
+          },
+          "body": {
+            "$ref": "#/components/schemas/NaturalPersonResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NaturalPersonUpdateRequest": {
+        "required": [
+          "address",
+          "clientCode",
+          "email",
+          "fullName",
+          "motherName",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "clientCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente.",
+            "example": "123456"
+          },
+          "phoneNumber": {
+            "maxLength": 14,
+            "minLength": 1,
+            "type": "string",
+            "description": "Número telefone contato do titular da conta.",
+            "example": "+5512981175554"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "E-mail do titular da conta.",
+            "example": "email@email.com"
+          },
+          "motherName": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome da mãe do titular da conta.",
+            "example": "Nome Sobrenome"
+          },
+          "fullName": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome completo do titular da conta.",
+            "example": "Nome Sobrenome"
+          },
+          "socialName": {
+            "type": "string",
+            "description": "Nome social do titular da conta.",
+            "nullable": true,
+            "example": "Nome"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressRequest"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NaturalPersonUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "updateProposalId": {
+            "type": "string",
+            "description": "Identificador único da atualização criada.",
+            "nullable": true,
+            "example": "12334dfb-4c4e-43fb-ad93-fa28e3123473"
+          },
+          "clientCode": {
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente.",
+            "nullable": true,
+            "example": "123456"
+          },
+          "documentNumber": {
+            "type": "string",
+            "description": "Número do documento do titular da conta.",
+            "nullable": true,
+            "example": "33333333333"
+          },
+          "account": {
+            "type": "string",
+            "description": "Número da conta.",
+            "nullable": true,
+            "example": "300539137126128"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NaturalPersonUpdateResponseProcessingResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Versão da api.",
+            "nullable": true,
+            "example": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da solicitação.",
+            "nullable": true,
+            "example": "SUCCESS"
+          },
+          "body": {
+            "$ref": "#/components/schemas/NaturalPersonUpdateResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Os": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nome do sistema operacional.",
+            "nullable": true,
+            "example": "Android"
+          },
+          "version": {
+            "type": "string",
+            "description": "Versão do sistema operacional.",
+            "nullable": true,
+            "example": "10"
+          },
+          "versionname": {
+            "type": "string",
+            "description": "Nome da versão do sistema operacional.",
+            "nullable": true,
+            "example": "10.1.0"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OwnerFinancialDetailsRequest": {
+        "type": "object",
+        "properties": {
+          "ownerDeclaredIncome": {
+            "type": "string",
+            "description": "Renda declarada do sócio.",
+            "nullable": true,
+            "example": "ODIB01"
+          },
+          "ownerPresumedIncome": {
+            "type": "string",
+            "description": "Renda presumida do sócio.",
+            "nullable": true,
+            "example": "OPIB05"
+          },
+          "ownerDeclaredRevenue": {
+            "type": "string",
+            "description": "Faturamento declarado vinculado ao sócio.",
+            "nullable": true,
+            "example": "ODRB06"
+          },
+          "ownerPresumedRevenue": {
+            "type": "string",
+            "description": "Faturamento presumido vinculado ao sócio.",
+            "nullable": true,
+            "example": "OPRB01"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Detalhes financeiros do sócio/representante."
+      },
+      "OwnerRequest": {
+        "required": [
+          "address",
+          "birthDate",
+          "documentNumber",
+          "email",
+          "fullName",
+          "ownerType",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "ownerType": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Tipo de Owner:\r\n- REPRESENTANTE\r\n- SOCIO\r\n- DEMAIS SOCIOS",
+            "example": "REPRESENTANTE"
+          },
+          "documentNumber": {
+            "maxLength": 14,
+            "minLength": 11,
+            "type": "string",
+            "description": "Número do CPF ou CNPJ do representante/sócio da empresa.",
+            "example": "33333333333"
+          },
+          "fullName": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string",
+            "description": "Nome completo do representante/sócio da empresa.",
+            "example": "Carlos Henrique da Silva"
+          },
+          "phoneNumber": {
+            "maxLength": 14,
+            "minLength": 1,
+            "type": "string",
+            "description": "Número telefone contato do representante/sócio da empresa.",
+            "example": "+5512981175554"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "description": "E-mail do representante/sócio da empresa.",
+            "example": "email@email.com"
+          },
+          "motherName": {
+            "type": "string",
+            "description": "Nome mãe do representante/sócio da empresa.",
+            "nullable": true,
+            "example": "Nome Sobrenome"
+          },
+          "socialName": {
+            "type": "string",
+            "description": "Nome social do representante/sócio da empresa.",
+            "nullable": true,
+            "example": "Nome"
+          },
+          "birthDate": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Data de nascimento do representante/sócio da empresa.",
+            "example": "31-12-1984"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressRequest"
+          },
+          "isPoliticallyExposedPerson": {
+            "type": "boolean",
+            "description": "Campo que identifica se o representante/sócio da empresa é uma pessoa politicamente exposta.",
+            "default": false,
+            "example": false
+          },
+          "financialOwnerDetails": {
+            "$ref": "#/components/schemas/OwnerFinancialDetailsRequest"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Representante/Sócio"
+      },
+      "Parameter": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Nome do atributo que utilizaremos no parceiro.",
+            "nullable": true,
+            "example": "TransactionId"
+          },
+          "value": {
+            "type": "string",
+            "description": "Valor do atributo que utilizaremos no parceiro.",
+            "nullable": true,
+            "example": "11111111"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Parâmetro."
+      },
+      "PartnerRequest": {
+        "type": "object",
+        "properties": {
+          "partnerName": {
+            "type": "string",
+            "description": "Nome do parceiro KYC.\r\nParceiros:\r\n- CAF",
+            "nullable": true,
+            "example": "CAF"
+          },
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Parameter"
+            },
+            "description": "Dados dos parametros que serão utilizados no parceiro.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Parceiro."
+      },
+      "Platform": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Tipo da plataforma.",
+            "nullable": true,
+            "example": "Crowdfunding"
+          },
+          "vendor": {
+            "type": "string",
+            "description": "Fornecedor.",
+            "nullable": true,
+            "example": "Crowdcube"
+          },
+          "model": {
+            "type": "string",
+            "description": "Modelo.",
+            "nullable": true,
+            "example": "Equity-Based"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProposalResponse": {
+        "type": "object",
+        "properties": {
+          "proposalId": {
+            "type": "string",
+            "description": "Identificador da proposta.",
+            "nullable": true,
+            "example": "12334dfb-4c4e-43fb-ad93-fa28e3123473"
+          },
+          "clientCode": {
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente.",
+            "nullable": true,
+            "example": "1234ab7c-2855-436b-9d19-8abcdc198e984"
+          },
+          "documentNumber": {
+            "type": "string",
+            "description": "CPF ou CNPJ da proposta.",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da proposta:\r\n- CREATED\r\n- PENDING\r\n- PENDING_DOCUMENTSCOPY\r\n- APPROVED\r\n- REPPROVED\r\n- RESOURCE_CREATED\r\n- RESOURCE_ERROR\r\n- PROCESSING_DOCUMENTSCOPY",
+            "nullable": true
+          },
+          "proposalType": {
+            "type": "string",
+            "description": "Tipo da proposta:\r\n- PF\r\n- PJ",
+            "nullable": true,
+            "example": "PF"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Data de criação da proposta.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Data de atualização da proposta.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "rejectedReason": {
+            "$ref": "#/components/schemas/RejectedReasonResponse"
+          },
+          "documentscopys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentscopyResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Proposta(s) retornada(s)."
+      },
+      "RejectedReasonResponse": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "description": "Código de erro referente à rejeição da proposta.",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "description": "Motivo da rejeição da proposta.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Motivo pelo qual a proposta foi rejeitada."
+      },
+      "ResponseError": {
+        "required": [
+          "errorCode",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Código de erro gerado pela Celcoin.",
+            "example": "OIE999"
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Mensagem de erro.",
+            "example": "Ocorreu um erro interno durante a chamada da api.."
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchFilesResponse": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BlobFile"
+            },
+            "nullable": true
+          },
+          "clientCode": {
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente.",
+            "nullable": true,
+            "example": "123abdgh-c11f-4c88-af6b-d227d88b5183"
+          },
+          "documentNumber": {
+            "type": "string",
+            "description": "CPF ou CNPJ vinculado à proposta.",
+            "nullable": true,
+            "example": "12345678909"
+          },
+          "proposalId": {
+            "type": "string",
+            "description": "Identificador da proposta.",
+            "nullable": true,
+            "example": "ab11113e-f123-4a7f-9010-99b064038038"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchFilesResponseSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Versão da api.",
+            "nullable": true,
+            "example": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da solicitação.",
+            "nullable": true,
+            "example": "SUCCESS"
+          },
+          "body": {
+            "$ref": "#/components/schemas/SearchFilesResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchProposalResponse": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "description": "Total de propostas.",
+            "format": "int32"
+          },
+          "currentPage": {
+            "type": "integer",
+            "description": "Página atual.",
+            "format": "int32"
+          },
+          "limitPerPage": {
+            "type": "integer",
+            "description": "Total de propostas por página.",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total de páginas retornadas.",
+            "format": "int32"
+          },
+          "totalItems": {
+            "type": "integer",
+            "description": "Total de propostas retornadas.",
+            "format": "int32"
+          },
+          "proposal": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProposalResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchProposalResponseSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Versão da api.",
+            "nullable": true,
+            "example": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da solicitação.",
+            "nullable": true,
+            "example": "SUCCESS"
+          },
+          "body": {
+            "$ref": "#/components/schemas/SearchProposalResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StepFunnel": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp que iniciou a etapa.",
+            "nullable": true,
+            "example": "2024-07-25 18:19:54.11"
+          },
+          "stepName": {
+            "type": "string",
+            "description": "  Possíveis etapas:\r\n- STEP_CAMERA_ACCESS: Permissões de câmera.\r\n- STEP_COMPANY_ADDRESS: Endereço empresarial.\r\n- STEP_COMPANY_DATA: Dados empresariais.\r\n- STEP_CUSTOM: Etapa customizada.\r\n- STEP_CUSTOM_FORM: Formulário.\r\n- STEP_DATA_CONFIRMATION: Dados pessoais.\r\n- STEP_DD: Captura de Documento.\r\n- STEP_DD_PREVIEW: Preview do documento.\r\n- STEP_DISPATCH_ADDRESS: Endereço residencial.\r\n- STEP_DOCUMENT_TYPE: Tipo de documento.\r\n- STEP_DOCUMENT_ISSUED_COUNTRY: País de emissão do documento.\r\n- STEP_USING_TERMS: Aceite de termos de uso.\r\n- STEP_DONE: Tudo certo.\r\n- STEP_EMAIL_VALIDATION: Validar email.\r\n- STEP_EMPLOYEE_DATA: Dados do funcionário.\r\n- STEP_FLOW_CHOICE: Decisão.\r\n- STEP_INCOME: Faturamento.\r\n- STEP_INSTRUCTIONS: Instruções.\r\n- STEP_PARTNER: Quadro societário.\r\n- STEP_LIVENESS_IPROOV: Prova de vida (Nova).\r\n- STEP_LIVENESS_IPROOV_PREVIEW: Pré-visualização da Prova de Vida (Nova).\r\n- STEP_PFL: Selfie.\r\n- STEP_PFL_PREVIEW: Preview da selfie.\r\n- STEP_FA: Autenticação Facial.\r\n- STEP_FA_PREVIEW: Pré-visualização da Autenticação Facial (Antiga).\r\n- STEP_FACE_AUTH_IPROOV: Autenticação Facial (Nova).\r\n- STEP_FACE_AUTH_IPROOV_PREVIEW: Pré-visualização da Autenticação Facial (Nova).\r\n- STEP_PF_PF_DATA: Dados da pessoa relacionada.\r\n- STEP_PHONE_NUMBER_VALIDATION: Validar telefone.\r\n- STEP_QSA: Quem é você?\r\n- STEP_SEND_DOCUMENT_TYPE: Forma de envio de documento.\r\n- STEP_UPLOAD_DOCUMENT: Upload de arquivos de documento.\r\n- STEP_WELCOME: Boas vindas ao usuário.\r\n- STEP_NEW_ACCESS: Novo acesso.",
+            "nullable": true,
+            "example": "STEP_DONE-1"
+          },
+          "secondsFromPrevious": {
+            "type": "integer",
+            "description": "Tempo na etapa anterior (em segundos).",
+            "format": "int32",
+            "nullable": true,
+            "example": -32
+          },
+          "secondsFromNext": {
+            "type": "integer",
+            "description": "Tempo na etapa informada (em segundos).",
+            "format": "int32",
+            "nullable": true,
+            "example": 1
+          },
+          "deviceBrowserName": {
+            "type": "string",
+            "description": "Nome do navegador.",
+            "nullable": true,
+            "example": "Safari"
+          },
+          "deviceOsName": {
+            "type": "string",
+            "description": "Nome do sistema operacional.",
+            "nullable": true,
+            "example": "iOS"
+          },
+          "deviceOsVersion": {
+            "type": "string",
+            "description": "Versão do sistema operacional.",
+            "nullable": true,
+            "example": "17.4.1"
+          },
+          "devicePlatformType": {
+            "type": "string",
+            "description": "Tipo da plataforma.",
+            "nullable": true,
+            "example": "mobile"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TagginJourneyResponse": {
+        "type": "object",
+        "properties": {
+          "proposalId": {
+            "type": "string",
+            "description": "Identificador da proposta.",
+            "nullable": true,
+            "example": "12334dfb-4c4e-43fb-ad93-fa28e3123473"
+          },
+          "clientCode": {
+            "type": "string",
+            "description": "Identificador único fornecido pelo cliente.",
+            "nullable": true,
+            "example": "1234ab7c-2855-436b-9d19-8abcdc198e984"
+          },
+          "documentNumber": {
+            "type": "string",
+            "description": "CPF ou CNPJ da proposta.",
+            "nullable": true,
+            "example": "12345678"
+          },
+          "processedAt": {
+            "type": "string",
+            "description": "Data de processamento da url.",
+            "nullable": true,
+            "example": "2024-08-14 09:40:20.09"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da jornada:\r\n- COMPLETED\r\n- PENDING",
+            "nullable": true,
+            "example": "COMPLETED"
+          },
+          "link": {
+            "type": "string",
+            "description": "Link do webview.",
+            "nullable": true,
+            "example": "https://trustyourid.cadastro.io/e32b99c477a00171716aas"
+          },
+          "totalDevices": {
+            "type": "integer",
+            "description": "Quantidade de dispositivos que acessaram o webview.",
+            "format": "int32",
+            "nullable": true,
+            "example": 1
+          },
+          "devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DevicesFunnel"
+            },
+            "description": "Dispositivos que acessaram o webview.",
+            "nullable": true
+          },
+          "lastStep": {
+            "$ref": "#/components/schemas/StepFunnel"
+          },
+          "stepsArray": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StepFunnel"
+            },
+            "description": "Lista das etapas da jornada.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TagginJourneyResponseSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "Versão da api.",
+            "nullable": true,
+            "example": "1.0.0"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status da solicitação.",
+            "nullable": true,
+            "example": "SUCCESS"
+          },
+          "body": {
+            "$ref": "#/components/schemas/TagginJourneyResponse"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "[API V5] - Please enter into field the word 'Bearer' following by space and the access_token (JWT)",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

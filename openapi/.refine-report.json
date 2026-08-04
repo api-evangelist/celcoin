@@ -1,0 +1,36 @@
+{
+  "provider": "celcoin",
+  "sources": [
+    "celcoin-annotationcompetencecalendar-api-openapi.yml",
+    "celcoin-bankcorrespondentagent-api-openapi.yml",
+    "celcoin-consignee-api-openapi.yml",
+    "celcoin-files-api-openapi.yml",
+    "celcoin-guarantee-api-openapi.yml",
+    "celcoin-legacyguarantee-api-openapi.yml",
+    "celcoin-legalperson-api-openapi.yml",
+    "celcoin-naturalperson-api-openapi.yml",
+    "celcoin-outstandingbalance-api-openapi.yml",
+    "celcoin-proposal-api-openapi.yml",
+    "celcoin-settlement-api-openapi.yml",
+    "celcoin-taggingjourney-api-openapi.yml"
+  ],
+  "outputs": [
+    "celcoin-annotationcompetencecalendar-api-openapi.yml",
+    "celcoin-bankcorrespondentagent-api-openapi.yml",
+    "celcoin-consignee-api-openapi.yml",
+    "celcoin-files-api-openapi.yml",
+    "celcoin-guarantee-api-openapi.yml",
+    "celcoin-legacyguarantee-api-openapi.yml",
+    "celcoin-legalperson-api-openapi.yml",
+    "celcoin-naturalperson-api-openapi.yml",
+    "celcoin-outstandingbalance-api-openapi.yml",
+    "celcoin-proposal-api-openapi.yml",
+    "celcoin-settlement-api-openapi.yml",
+    "celcoin-taggingjourney-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
