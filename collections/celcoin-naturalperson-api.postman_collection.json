@@ -1,0 +1,716 @@
+{
+  "item": [
+    {
+      "id": "100fb7fb-e955-414a-8a85-cac6ffd631fe",
+      "name": "NaturalPerson",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "296035fc-33fd-4ac6-ae1d-00a3b74ebf95",
+          "name": "Cria uma nova proposta de criação de conta Pessoa Física.",
+          "request": {
+            "name": "Cria uma nova proposta de criação de conta Pessoa Física.",
+            "description": {},
+            "url": {
+              "path": [
+                "onboarding-proposal",
+                "natural-person"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"city\": \"<string>\",\n    \"neighborhood\": \"<string>\",\n    \"number\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"state\": \"<string>\",\n    \"street\": \"<string>\",\n    \"addressComplement\": \"<string>\"\n  },\n  \"birthDate\": \"<string>\",\n  \"clientCode\": \"<string>\",\n  \"documentNumber\": \"<string>\",\n  \"email\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"motherName\": \"<string>\",\n  \"onboardingType\": \"BAAS\",\n  \"phoneNumber\": \"<string>\",\n  \"socialName\": \"<string>\",\n  \"isPoliticallyExposedPerson\": false,\n  \"files\": [\n    {\n      \"data\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"data\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"financialDetails\": {\n    \"declaredIncome\": \"<string>\",\n    \"declaredIncomeDescription\": \"<string>\",\n    \"presumedIncome\": \"<string>\",\n    \"presumedIncomeDescription\": \"<string>\",\n    \"occupation\": \"<string>\",\n    \"occupationDescription\": \"<string>\",\n    \"netWorth\": \"<string>\",\n    \"netWorthDescription\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4b45e31-1f5b-4f97-aa5c-f31337583860",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"birthDate\": \"31-12-1984\",\n  \"clientCode\": \"123456\",\n  \"documentNumber\": \"33333333333\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"onboardingType\": \"BAAS\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Carlos\",\n  \"isPoliticallyExposedPerson\": false,\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialDetails\": {\n    \"declaredIncome\": \"<string>\",\n    \"declaredIncomeDescription\": \"<string>\",\n    \"presumedIncome\": \"<string>\",\n    \"presumedIncomeDescription\": \"<string>\",\n    \"occupation\": \"<string>\",\n    \"occupationDescription\": \"<string>\",\n    \"netWorth\": \"<string>\",\n    \"netWorthDescription\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"body\": {\n    \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n    \"clientCode\": \"1234ab7c-2855-436b-9d19-8abcdc198e984\",\n    \"documentNumber\": \"12345678900\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "184c7325-560f-4bc0-97ce-3352e56c4c43",
+              "name": "Error handled by the application",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"birthDate\": \"31-12-1984\",\n  \"clientCode\": \"123456\",\n  \"documentNumber\": \"33333333333\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"onboardingType\": \"BAAS\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Carlos\",\n  \"isPoliticallyExposedPerson\": false,\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialDetails\": {\n    \"declaredIncome\": \"<string>\",\n    \"declaredIncomeDescription\": \"<string>\",\n    \"presumedIncome\": \"<string>\",\n    \"presumedIncomeDescription\": \"<string>\",\n    \"occupation\": \"<string>\",\n    \"occupationDescription\": \"<string>\",\n    \"netWorth\": \"<string>\",\n    \"netWorthDescription\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f966a9a-9912-4b14-aab9-80b3b77e8e5f",
+              "name": "Access Denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"birthDate\": \"31-12-1984\",\n  \"clientCode\": \"123456\",\n  \"documentNumber\": \"33333333333\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"onboardingType\": \"BAAS\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Carlos\",\n  \"isPoliticallyExposedPerson\": false,\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialDetails\": {\n    \"declaredIncome\": \"<string>\",\n    \"declaredIncomeDescription\": \"<string>\",\n    \"presumedIncome\": \"<string>\",\n    \"presumedIncomeDescription\": \"<string>\",\n    \"occupation\": \"<string>\",\n    \"occupationDescription\": \"<string>\",\n    \"netWorth\": \"<string>\",\n    \"netWorthDescription\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c4abccf-4674-4afb-a8ca-ef8d600fe722",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"birthDate\": \"31-12-1984\",\n  \"clientCode\": \"123456\",\n  \"documentNumber\": \"33333333333\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"onboardingType\": \"BAAS\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Carlos\",\n  \"isPoliticallyExposedPerson\": false,\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialDetails\": {\n    \"declaredIncome\": \"<string>\",\n    \"declaredIncomeDescription\": \"<string>\",\n    \"presumedIncome\": \"<string>\",\n    \"presumedIncomeDescription\": \"<string>\",\n    \"occupation\": \"<string>\",\n    \"occupationDescription\": \"<string>\",\n    \"netWorth\": \"<string>\",\n    \"netWorthDescription\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dfe8a6b-d5dc-4df1-8ad8-9e9b00afde5b",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"birthDate\": \"31-12-1984\",\n  \"clientCode\": \"123456\",\n  \"documentNumber\": \"33333333333\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"onboardingType\": \"BAAS\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Carlos\",\n  \"isPoliticallyExposedPerson\": false,\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialDetails\": {\n    \"declaredIncome\": \"<string>\",\n    \"declaredIncomeDescription\": \"<string>\",\n    \"presumedIncome\": \"<string>\",\n    \"presumedIncomeDescription\": \"<string>\",\n    \"occupation\": \"<string>\",\n    \"occupationDescription\": \"<string>\",\n    \"netWorth\": \"<string>\",\n    \"netWorthDescription\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db8fd998-1013-4ab6-805d-14cf535795fd",
+              "name": "Unknown error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"birthDate\": \"31-12-1984\",\n  \"clientCode\": \"123456\",\n  \"documentNumber\": \"33333333333\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"onboardingType\": \"BAAS\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Carlos\",\n  \"isPoliticallyExposedPerson\": false,\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialDetails\": {\n    \"declaredIncome\": \"<string>\",\n    \"declaredIncomeDescription\": \"<string>\",\n    \"presumedIncome\": \"<string>\",\n    \"presumedIncomeDescription\": \"<string>\",\n    \"occupation\": \"<string>\",\n    \"occupationDescription\": \"<string>\",\n    \"netWorth\": \"<string>\",\n    \"netWorthDescription\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "410c2e08-18f0-48fd-ae4c-202bba410716",
+          "name": "Criação de proposta para atualização de dados cadastrais de uma Pessoa Física.",
+          "request": {
+            "name": "Criação de proposta para atualização de dados cadastrais de uma Pessoa Física.",
+            "description": {},
+            "url": {
+              "path": [
+                "onboarding-proposal",
+                "account",
+                ":account",
+                "natural-person"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"city\": \"<string>\",\n    \"neighborhood\": \"<string>\",\n    \"number\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"state\": \"<string>\",\n    \"street\": \"<string>\",\n    \"addressComplement\": \"<string>\"\n  },\n  \"clientCode\": \"<string>\",\n  \"email\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"motherName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"socialName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "182e0a43-a693-4882-9799-bd9ac68dfea3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "account",
+                    ":account",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"clientCode\": \"123456\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Nome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"body\": {\n    \"updateProposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n    \"clientCode\": \"123456\",\n    \"documentNumber\": \"33333333333\",\n    \"account\": \"300539137126128\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc160758-5744-4cdb-926d-daecbf89036e",
+              "name": "Error handled by the application",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "account",
+                    ":account",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"clientCode\": \"123456\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Nome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b9c60b0-e861-4ee8-bd0a-c1d43410accc",
+              "name": "Access Denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "account",
+                    ":account",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"clientCode\": \"123456\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Nome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9151c364-ae5b-4a8d-8894-72b42199e4a8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "account",
+                    ":account",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"clientCode\": \"123456\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Nome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3dc18f89-1f49-4745-9899-bde282834783",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "account",
+                    ":account",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"clientCode\": \"123456\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Nome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e3e2ff1-128e-43d1-a3fd-f51933fb24e2",
+              "name": "Unknown error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "account",
+                    ":account",
+                    "natural-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"clientCode\": \"123456\",\n  \"email\": \"email@email.com\",\n  \"fullName\": \"Nome Sobrenome\",\n  \"motherName\": \"Nome Sobrenome\",\n  \"phoneNumber\": \"+5512981175554\",\n  \"socialName\": \"Nome\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "57df2773-c037-465b-835f-43cb8da5fd95",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar NaturalPerson API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

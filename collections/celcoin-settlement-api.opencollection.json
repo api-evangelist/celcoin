@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance--webservice AnnotationCompetenceCalendar Settlement API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settlement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Inclusão da baixa do boleto.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/settlement",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Inclusão da baixa do boleto."
+        },
+        {
+          "info": {
+            "name": "Consulta da baixa do boleto.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/settlement/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "663167f4fa5fb59547f01ca3",
+                "type": "path",
+                "description": "Identificador único da baixa."
+              }
+            ]
+          },
+          "docs": "Consulta da baixa do boleto."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

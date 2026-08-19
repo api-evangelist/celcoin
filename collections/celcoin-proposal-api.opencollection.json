@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar Proposal API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Proposal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Include a linked proposal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/proposal/linked-request",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Include a linked proposal"
+        },
+        {
+          "info": {
+            "name": "Busca uma proposta ou uma lista de propostas.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/onboarding-proposal",
+            "params": [
+              {
+                "name": "ProposalId",
+                "value": "3257b215-bef9-402b-a779-104441b520b4",
+                "type": "query",
+                "description": "Id da proposta a ser buscada."
+              },
+              {
+                "name": "ClientCode",
+                "value": "7817b215-beg3-801a-a779-117771t550h2",
+                "type": "query",
+                "description": "Identificador único do cliente a ser buscado."
+              },
+              {
+                "name": "DateFrom",
+                "value": "2023-11-03T06:30:00-03:00",
+                "type": "query",
+                "description": "Data inicial."
+              },
+              {
+                "name": "DateTo",
+                "value": "2023-11-03T06:30:00-03:00",
+                "type": "query",
+                "description": "Data final."
+              },
+              {
+                "name": "Status",
+                "value": "PENDING",
+                "type": "query",
+                "description": "Status da proposta:\r\n- CREATED\r\n- PENDING\r\n- PENDING_DOCUMENTSCOPY\r\n- APPROVED\r\n- REPROVED\r\n- RESOURCE_ERROR\r\n- RESOURCE_CREATED\r\n- PROCESSING_DOCUMENTSCOPY"
+              },
+              {
+                "name": "DocumentNumber",
+                "value": "12345678909",
+                "type": "query",
+                "description": "Documento da proposta."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Pagina de solicitaçao, default: 1."
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Limite geral da consulta."
+              },
+              {
+                "name": "LimitPerPage",
+                "value": "",
+                "type": "query",
+                "description": "Total de propostas por pagina."
+              }
+            ]
+          },
+          "docs": "Busca uma proposta ou uma lista de propostas."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

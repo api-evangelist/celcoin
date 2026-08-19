@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar OutstandingBalance API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OutstandingBalance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Inform outstanding balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/outstanding-balance/inform",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Inform outstanding balance"
+        },
+        {
+          "info": {
+            "name": "Reject outstanding balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/outstanding-balance/reject",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reject outstanding balance"
+        },
+        {
+          "info": {
+            "name": "Settled purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/outstanding-balance/settled-purchase/:outstandingBalancetInformedId",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outstandingBalancetInformedId",
+                "value": "",
+                "type": "path",
+                "description": "Id outstanding balance informed"
+              }
+            ]
+          },
+          "docs": "Settled purchase"
+        },
+        {
+          "info": {
+            "name": "Report the payment for outstanding balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/outstanding-balance/report-payment/:outstandingBalancePaymentId",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outstandingBalancePaymentId",
+                "value": "",
+                "type": "path",
+                "description": "Id from outstanding balance payment"
+              }
+            ]
+          },
+          "docs": "Report the payment for outstanding balance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

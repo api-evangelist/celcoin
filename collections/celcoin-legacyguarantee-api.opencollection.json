@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar LegacyGuarantee API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LegacyGuarantee",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Renegotiate legacy loans (Only for CT)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/renegotiation-legacy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Renegotiate legacy loans (Only for CT)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

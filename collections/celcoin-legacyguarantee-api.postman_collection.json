@@ -1,0 +1,298 @@
+{
+  "item": [
+    {
+      "id": "87d5e97c-fac8-4c01-a0df-b007c04490d3",
+      "name": "LegacyGuarantee",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78d653af-0cd8-429a-be16-746fe8734b74",
+          "name": "Renegotiate legacy loans (Only for CT)",
+          "request": {
+            "name": "Renegotiate legacy loans (Only for CT)",
+            "description": {},
+            "url": {
+              "path": [
+                "guarantee",
+                "renegotiation-legacy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"balanceCheckId\": \"<uuid>\",\n  \"cet\": \"<double>\",\n  \"contractNumber\": \"<string>\",\n  \"endContractDate\": \"<dateTime>\",\n  \"initContractDate\": \"<dateTime>\",\n  \"initDiscountDate\": \"<dateTime>\",\n  \"installmentAmount\": \"<double>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"interestTax\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"legacyAnnotations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"monthlyCet\": \"<double>\",\n  \"netAmount\": \"<double>\",\n  \"expirationAt\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06a35373-92cc-44ec-a35d-6f3270691a41",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guarantee",
+                    "renegotiation-legacy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"balanceCheckId\": \"<uuid>\",\n  \"cet\": \"<double>\",\n  \"contractNumber\": \"<string>\",\n  \"endContractDate\": \"<dateTime>\",\n  \"initContractDate\": \"<dateTime>\",\n  \"initDiscountDate\": \"<dateTime>\",\n  \"installmentAmount\": \"<double>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"interestTax\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"legacyAnnotations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"monthlyCet\": \"<double>\",\n  \"netAmount\": \"<double>\",\n  \"expirationAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"annotationType\": \"string\",\n  \"status\": \"string\",\n  \"annotationId\": \"f8b5c611-5fee-c842-cfc0-9ad0c26345f1\",\n  \"createdAt\": \"2026-02-10T02:33:28.517Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4eace332-53ad-45a9-8f96-3df5a5c8a1de",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guarantee",
+                    "renegotiation-legacy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"balanceCheckId\": \"<uuid>\",\n  \"cet\": \"<double>\",\n  \"contractNumber\": \"<string>\",\n  \"endContractDate\": \"<dateTime>\",\n  \"initContractDate\": \"<dateTime>\",\n  \"initDiscountDate\": \"<dateTime>\",\n  \"installmentAmount\": \"<double>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"interestTax\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"legacyAnnotations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"monthlyCet\": \"<double>\",\n  \"netAmount\": \"<double>\",\n  \"expirationAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"annotationType\": \"string\",\n  \"status\": \"string\",\n  \"annotationId\": \"f8b5c611-5fee-c842-cfc0-9ad0c26345f1\",\n  \"createdAt\": \"2026-02-10T02:33:28.517Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "984b3ccf-af59-4c79-9efa-ab7aa7ae77a9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guarantee",
+                    "renegotiation-legacy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"balanceCheckId\": \"<uuid>\",\n  \"cet\": \"<double>\",\n  \"contractNumber\": \"<string>\",\n  \"endContractDate\": \"<dateTime>\",\n  \"initContractDate\": \"<dateTime>\",\n  \"initDiscountDate\": \"<dateTime>\",\n  \"installmentAmount\": \"<double>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"interestTax\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"legacyAnnotations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"monthlyCet\": \"<double>\",\n  \"netAmount\": \"<double>\",\n  \"expirationAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a3e235a-5f0b-4b19-a1dd-81641ee57db4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guarantee",
+                    "renegotiation-legacy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"balanceCheckId\": \"<uuid>\",\n  \"cet\": \"<double>\",\n  \"contractNumber\": \"<string>\",\n  \"endContractDate\": \"<dateTime>\",\n  \"initContractDate\": \"<dateTime>\",\n  \"initDiscountDate\": \"<dateTime>\",\n  \"installmentAmount\": \"<double>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"interestTax\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"legacyAnnotations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"monthlyCet\": \"<double>\",\n  \"netAmount\": \"<double>\",\n  \"expirationAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80460e68-c4b1-4a10-9a9b-05669e9d7b73",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guarantee",
+                    "renegotiation-legacy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"balanceCheckId\": \"<uuid>\",\n  \"cet\": \"<double>\",\n  \"contractNumber\": \"<string>\",\n  \"endContractDate\": \"<dateTime>\",\n  \"initContractDate\": \"<dateTime>\",\n  \"initDiscountDate\": \"<dateTime>\",\n  \"installmentAmount\": \"<double>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"interestTax\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"legacyAnnotations\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"monthlyCet\": \"<double>\",\n  \"netAmount\": \"<double>\",\n  \"expirationAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3e3f61eb-e9f2-41b9-be82-32f8c4cb1c2e",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar LegacyGuarantee API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

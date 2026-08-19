@@ -1,0 +1,303 @@
+{
+  "item": [
+    {
+      "id": "14a823f4-5109-469c-a467-730068bfe347",
+      "name": "TaggingJourney",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f971b4a-b473-45e0-9a8b-a7dcc49c2db7",
+          "name": "Busca o tageamento da jornada do webview de uma proposta.",
+          "request": {
+            "name": "Busca o tageamento da jornada do webview de uma proposta.",
+            "description": {},
+            "url": {
+              "path": [
+                "onboarding-proposal",
+                "tagging-journey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ProposalId",
+                  "value": "<string>",
+                  "description": "Id da proposta a ser buscada."
+                },
+                {
+                  "disabled": false,
+                  "key": "ClientCode",
+                  "value": "<string>",
+                  "description": "ClientCode da proposta a ser buscada."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bac324ee-c466-4ce9-ad22-c954370d1c68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "tagging-journey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"body\": {\n    \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n    \"clientCode\": \"1234ab7c-2855-436b-9d19-8abcdc198e984\",\n    \"documentNumber\": \"12345678\",\n    \"processedAt\": \"2024-08-14 09:40:20.09\",\n    \"status\": \"COMPLETED\",\n    \"link\": \"https://trustyourid.cadastro.io/e32b99c477a00171716aas\",\n    \"totalDevices\": 1,\n    \"devices\": [\n      {\n        \"browser\": {\n          \"name\": \"Chrome\",\n          \"version\": \"126.0.0.0\"\n        },\n        \"os\": {\n          \"name\": \"Android\",\n          \"version\": \"10\",\n          \"versionname\": \"10.1.0\"\n        },\n        \"platform\": {\n          \"type\": \"Crowdfunding\",\n          \"vendor\": \"Crowdcube\",\n          \"model\": \"Equity-Based\"\n        },\n        \"engine\": {\n          \"name\": \"Google\",\n          \"version\": \"126.0.0.0\"\n        },\n        \"useragent\": \"Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36\"\n      },\n      {\n        \"browser\": {\n          \"name\": \"Chrome\",\n          \"version\": \"126.0.0.0\"\n        },\n        \"os\": {\n          \"name\": \"Android\",\n          \"version\": \"10\",\n          \"versionname\": \"10.1.0\"\n        },\n        \"platform\": {\n          \"type\": \"Crowdfunding\",\n          \"vendor\": \"Crowdcube\",\n          \"model\": \"Equity-Based\"\n        },\n        \"engine\": {\n          \"name\": \"Google\",\n          \"version\": \"126.0.0.0\"\n        },\n        \"useragent\": \"Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36\"\n      }\n    ],\n    \"lastStep\": {\n      \"timestamp\": \"2024-07-25 18:19:54.11\",\n      \"stepName\": \"STEP_DONE-1\",\n      \"secondsFromPrevious\": -32,\n      \"secondsFromNext\": 1,\n      \"deviceBrowserName\": \"Safari\",\n      \"deviceOsName\": \"iOS\",\n      \"deviceOsVersion\": \"17.4.1\",\n      \"devicePlatformType\": \"mobile\"\n    },\n    \"stepsArray\": [\n      {\n        \"timestamp\": \"2024-07-25 18:19:54.11\",\n        \"stepName\": \"STEP_DONE-1\",\n        \"secondsFromPrevious\": -32,\n        \"secondsFromNext\": 1,\n        \"deviceBrowserName\": \"Safari\",\n        \"deviceOsName\": \"iOS\",\n        \"deviceOsVersion\": \"17.4.1\",\n        \"devicePlatformType\": \"mobile\"\n      },\n      {\n        \"timestamp\": \"2024-07-25 18:19:54.11\",\n        \"stepName\": \"STEP_DONE-1\",\n        \"secondsFromPrevious\": -32,\n        \"secondsFromNext\": 1,\n        \"deviceBrowserName\": \"Safari\",\n        \"deviceOsName\": \"iOS\",\n        \"deviceOsVersion\": \"17.4.1\",\n        \"devicePlatformType\": \"mobile\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3150a08-c5c2-4db2-b9cc-79d93a9df6cc",
+              "name": "Error handled by the application",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "tagging-journey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eecf1cdb-d52c-4226-9982-a44211cea8a7",
+              "name": "Access Denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "tagging-journey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fa6e6ea-5548-489c-a5e8-99fa1b46fbc0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "tagging-journey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4202ddb6-4b51-4a2a-aaae-44793b0cbc50",
+              "name": "Unknown error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "tagging-journey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d8927963-3d76-438c-8dc2-06b3705c3ed7",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar TaggingJourney API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

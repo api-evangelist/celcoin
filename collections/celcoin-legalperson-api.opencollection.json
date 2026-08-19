@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar LegalPerson API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LegalPerson",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cria uma nova proposta de criação de conta Pessoa Jurídica.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/onboarding-proposal/legal-person",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cria uma nova proposta de criação de conta Pessoa Jurídica."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

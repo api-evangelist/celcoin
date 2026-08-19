@@ -1,0 +1,303 @@
+{
+  "item": [
+    {
+      "id": "f32aecc8-1a33-492e-ad8b-6caf25776ab2",
+      "name": "Files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a8ab78e-d3f4-4d89-ace2-80e3c313e92a",
+          "name": "Busca um arquivo ou uma lista de arquivos.",
+          "request": {
+            "name": "Busca um arquivo ou uma lista de arquivos.",
+            "description": {},
+            "url": {
+              "path": [
+                "onboarding-proposal",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ProposalId",
+                  "value": "<string>",
+                  "description": "Id da proposta a ser buscada."
+                },
+                {
+                  "disabled": false,
+                  "key": "ClientCode",
+                  "value": "<string>",
+                  "description": "ClientCode da proposta a ser buscada."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4c898ad-3049-4b11-b879-d6f0aabfbc92",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"body\": {\n    \"files\": [\n      {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"expirationTime\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"url\": \"string\",\n        \"expirationTime\": \"string\"\n      }\n    ],\n    \"clientCode\": \"123abdgh-c11f-4c88-af6b-d227d88b5183\",\n    \"documentNumber\": \"12345678909\",\n    \"proposalId\": \"ab11113e-f123-4a7f-9010-99b064038038\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "176d63dd-65ec-4e63-a469-11753a527a6a",
+              "name": "Error handled by the application",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "678e1857-e504-4724-bb98-85e23b6c71e9",
+              "name": "Access Denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebc190c2-dc70-4666-b2ae-93fbbd1654c1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6de8d748-ef6e-4d8f-ac03-527dcb382d7e",
+              "name": "Unknown error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "612f5412-0bd3-49b0-b136-981f0959d47e"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4e5315d5-c5a2-4d38-b6ab-80dfdbd7815a",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

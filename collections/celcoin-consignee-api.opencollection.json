@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar Consignee API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Consignee",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /consignee",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/consignee",
+            "params": [
+              {
+                "name": "consigneeId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /consignee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/consignee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /consignee",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/consignee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /consignee",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/consignee",
+            "params": [
+              {
+                "name": "consigneeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agencyId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

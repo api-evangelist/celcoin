@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar NaturalPerson API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NaturalPerson",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cria uma nova proposta de criação de conta Pessoa Física.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/onboarding-proposal/natural-person",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cria uma nova proposta de criação de conta Pessoa Física."
+        },
+        {
+          "info": {
+            "name": "Criação de proposta para atualização de dados cadastrais de uma Pessoa Física.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/onboarding-proposal/account/:account/natural-person",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Criação de proposta para atualização de dados cadastrais de uma Pessoa Física."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

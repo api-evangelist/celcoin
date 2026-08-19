@@ -1,0 +1,336 @@
+{
+  "item": [
+    {
+      "id": "6ea1c43a-3f6d-4a01-8f24-9f618e307e74",
+      "name": "LegalPerson",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42a90365-03bd-4977-8d8b-7f24e81fb4c5",
+          "name": "Cria uma nova proposta de criação de conta Pessoa Jurídica.",
+          "request": {
+            "name": "Cria uma nova proposta de criação de conta Pessoa Jurídica.",
+            "description": {},
+            "url": {
+              "path": [
+                "onboarding-proposal",
+                "legal-person"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"neighborhood\": \"<string>\",\n    \"number\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"state\": \"<string>\",\n    \"street\": \"<string>\",\n    \"addressComplement\": \"<string>\"\n  },\n  \"businessEmail\": \"<string>\",\n  \"businessName\": \"<string>\",\n  \"clientCode\": \"<string>\",\n  \"contactNumber\": \"<string>\",\n  \"documentNumber\": \"<string>\",\n  \"onboardingType\": \"BAAS\",\n  \"owner\": [\n    {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"neighborhood\": \"<string>\",\n        \"number\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"state\": \"<string>\",\n        \"street\": \"<string>\",\n        \"addressComplement\": \"<string>\"\n      },\n      \"birthDate\": \"<string>\",\n      \"documentNumber\": \"<string>\",\n      \"email\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"ownerType\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"motherName\": \"<string>\",\n      \"socialName\": \"<string>\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"<string>\",\n        \"ownerPresumedIncome\": \"<string>\",\n        \"ownerDeclaredRevenue\": \"<string>\",\n        \"ownerPresumedRevenue\": \"<string>\"\n      }\n    },\n    {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"neighborhood\": \"<string>\",\n        \"number\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"state\": \"<string>\",\n        \"street\": \"<string>\",\n        \"addressComplement\": \"<string>\"\n      },\n      \"birthDate\": \"<string>\",\n      \"documentNumber\": \"<string>\",\n      \"email\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"ownerType\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"motherName\": \"<string>\",\n      \"socialName\": \"<string>\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"<string>\",\n        \"ownerPresumedIncome\": \"<string>\",\n        \"ownerDeclaredRevenue\": \"<string>\",\n        \"ownerPresumedRevenue\": \"<string>\"\n      }\n    }\n  ],\n  \"tradingName\": \"<string>\",\n  \"companyType\": \"PJ\",\n  \"files\": [\n    {\n      \"data\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"data\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"financialCompanyDetails\": {\n    \"declaredCompanyRevenue\": \"<string>\",\n    \"presumedCompanyRevenue\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afde21e8-c56a-47c5-86fd-7223f09dbc78",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "legal-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"businessAddress\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"businessEmail\": \"email@email.com\",\n  \"businessName\": \"IP Pagamentos\",\n  \"clientCode\": \"123456\",\n  \"contactNumber\": \"+551239215555\",\n  \"documentNumber\": \"12ABC3450001DF\",\n  \"onboardingType\": \"BAAS\",\n  \"owner\": [\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    },\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    }\n  ],\n  \"tradingName\": \"IPay\",\n  \"companyType\": \"PJ\",\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialCompanyDetails\": {\n    \"declaredCompanyRevenue\": \"DCRB01\",\n    \"presumedCompanyRevenue\": \"PCRB01\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"body\": {\n    \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n    \"clientCode\": \"1234ab7c-2855-436b-9d19-8abcdc198e984\",\n    \"documentNumber\": \"12345678900001\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3a253e0-ce4d-433e-af7a-bdbdd140eac6",
+              "name": "Error handled by the application",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "legal-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"businessAddress\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"businessEmail\": \"email@email.com\",\n  \"businessName\": \"IP Pagamentos\",\n  \"clientCode\": \"123456\",\n  \"contactNumber\": \"+551239215555\",\n  \"documentNumber\": \"12ABC3450001DF\",\n  \"onboardingType\": \"BAAS\",\n  \"owner\": [\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    },\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    }\n  ],\n  \"tradingName\": \"IPay\",\n  \"companyType\": \"PJ\",\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialCompanyDetails\": {\n    \"declaredCompanyRevenue\": \"DCRB01\",\n    \"presumedCompanyRevenue\": \"PCRB01\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff278ecf-5b37-4c7d-9fc5-b7034746f2e6",
+              "name": "Access Denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "legal-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"businessAddress\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"businessEmail\": \"email@email.com\",\n  \"businessName\": \"IP Pagamentos\",\n  \"clientCode\": \"123456\",\n  \"contactNumber\": \"+551239215555\",\n  \"documentNumber\": \"12ABC3450001DF\",\n  \"onboardingType\": \"BAAS\",\n  \"owner\": [\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    },\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    }\n  ],\n  \"tradingName\": \"IPay\",\n  \"companyType\": \"PJ\",\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialCompanyDetails\": {\n    \"declaredCompanyRevenue\": \"DCRB01\",\n    \"presumedCompanyRevenue\": \"PCRB01\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f48697a-5ec9-4ae0-ba73-06a7d3b6bfc8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "legal-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"businessAddress\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"businessEmail\": \"email@email.com\",\n  \"businessName\": \"IP Pagamentos\",\n  \"clientCode\": \"123456\",\n  \"contactNumber\": \"+551239215555\",\n  \"documentNumber\": \"12ABC3450001DF\",\n  \"onboardingType\": \"BAAS\",\n  \"owner\": [\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    },\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    }\n  ],\n  \"tradingName\": \"IPay\",\n  \"companyType\": \"PJ\",\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialCompanyDetails\": {\n    \"declaredCompanyRevenue\": \"DCRB01\",\n    \"presumedCompanyRevenue\": \"PCRB01\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56de1a4f-56fb-4415-a929-f44f26432f80",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "legal-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"businessAddress\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"businessEmail\": \"email@email.com\",\n  \"businessName\": \"IP Pagamentos\",\n  \"clientCode\": \"123456\",\n  \"contactNumber\": \"+551239215555\",\n  \"documentNumber\": \"12ABC3450001DF\",\n  \"onboardingType\": \"BAAS\",\n  \"owner\": [\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    },\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    }\n  ],\n  \"tradingName\": \"IPay\",\n  \"companyType\": \"PJ\",\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialCompanyDetails\": {\n    \"declaredCompanyRevenue\": \"DCRB01\",\n    \"presumedCompanyRevenue\": \"PCRB01\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b8a0296-bd22-4b98-b50e-206e1d5bee5d",
+              "name": "Unknown error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal",
+                    "legal-person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"businessAddress\": {\n    \"city\": \"São Paulo\",\n    \"neighborhood\": \"Casa Verde\",\n    \"number\": \"313\",\n    \"postalCode\": \"12211400\",\n    \"state\": \"SP\",\n    \"street\": \"Rua da Liberdade\",\n    \"addressComplement\": \"Em frente ao parque.\"\n  },\n  \"businessEmail\": \"email@email.com\",\n  \"businessName\": \"IP Pagamentos\",\n  \"clientCode\": \"123456\",\n  \"contactNumber\": \"+551239215555\",\n  \"documentNumber\": \"12ABC3450001DF\",\n  \"onboardingType\": \"BAAS\",\n  \"owner\": [\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    },\n    {\n      \"address\": {\n        \"city\": \"São Paulo\",\n        \"neighborhood\": \"Casa Verde\",\n        \"number\": \"313\",\n        \"postalCode\": \"12211400\",\n        \"state\": \"SP\",\n        \"street\": \"Rua da Liberdade\",\n        \"addressComplement\": \"Em frente ao parque.\"\n      },\n      \"birthDate\": \"31-12-1984\",\n      \"documentNumber\": \"33333333333\",\n      \"email\": \"email@email.com\",\n      \"fullName\": \"Carlos Henrique da Silva\",\n      \"ownerType\": \"REPRESENTANTE\",\n      \"phoneNumber\": \"+5512981175554\",\n      \"motherName\": \"Nome Sobrenome\",\n      \"socialName\": \"Nome\",\n      \"isPoliticallyExposedPerson\": false,\n      \"financialOwnerDetails\": {\n        \"ownerDeclaredIncome\": \"ODIB01\",\n        \"ownerPresumedIncome\": \"OPIB05\",\n        \"ownerDeclaredRevenue\": \"ODRB06\",\n        \"ownerPresumedRevenue\": \"OPRB01\"\n      }\n    }\n  ],\n  \"tradingName\": \"IPay\",\n  \"companyType\": \"PJ\",\n  \"files\": [\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    },\n    {\n      \"data\": \"https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png\",\n      \"type\": \"RG_FRONT\"\n    }\n  ],\n  \"financialCompanyDetails\": {\n    \"declaredCompanyRevenue\": \"DCRB01\",\n    \"presumedCompanyRevenue\": \"PCRB01\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2fd67cb3-a606-43b0-be57-8385a0addc2e",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar LegalPerson API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

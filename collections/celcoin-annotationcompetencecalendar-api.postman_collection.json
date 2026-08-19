@@ -1,0 +1,293 @@
+{
+  "item": [
+    {
+      "id": "d45a9649-66f2-4e4c-a2cb-d74d20674c74",
+      "name": "AnnotationCompetenceCalendar",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "187443ed-103f-44fc-b025-de401cb49ff5",
+          "name": "/annotation-competence-calendar",
+          "request": {
+            "name": "/annotation-competence-calendar",
+            "description": {},
+            "url": {
+              "path": [
+                "annotation-competence-calendar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "QueryType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "CompetencePeriod",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ConsigneeId",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "AgencyId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d482fb7c-a96f-40a3-9880-643941074300",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "annotation-competence-calendar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "QueryType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CompetencePeriod",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ConsigneeId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "AgencyId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consultedCompetencePeriod\": \"string\",\n  \"currentCompetencePeriod\": \"string\",\n  \"startCompetencePeriod\": \"string\",\n  \"endCompetencePeriod\": \"string\",\n  \"initNotificationInfoDate\": \"string\",\n  \"endNotificationInfoDate\": \"string\",\n  \"initLimitBookkeepingDate\": \"string\",\n  \"endLimitBookkeepingDate\": \"string\",\n  \"paymentTransferDocDate\": \"string\",\n  \"limitTransferDate\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c9b6551-ddd9-42eb-808e-7b726c5375bb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "annotation-competence-calendar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "QueryType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CompetencePeriod",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ConsigneeId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "AgencyId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47f4086d-b17a-45b7-822a-50fd8ac76bf7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "annotation-competence-calendar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "QueryType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CompetencePeriod",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ConsigneeId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "AgencyId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64e35ac9-c109-4293-aa38-2e7c4bb8ac55",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "annotation-competence-calendar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "QueryType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "CompetencePeriod",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "ConsigneeId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "AgencyId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea58455b-ad4f-44c4-b0a6-1cf25c5da04b",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

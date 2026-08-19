@@ -1,0 +1,373 @@
+{
+  "item": [
+    {
+      "id": "8085ca90-dd96-452b-b03c-328b213d5696",
+      "name": "Consignee",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "686b1c32-3882-480e-b514-2150f2ce701f",
+          "name": "/consignee",
+          "request": {
+            "name": "/consignee",
+            "description": {},
+            "url": {
+              "path": [
+                "consignee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"certificateName\": \"<string>\",\n  \"uf\": \"<string>\",\n  \"agencies\": [\n    {\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "87e20f1d-793e-431b-82bd-ae499a2fc769",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consignee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"certificateName\": \"<string>\",\n  \"uf\": \"<string>\",\n  \"agencies\": [\n    {\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"consigneeId\": \"260b7290-f8bc-c6d7-d6e8-034b653ac3c0\",\n  \"agencies\": [\n    {\n      \"agencyId\": \"918bc825-1704-34f8-12c8-c604b7735335\",\n      \"name\": \"string\"\n    },\n    {\n      \"agencyId\": \"8d30103a-816c-0a5d-b21c-d2053cdc539c\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "389938ab-d476-4ec2-ae75-f5e5f6adb9d7",
+          "name": "/consignee",
+          "request": {
+            "name": "/consignee",
+            "description": {},
+            "url": {
+              "path": [
+                "consignee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consigneeId\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"certificateName\": \"<string>\",\n  \"uf\": \"<string>\",\n  \"agencies\": [\n    {\n      \"agencyId\": \"<uuid>\",\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"agencyId\": \"<uuid>\",\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "318c631b-dd4d-4372-a5b6-efd1d51c0ce5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consignee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consigneeId\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"certificateName\": \"<string>\",\n  \"uf\": \"<string>\",\n  \"agencies\": [\n    {\n      \"agencyId\": \"<uuid>\",\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"agencyId\": \"<uuid>\",\n      \"code\": \"<string>\",\n      \"password\": \"<string>\",\n      \"user\": \"<string>\",\n      \"agencyType\": \"<string>\",\n      \"apiKey\": \"<string>\",\n      \"registrationName\": \"<string>\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        },\n        {\n          \"code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"partnerCode\": \"<string>\",\n          \"serviceCode\": \"<string>\",\n          \"typeProduct\": \"<string>\",\n          \"exclude\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consigneeId\": \"cb77a370-7e3a-c120-8ecb-b29921243293\",\n  \"name\": \"string\",\n  \"certificateName\": \"string\",\n  \"uf\": \"string\",\n  \"client\": {\n    \"clientId\": \"string\",\n    \"localId\": \"string\",\n    \"userId\": \"string\"\n  },\n  \"agencies\": [\n    {\n      \"agencyId\": \"47c2ef22-c90f-6eb8-49cd-b511e4701771\",\n      \"code\": \"string\",\n      \"password\": \"string\",\n      \"user\": \"string\",\n      \"name\": \"string\",\n      \"apiKey\": \"string\",\n      \"registrationName\": \"string\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        }\n      ],\n      \"updateAt\": \"2024-10-17T06:38:25.238Z\"\n    },\n    {\n      \"agencyId\": \"fcc0de93-5760-61a7-7a4a-b8e20d6073f0\",\n      \"code\": \"string\",\n      \"password\": \"string\",\n      \"user\": \"string\",\n      \"name\": \"string\",\n      \"apiKey\": \"string\",\n      \"registrationName\": \"string\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        }\n      ],\n      \"updateAt\": \"1999-11-09T23:50:17.074Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da6178f0-f321-4d58-902e-a5072ebc61b6",
+          "name": "/consignee",
+          "request": {
+            "name": "/consignee",
+            "description": {},
+            "url": {
+              "path": [
+                "consignee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "consigneeId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c54d9505-aac8-45b2-8958-868461f513c8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consignee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "consigneeId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consigneeId\": \"21082b92-fc47-2e45-523f-df6287a19f43\",\n  \"name\": \"string\",\n  \"certificateName\": \"string\",\n  \"uf\": \"string\",\n  \"client\": {\n    \"clientId\": \"string\",\n    \"localId\": \"string\",\n    \"userId\": \"string\"\n  },\n  \"agencies\": [\n    {\n      \"agencyId\": \"cbb03346-ff43-e947-aa72-66d4b9253c07\",\n      \"code\": \"string\",\n      \"password\": \"string\",\n      \"user\": \"string\",\n      \"name\": \"string\",\n      \"apiKey\": \"string\",\n      \"registrationName\": \"string\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        }\n      ],\n      \"updateAt\": \"2025-02-05T18:32:43.269Z\"\n    },\n    {\n      \"agencyId\": \"066aaaa2-18a1-fd4b-ca88-3c2054e985c4\",\n      \"code\": \"string\",\n      \"password\": \"string\",\n      \"user\": \"string\",\n      \"name\": \"string\",\n      \"apiKey\": \"string\",\n      \"registrationName\": \"string\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        }\n      ],\n      \"updateAt\": \"2008-10-22T19:42:27.990Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0152676-623f-4c5e-9327-8b913f916f57",
+          "name": "/consignee",
+          "request": {
+            "name": "/consignee",
+            "description": {},
+            "url": {
+              "path": [
+                "consignee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "consigneeId",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "agencyId",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "286f3174-0fe7-454e-8c45-51ebaac6b87a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "consignee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "consigneeId",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "agencyId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consigneeId\": \"e21d1a4d-74b0-2ed2-3df3-ae1c7f10f4fb\",\n  \"name\": \"string\",\n  \"certificateName\": \"string\",\n  \"uf\": \"string\",\n  \"client\": {\n    \"clientId\": \"string\",\n    \"localId\": \"string\",\n    \"userId\": \"string\"\n  },\n  \"agency\": [\n    {\n      \"agencyId\": \"065df9a2-dff7-6e9f-c72e-ac69ad58e3bf\",\n      \"code\": \"string\",\n      \"password\": \"string\",\n      \"user\": \"string\",\n      \"name\": \"string\",\n      \"apiKey\": \"string\",\n      \"registrationName\": \"string\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        }\n      ],\n      \"updateAt\": \"1980-03-13T08:36:37.864Z\"\n    },\n    {\n      \"agencyId\": \"7baf4a9d-96a1-b4b6-446e-8c8ebb6167e6\",\n      \"code\": \"string\",\n      \"password\": \"string\",\n      \"user\": \"string\",\n      \"name\": \"string\",\n      \"apiKey\": \"string\",\n      \"registrationName\": \"string\",\n      \"rubricConfigs\": [\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        },\n        {\n          \"code\": \"string\",\n          \"description\": \"string\",\n          \"partnerCode\": \"string\",\n          \"serviceCode\": \"string\",\n          \"typeProduct\": \"<string>\"\n        }\n      ],\n      \"updateAt\": \"1996-12-12T12:01:21.077Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "03a8db04-3f89-488a-9358-a351aebdf409",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar Consignee API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,734 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar Guarantee API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Guarantee",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Consults the employment links associated with a specific document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/get-links",
+            "headers": [
+              {
+                "name": "token-data",
+                "value": ""
+              },
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "document",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "consigneeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agencyId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Consults the employment links associated with a specific document."
+        },
+        {
+          "info": {
+            "name": "Retrieves comprehensive data associated with a specific document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/get-data",
+            "headers": [
+              {
+                "name": "token-data",
+                "value": ""
+              },
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "document",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "consigneeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agencyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "periods",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "registration",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves comprehensive data associated with a specific document."
+        },
+        {
+          "info": {
+            "name": "Initiates or schedules an annotation registration process.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee",
+            "headers": [
+              {
+                "name": "Pin",
+                "value": ""
+              },
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates or schedules an annotation registration process."
+        },
+        {
+          "info": {
+            "name": "Realiza a antecipação de pagamento de parcelas específicas.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/anticipation",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Realiza a antecipação de pagamento de parcelas específicas."
+        },
+        {
+          "info": {
+            "name": "Alter data from annotation (Amortization)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId",
+            "headers": [
+              {
+                "name": "Pin",
+                "value": ""
+              },
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path",
+                "description": "Id from annotation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Alter data from annotation (Amortization)"
+        },
+        {
+          "info": {
+            "name": "Delete an annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete an annotation"
+        },
+        {
+          "info": {
+            "name": "Send annotation contract data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/contract",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send annotation contract data"
+        },
+        {
+          "info": {
+            "name": "GET /guarantee/{actionType}/{annotationId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:actionType/:annotationId",
+            "params": [
+              {
+                "name": "actionType",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Authorize consult data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/authorization-data",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authorize consult data"
+        },
+        {
+          "info": {
+            "name": "Consult annotation status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/annotation",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Consult annotation status"
+        },
+        {
+          "info": {
+            "name": "Revert refinancing of an annotation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId/revert-refinancing",
+            "headers": [
+              {
+                "name": "Pin",
+                "value": ""
+              },
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path",
+                "description": "annotationId to reverse"
+              },
+              {
+                "name": "reason",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Revert refinancing of an annotation."
+        },
+        {
+          "info": {
+            "name": "Reactivate an annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId/reactivate",
+            "headers": [
+              {
+                "name": "Pin",
+                "value": ""
+              },
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path",
+                "description": "Id from annotation"
+              }
+            ]
+          },
+          "docs": "Reactivate an annotation"
+        },
+        {
+          "info": {
+            "name": "Suspend annotation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId/suspend",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path",
+                "description": "annotationId to reverse"
+              }
+            ]
+          },
+          "docs": "Suspend annotation."
+        },
+        {
+          "info": {
+            "name": "Cancela a liquidação antecipada de parcelas na Dataprev (CT), revertendo o contrato à programação normal de descontos na competência informada.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/anticipation/cancel",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancela a liquidação antecipada de parcelas na Dataprev (CT), revertendo o contrato à programação normal de descontos na competência informada."
+        },
+        {
+          "info": {
+            "name": "Cancel an annotation process",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId/cancel-processing",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path",
+                "description": "Id from annotation"
+              }
+            ]
+          },
+          "docs": "Cancel an annotation process"
+        },
+        {
+          "info": {
+            "name": "change the ownership of the annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/change-ownership",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "change the ownership of the annotation"
+        },
+        {
+          "info": {
+            "name": "Consult a list of annotations from a relative agency",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/list-annotations",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tokenData",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "consultType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "consigneeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agencyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "document",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "registration",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "productType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "initDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "operationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contractNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "annotationStatus",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Consult a list of annotations from a relative agency"
+        },
+        {
+          "info": {
+            "name": "Alter portability identifier from annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId/change-portability-identifier",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path",
+                "description": "Id from annotation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Alter portability identifier from annotation"
+        },
+        {
+          "info": {
+            "name": "Alter portability owner from annotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/:annotationId/change-portability-owner",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "path",
+                "description": "Id from annotation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Alter portability owner from annotation"
+        },
+        {
+          "info": {
+            "name": "Exclude contracts by portability",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/guarantee-portability",
+            "headers": [
+              {
+                "name": "correspAgentId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exclude contracts by portability"
+        },
+        {
+          "info": {
+            "name": "Consult a list of balance checks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/list-balance-check",
+            "params": [
+              {
+                "name": "consigneeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agencyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "balanceCheckId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "document",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "initDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Consult a list of balance checks"
+        },
+        {
+          "info": {
+            "name": "Consult list of payment note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/guarantee/list-payment-notes",
+            "params": [
+              {
+                "name": "consigneeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "agencyId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "paymentNoteType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "initDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "contractNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "annotationId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Consult list of payment note."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AnnotationCompetenceCalendar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /annotation-competence-calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.openfinance.celcoin.dev/billissuance/v1/annotation-competence-calendar",
+            "params": [
+              {
+                "name": "QueryType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "CompetencePeriod",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ConsigneeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "AgencyId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

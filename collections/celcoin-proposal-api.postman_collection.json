@@ -1,0 +1,781 @@
+{
+  "item": [
+    {
+      "id": "201c96b7-0055-442a-8f83-5d715e4bc27e",
+      "name": "Proposal",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "070baf15-645e-40ed-a86e-86e8f114b0bd",
+          "name": "Include a linked proposal",
+          "request": {
+            "name": "Include a linked proposal",
+            "description": {},
+            "url": {
+              "path": [
+                "proposal",
+                "linked-request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Bank Correspondent Agent Id",
+                "key": "correspAgentId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"proposalNumber\": \"<string>\",\n  \"proposalValidity\": \"<dateTime>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"installmentAmount\": \"<double>\",\n  \"availableBalance\": \"<double>\",\n  \"amount\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"cet\": \"<double>\",\n  \"interestTax\": \"<double>\",\n  \"monthlyCet\": \"<double>\",\n  \"contacts\": [\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    },\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a80bd000-e5dc-4c75-bc0e-e228fc34ef18",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposal",
+                    "linked-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Bank Correspondent Agent Id",
+                    "key": "correspAgentId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"proposalNumber\": \"<string>\",\n  \"proposalValidity\": \"<dateTime>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"installmentAmount\": \"<double>\",\n  \"availableBalance\": \"<double>\",\n  \"amount\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"cet\": \"<double>\",\n  \"interestTax\": \"<double>\",\n  \"monthlyCet\": \"<double>\",\n  \"contacts\": [\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    },\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"proposalId\": \"813c3efd-23a6-6277-79d9-a1c9dfa1e776\",\n  \"proposalNumber\": \"string\",\n  \"balanceCheckId\": \"d5364336-a459-22f2-fbb3-e8265cdfa7f7\",\n  \"proposalValidity\": \"2005-07-23T11:25:35.230Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3f6e7e0-6bda-41c3-b0b4-a7aff22d4c42",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposal",
+                    "linked-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Bank Correspondent Agent Id",
+                    "key": "correspAgentId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"proposalNumber\": \"<string>\",\n  \"proposalValidity\": \"<dateTime>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"installmentAmount\": \"<double>\",\n  \"availableBalance\": \"<double>\",\n  \"amount\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"cet\": \"<double>\",\n  \"interestTax\": \"<double>\",\n  \"monthlyCet\": \"<double>\",\n  \"contacts\": [\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    },\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"proposalId\": \"813c3efd-23a6-6277-79d9-a1c9dfa1e776\",\n  \"proposalNumber\": \"string\",\n  \"balanceCheckId\": \"d5364336-a459-22f2-fbb3-e8265cdfa7f7\",\n  \"proposalValidity\": \"2005-07-23T11:25:35.230Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0af4273c-5a6c-41d1-93f7-2d5be35144cb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposal",
+                    "linked-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Bank Correspondent Agent Id",
+                    "key": "correspAgentId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"proposalNumber\": \"<string>\",\n  \"proposalValidity\": \"<dateTime>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"installmentAmount\": \"<double>\",\n  \"availableBalance\": \"<double>\",\n  \"amount\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"cet\": \"<double>\",\n  \"interestTax\": \"<double>\",\n  \"monthlyCet\": \"<double>\",\n  \"contacts\": [\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    },\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcab0f7e-9e33-43ae-b1c8-591848983f7c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposal",
+                    "linked-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Bank Correspondent Agent Id",
+                    "key": "correspAgentId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"proposalNumber\": \"<string>\",\n  \"proposalValidity\": \"<dateTime>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"installmentAmount\": \"<double>\",\n  \"availableBalance\": \"<double>\",\n  \"amount\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"cet\": \"<double>\",\n  \"interestTax\": \"<double>\",\n  \"monthlyCet\": \"<double>\",\n  \"contacts\": [\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    },\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5f87ed3-4cd4-4d25-8586-821719ff9497",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposal",
+                    "linked-request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Bank Correspondent Agent Id",
+                    "key": "correspAgentId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"proposalNumber\": \"<string>\",\n  \"proposalValidity\": \"<dateTime>\",\n  \"installmentQuantity\": \"<integer>\",\n  \"installmentAmount\": \"<double>\",\n  \"availableBalance\": \"<double>\",\n  \"amount\": \"<double>\",\n  \"iof\": \"<double>\",\n  \"anualTax\": \"<double>\",\n  \"cet\": \"<double>\",\n  \"interestTax\": \"<double>\",\n  \"monthlyCet\": \"<double>\",\n  \"contacts\": [\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    },\n    {\n      \"contactValue\": \"<string>\",\n      \"contactType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"correlationId\": \"string\",\n  \"status\": \"string\",\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "664a510a-1856-4719-bba2-2b32cf25d978",
+          "name": "Busca uma proposta ou uma lista de propostas.",
+          "request": {
+            "name": "Busca uma proposta ou uma lista de propostas.",
+            "description": {},
+            "url": {
+              "path": [
+                "onboarding-proposal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ProposalId",
+                  "value": "<string>",
+                  "description": "Id da proposta a ser buscada."
+                },
+                {
+                  "disabled": false,
+                  "key": "ClientCode",
+                  "value": "<string>",
+                  "description": "Identificador único do cliente a ser buscado."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateFrom",
+                  "value": "<dateTime>",
+                  "description": "Data inicial."
+                },
+                {
+                  "disabled": false,
+                  "key": "DateTo",
+                  "value": "<dateTime>",
+                  "description": "Data final."
+                },
+                {
+                  "disabled": false,
+                  "key": "Status",
+                  "value": "<string>",
+                  "description": "Status da proposta:\r\n- CREATED\r\n- PENDING\r\n- PENDING_DOCUMENTSCOPY\r\n- APPROVED\r\n- REPROVED\r\n- RESOURCE_ERROR\r\n- RESOURCE_CREATED\r\n- PROCESSING_DOCUMENTSCOPY"
+                },
+                {
+                  "disabled": false,
+                  "key": "DocumentNumber",
+                  "value": "<string>",
+                  "description": "Documento da proposta."
+                },
+                {
+                  "disabled": false,
+                  "key": "Page",
+                  "value": "1",
+                  "description": "Pagina de solicitaçao, default: 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "Limit",
+                  "value": "200",
+                  "description": "Limite geral da consulta."
+                },
+                {
+                  "disabled": false,
+                  "key": "LimitPerPage",
+                  "value": "200",
+                  "description": "Total de propostas por pagina."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09b39620-db72-487e-970c-0762166c81df",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "7817b215-beg3-801a-a779-117771t550h2"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "PENDING"
+                    },
+                    {
+                      "key": "DocumentNumber",
+                      "value": "12345678909"
+                    },
+                    {
+                      "key": "Page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "LimitPerPage",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"body\": {\n    \"limit\": 9080,\n    \"currentPage\": 263,\n    \"limitPerPage\": 69,\n    \"totalPages\": 7944,\n    \"totalItems\": 983,\n    \"proposal\": [\n      {\n        \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n        \"clientCode\": \"1234ab7c-2855-436b-9d19-8abcdc198e984\",\n        \"documentNumber\": \"string\",\n        \"status\": \"string\",\n        \"proposalType\": \"PF\",\n        \"createdAt\": \"1996-06-11T01:26:28.467Z\",\n        \"updatedAt\": \"2026-04-11T13:28:01.930Z\",\n        \"rejectedReason\": {\n          \"errorCode\": \"string\",\n          \"message\": \"string\"\n        },\n        \"documentscopys\": [\n          {\n            \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n            \"documentNumber\": \"string\",\n            \"documentscopyId\": \"12a1e9a958fab500088a8901\",\n            \"status\": \"APPROVED\",\n            \"url\": \"string\",\n            \"createdAt\": \"1957-05-17T20:56:26.474Z\",\n            \"updateAt\": \"1965-12-13T00:13:26.764Z\"\n          },\n          {\n            \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n            \"documentNumber\": \"string\",\n            \"documentscopyId\": \"12a1e9a958fab500088a8901\",\n            \"status\": \"APPROVED\",\n            \"url\": \"string\",\n            \"createdAt\": \"1967-11-18T00:11:45.839Z\",\n            \"updateAt\": \"1982-11-28T21:59:55.907Z\"\n          }\n        ]\n      },\n      {\n        \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n        \"clientCode\": \"1234ab7c-2855-436b-9d19-8abcdc198e984\",\n        \"documentNumber\": \"string\",\n        \"status\": \"string\",\n        \"proposalType\": \"PF\",\n        \"createdAt\": \"1974-12-23T14:39:33.626Z\",\n        \"updatedAt\": \"1958-08-28T16:05:47.521Z\",\n        \"rejectedReason\": {\n          \"errorCode\": \"string\",\n          \"message\": \"string\"\n        },\n        \"documentscopys\": [\n          {\n            \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n            \"documentNumber\": \"string\",\n            \"documentscopyId\": \"12a1e9a958fab500088a8901\",\n            \"status\": \"APPROVED\",\n            \"url\": \"string\",\n            \"createdAt\": \"2016-04-19T23:48:33.572Z\",\n            \"updateAt\": \"2019-10-21T18:37:08.937Z\"\n          },\n          {\n            \"proposalId\": \"12334dfb-4c4e-43fb-ad93-fa28e3123473\",\n            \"documentNumber\": \"string\",\n            \"documentscopyId\": \"12a1e9a958fab500088a8901\",\n            \"status\": \"APPROVED\",\n            \"url\": \"string\",\n            \"createdAt\": \"1992-03-21T05:21:02.960Z\",\n            \"updateAt\": \"1995-10-13T23:08:11.803Z\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7fd6dce-e362-4426-b10e-f635b911ec7f",
+              "name": "Error handled by the application",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "7817b215-beg3-801a-a779-117771t550h2"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "PENDING"
+                    },
+                    {
+                      "key": "DocumentNumber",
+                      "value": "12345678909"
+                    },
+                    {
+                      "key": "Page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "LimitPerPage",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d24abdfe-b233-4170-ac1e-5b0146cd7b18",
+              "name": "Access Denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "7817b215-beg3-801a-a779-117771t550h2"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "PENDING"
+                    },
+                    {
+                      "key": "DocumentNumber",
+                      "value": "12345678909"
+                    },
+                    {
+                      "key": "Page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "LimitPerPage",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8aee775-bdba-4ce7-ab2f-a4ea35d8ec44",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "7817b215-beg3-801a-a779-117771t550h2"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "PENDING"
+                    },
+                    {
+                      "key": "DocumentNumber",
+                      "value": "12345678909"
+                    },
+                    {
+                      "key": "Page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "LimitPerPage",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37919de9-9b79-400d-a3b0-31dbed282772",
+              "name": "Unknown error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboarding-proposal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProposalId",
+                      "value": "3257b215-bef9-402b-a779-104441b520b4"
+                    },
+                    {
+                      "key": "ClientCode",
+                      "value": "7817b215-beg3-801a-a779-117771t550h2"
+                    },
+                    {
+                      "key": "DateFrom",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "DateTo",
+                      "value": "2023-11-03T06:30:00-03:00"
+                    },
+                    {
+                      "key": "Status",
+                      "value": "PENDING"
+                    },
+                    {
+                      "key": "DocumentNumber",
+                      "value": "12345678909"
+                    },
+                    {
+                      "key": "Page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "LimitPerPage",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"1.0.0\",\n  \"status\": \"SUCCESS\",\n  \"error\": {\n    \"errorCode\": \"OIE999\",\n    \"message\": \"Ocorreu um erro interno durante a chamada da api..\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "526a48a4-e05d-424e-ab95-3eabe58a6ae5",
+    "name": "billissuance-settlement-webservice AnnotationCompetenceCalendar Proposal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,649 @@
+{
+  "item": [
+    {
+      "id": "b3dcff29-542f-4b17-9f2c-19e24bb072c3",
+      "name": "Settlement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c963891c-27d1-4282-879d-ee34f59e6c99",
+          "name": "Inclusão da baixa do boleto.",
+          "request": {
+            "name": "Inclusão da baixa do boleto.",
+            "description": {},
+            "url": {
+              "path": [
+                "settlement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bankNumber\": \"<long>\",\n  \"billId\": \"<string>\",\n  \"requestId\": \"<string>\",\n  \"settlementType\": \"<string>\",\n  \"tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61ab411b-0ede-4900-bc2b-521172f9ef2d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankNumber\": 143,\n  \"billId\": \"666cb7834d673f9983cbe3e1\",\n  \"requestId\": \"401943ae-b9d8-4e35-9816-eeecc1678357\",\n  \"settlementType\": \"SOLICITACAO_CEDENTE\",\n  \"tags\": [\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    },\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"66144a44ae0569aaf2d67b73\",\n  \"requestId\": \"0000000002-240517-000000000000000001\",\n  \"settlementOrigin\": \"INTERBANCARIA\",\n  \"settlementType\": \"SOLICITACAO_CEDENTE\",\n  \"billId\": \"66144a44ae0569aaf2d67b73\",\n  \"billNumber\": 20221215000000000000,\n  \"barcode\": \"string\",\n  \"settlementNumber\": 20221215000000000000,\n  \"settlementReferenceNumber\": 3024061305151269000,\n  \"status\": \"PROCESSAMENTO\",\n  \"issuerISPB\": 13935893,\n  \"receiverISPB\": 13935893,\n  \"value\": 145.2,\n  \"receivableScheduleDelay\": 0,\n  \"receivableScheduleDate\": \"1980-08-16T02:15:19.009Z\",\n  \"tags\": [\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    },\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    }\n  ],\n  \"created\": \"2012-10-14T12:01:33.286Z\",\n  \"updated\": \"1997-11-23T18:12:16.737Z\",\n  \"transactionIdIntegration\": \"string\",\n  \"account\": \"56532352571\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9053415-f32d-484b-8cca-f00fe76f63ac",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankNumber\": 143,\n  \"billId\": \"666cb7834d673f9983cbe3e1\",\n  \"requestId\": \"401943ae-b9d8-4e35-9816-eeecc1678357\",\n  \"settlementType\": \"SOLICITACAO_CEDENTE\",\n  \"tags\": [\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    },\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 6556,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c0102a5-e767-424b-9d26-93fa3c883baa",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankNumber\": 143,\n  \"billId\": \"666cb7834d673f9983cbe3e1\",\n  \"requestId\": \"401943ae-b9d8-4e35-9816-eeecc1678357\",\n  \"settlementType\": \"SOLICITACAO_CEDENTE\",\n  \"tags\": [\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    },\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 4933,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e8f848b-f28e-480e-8b24-22026a748a88",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankNumber\": 143,\n  \"billId\": \"666cb7834d673f9983cbe3e1\",\n  \"requestId\": \"401943ae-b9d8-4e35-9816-eeecc1678357\",\n  \"settlementType\": \"SOLICITACAO_CEDENTE\",\n  \"tags\": [\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    },\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 4933,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "657f54e4-97a9-405e-8f27-d2ad00e180e7",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankNumber\": 143,\n  \"billId\": \"666cb7834d673f9983cbe3e1\",\n  \"requestId\": \"401943ae-b9d8-4e35-9816-eeecc1678357\",\n  \"settlementType\": \"SOLICITACAO_CEDENTE\",\n  \"tags\": [\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    },\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 4933,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38d48670-f20d-4ee3-8ae1-0dc0cefd1030",
+          "name": "Consulta da baixa do boleto.",
+          "request": {
+            "name": "Consulta da baixa do boleto.",
+            "description": {},
+            "url": {
+              "path": [
+                "settlement",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identificador único da baixa."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0cbdc485-5540-4714-b476-0f5edf272169",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identificador único da baixa."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"66144a44ae0569aaf2d67b73\",\n  \"requestId\": \"0000000002-240517-000000000000000001\",\n  \"settlementOrigin\": \"INTERBANCARIA\",\n  \"settlementType\": \"SOLICITACAO_CEDENTE\",\n  \"billId\": \"66144a44ae0569aaf2d67b73\",\n  \"billNumber\": 20221215000000000000,\n  \"barcode\": \"string\",\n  \"settlementNumber\": 20221215000000000000,\n  \"settlementReferenceNumber\": 3024061305151269000,\n  \"status\": \"PROCESSAMENTO\",\n  \"issuerISPB\": 13935893,\n  \"receiverISPB\": 13935893,\n  \"value\": 145.2,\n  \"receivableScheduleDelay\": 0,\n  \"receivableScheduleDate\": \"1983-02-16T11:49:05.882Z\",\n  \"tags\": [\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    },\n    {\n      \"key\": \"IDSAP\",\n      \"value\": \"125262\"\n    }\n  ],\n  \"created\": \"1951-02-17T10:20:39.238Z\",\n  \"updated\": \"1984-11-02T22:14:09.533Z\",\n  \"transactionIdIntegration\": \"string\",\n  \"account\": \"56532352571\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eef68a0b-aa56-4356-9d49-deb3f44a6431",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identificador único da baixa."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 4933,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36c3367f-3a96-4167-84fd-1152b111bcf0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identificador único da baixa."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 4933,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8906a787-1421-4961-84d2-9764ca486a0f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identificador único da baixa."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 4933,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "494b8108-bc7b-491a-afcc-d38ee745ccc7",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "settlement",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identificador único da baixa."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"statusCode\": 4933,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"field\": \"string\",\n      \"description\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.openfinance.celcoin.dev/billissuance/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d346b8b8-d6a7-4c8f-9e6d-d03fbdf6f6e8",
+    "name": "billissuance--webservice AnnotationCompetenceCalendar Settlement API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
