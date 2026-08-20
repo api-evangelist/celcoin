@@ -22,6 +22,21 @@ specificationVersion: '0.23'
 type: Index
 tags:
   - Banking as a Service
+  - Backend-as-a-Service
+  - Pix
+  - Boleto
+  - TED
+  - Bill Payments
+  - Prepaid Cards
+  - Digital Accounts
+  - Open Banking
+  - Open Finance
+  - Credit
+  - Fintech
+  - Brazil
+  - Financial Infrastructure
+tags_raw:
+  - Banking as a Service
   - BaaS
   - Pix
   - Boleto
@@ -155,6 +170,8 @@ apis:
   humanURL: https://developers.celcoin.com.br/docs/sobre-o-baas
   baseURL: https://api.openfinance.celcoin.com.br/
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
