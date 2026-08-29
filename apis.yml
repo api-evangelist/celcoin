@@ -341,6 +341,9 @@ apis:
   - type: Reference
     url: https://developers.celcoin.com.br/reference
 common:
+  - type: CapabilityMap
+    url: capabilities/celcoin-capability-edges.yml
+    name: Celcoin Business Capability Map
   - type: AgenticAccess
     url: agentic-access/celcoin-agentic-access.yml
   - type: DomainSecurity

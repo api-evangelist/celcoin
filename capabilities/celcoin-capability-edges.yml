@@ -1,0 +1,45 @@
+slug: celcoin
+provider: Celcoin
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: LegalPerson
+  spec_file: celcoin-legalperson-api-openapi.yml
+  capability_id: BC-1300.10
+  capability_id_l1: BC-1300
+  capability_name: Customer Onboarding Management
+  confidence: 0.88
+  evidence: POST /onboarding-proposal/legal-person — "Cria uma nova proposta de criação de conta Pessoa
+    Jurídica."; LegalPersonRequest, CompanyFinancialDetailsRequest, OwnerRequest
+  reason: Creates an account-opening proposal for a corporate entity, with owner and company financial
+    detail capture — digital account opening / customer onboarding for a banking platform.
+- tag: NaturalPerson
+  spec_file: celcoin-naturalperson-api-openapi.yml
+  capability_id: BC-1300.10
+  capability_id_l1: BC-1300
+  capability_name: Customer Onboarding Management
+  confidence: 0.85
+  evidence: '"Cria uma nova proposta de criação de conta Pessoa Física."; "Criação de proposta para atualização
+    de dados cadastrais de uma Pessoa Física."'
+  reason: Individual account-opening proposals plus updates to registration data — banking customer onboarding
+    (with a secondary element of customer information maintenance).
+- tag: Proposal
+  spec_file: celcoin-proposal-api-openapi.yml
+  capability_id: BC-1300.10
+  capability_id_l1: BC-1300
+  capability_name: Customer Onboarding Management
+  confidence: 0.7
+  evidence: GET /onboarding-proposal — "Busca uma proposta ou uma lista de propostas."; SearchProposalResponse,
+    DocumentscopyResponse, RejectedReasonResponse
+  reason: Search and linkage of onboarding proposals, including documentscopy and rejection reasons —
+    the account-opening/onboarding proposal lifecycle. Operations are read/link only, hence moderate confidence.
