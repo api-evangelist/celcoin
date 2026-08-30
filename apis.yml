@@ -34,7 +34,7 @@ specificationVersion: '0.23'
 type: Index
 tags:
   - Banking as a Service
-  - Backend-as-a-Service
+  - BaaS
   - Pix
   - Boleto
   - TED
@@ -274,6 +274,8 @@ apis:
   humanURL: https://developers.celcoin.com.br/docs/sobre-o-baas
   baseURL: https://api.openfinance.celcoin.com.br/
   tags:
+  - Outstanding Balance
+  tags_raw:
   - OutstandingBalance
   properties:
   - type: OpenAPI
