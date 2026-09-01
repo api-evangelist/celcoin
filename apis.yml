@@ -34,7 +34,7 @@ specificationVersion: '0.23'
 type: Index
 tags:
   - Banking as a Service
-  - BaaS
+  - Backend-as-a-Service
   - Pix
   - Boleto
   - TED
