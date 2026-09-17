@@ -269,26 +269,6 @@ apis:
     url: https://developers.celcoin.com.br/docs
   - type: Reference
     url: https://developers.celcoin.com.br/reference
-- aid: celcoin:celcoin-outstandingbalance-api
-  name: Celcoin OutstandingBalance API
-  description: The OutstandingBalance API from Celcoin — 4 operation(s) for outstandingbalance.
-  humanURL: https://developers.celcoin.com.br/docs/sobre-o-baas
-  baseURL: https://api.openfinance.celcoin.com.br/
-  tags:
-  - Outstanding Balance
-  tags_raw:
-  - OutstandingBalance
-  properties:
-  - type: OpenAPI
-    url: openapi/celcoin-outstandingbalance-api-openapi.yml
-  - type: Documentation
-    url: https://developers.celcoin.com.br/docs/sobre-o-baas
-  - type: Reference
-    url: https://developers.celcoin.com.br/reference/integrando-na-celcoin
-  - type: Documentation
-    url: https://developers.celcoin.com.br/docs
-  - type: Reference
-    url: https://developers.celcoin.com.br/reference
 - aid: celcoin:celcoin-proposal-api
   name: Celcoin Proposal API
   description: The Proposal API from Celcoin — 2 operation(s) for proposal.
@@ -335,6 +315,24 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/celcoin-taggingjourney-api-openapi.yml
+  - type: Documentation
+    url: https://developers.celcoin.com.br/docs/sobre-o-baas
+  - type: Reference
+    url: https://developers.celcoin.com.br/reference/integrando-na-celcoin
+  - type: Documentation
+    url: https://developers.celcoin.com.br/docs
+  - type: Reference
+    url: https://developers.celcoin.com.br/reference
+- aid: celcoin:celcoin-outstanding-balance-api
+  name: Celcoin Outstanding Balance API
+  description: The Outstanding Balance API from Celcoin — 4 operation(s) for outstanding balance.
+  humanURL: https://developers.celcoin.com.br/docs
+  baseURL: https://api.openfinance.celcoin.com.br/
+  tags:
+  - Outstanding Balance
+  properties:
+  - type: OpenAPI
+    url: openapi/celcoin-outstanding-balance-api-openapi.yml
   - type: Documentation
     url: https://developers.celcoin.com.br/docs/sobre-o-baas
   - type: Reference
