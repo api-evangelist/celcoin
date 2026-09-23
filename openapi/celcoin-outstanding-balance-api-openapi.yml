@@ -1,16 +1,16 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar OutstandingBalance API
-  version: v1.0.0
-servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+  title: Outstanding Balance API
+  version: 1.0.0.0
+security:
+- Bearer: []
 tags:
-- name: OutstandingBalance
+- name: Outstanding Balance
 paths:
   /outstanding-balance/inform:
     post:
       tags:
-      - OutstandingBalance
+      - Outstanding Balance
       summary: Inform outstanding balance
       parameters:
       - name: correspAgentId
@@ -55,10 +55,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postOutstandingBalanceInform
+      x-operation-id-source: derived
   /outstanding-balance/reject:
     post:
       tags:
-      - OutstandingBalance
+      - Outstanding Balance
       summary: Reject outstanding balance
       parameters:
       - name: correspAgentId
@@ -103,10 +105,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postOutstandingBalanceReject
+      x-operation-id-source: derived
   /outstanding-balance/settled-purchase/{outstandingBalancetInformedId}:
     post:
       tags:
-      - OutstandingBalance
+      - Outstanding Balance
       summary: Settled purchase
       parameters:
       - name: outstandingBalancetInformedId
@@ -146,10 +150,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postOutstandingBalanceSettledPurchaseByOutstandingBalancetInformedId
+      x-operation-id-source: derived
   /outstanding-balance/report-payment/{outstandingBalancePaymentId}:
     post:
       tags:
-      - OutstandingBalance
+      - Outstanding Balance
       summary: Report the payment for outstanding balance
       parameters:
       - name: correspAgentId
@@ -189,56 +195,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postOutstandingBalanceReportPaymentByOutstandingBalancePaymentId
+      x-operation-id-source: derived
 components:
   schemas:
-    SettledPurchaseResponse:
-      type: object
-      properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        statusOutstandingBalanceInformed:
-          type: string
-          nullable: true
-        updateAt:
-          type: string
-          format: date-time
-        annotationId:
-          type: string
-          format: uuid
-        statusAnnotation:
-          type: string
-          nullable: true
-      additionalProperties: false
-    OutstandingBalanceRejectedRequest:
-      required:
-      - outstandingBalanceInformedId
-      type: object
-      properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        description:
-          type: string
-          nullable: true
-      additionalProperties: false
-    InfoAccount:
-      required:
-      - bank
-      - branch
-      - number
-      type: object
-      properties:
-        bank:
-          type: string
-          nullable: true
-        branch:
-          type: string
-          nullable: true
-        number:
-          type: string
-          nullable: true
-      additionalProperties: false
     OutstandingBalanceRejectedResponse:
       type: object
       properties:
@@ -246,36 +206,28 @@ components:
           type: string
           format: uuid
         status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         updateAt:
           type: string
           format: date-time
       additionalProperties: false
-    ErrorResponse:
+    OutstandingBalanceInformedResponse:
+      required:
+      - status
       type: object
       properties:
-        correlationId:
+        outstandingBalanceInformedId:
           type: string
-          nullable: true
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
         status:
-          type: string
-          nullable: true
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Errs'
-          nullable: true
-      additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
-          type: string
-          nullable: true
-        message:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     OutstandingBalanceInformedRequest:
       required:
@@ -290,26 +242,116 @@ components:
           type: number
           format: double
         nameBeneficiary:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         documentBenficiary:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         expirationDate:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         detailOutstandingBalance:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         proposalRefinancing:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         infoAccount:
           $ref: '#/components/schemas/InfoAccount'
+      additionalProperties: false
+    SettledPurchaseResponse:
+      type: object
+      properties:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        statusOutstandingBalanceInformed:
+          type:
+          - string
+          - 'null'
+        updateAt:
+          type: string
+          format: date-time
+        annotationId:
+          type: string
+          format: uuid
+        statusAnnotation:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    InfoAccount:
+      required:
+      - bank
+      - branch
+      - number
+      type: object
+      properties:
+        bank:
+          type:
+          - string
+          - 'null'
+        branch:
+          type:
+          - string
+          - 'null'
+        number:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Errs:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
+      additionalProperties: false
+    OutstandingBalanceRejectedRequest:
+      required:
+      - outstandingBalanceInformedId
+      type: object
+      properties:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        description:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     OutstandingBalancePaymentResponse:
       type: object
@@ -318,30 +360,17 @@ components:
           type: string
           format: uuid
         code:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         message:
-          type: string
-          nullable: true
-      additionalProperties: false
-    OutstandingBalanceInformedResponse:
-      required:
-      - status
-      type: object
-      properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:
       type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      scheme: bearer
       bearerFormat: JWT

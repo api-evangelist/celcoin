@@ -1,36 +1,63 @@
 {
   "provider": "celcoin",
   "sources": [
-    "celcoin-annotationcompetencecalendar-api-openapi.yml",
-    "celcoin-bankcorrespondentagent-api-openapi.yml",
-    "celcoin-consignee-api-openapi.yml",
-    "celcoin-files-api-openapi.yml",
-    "celcoin-guarantee-api-openapi.yml",
-    "celcoin-legacyguarantee-api-openapi.yml",
-    "celcoin-legalperson-api-openapi.yml",
-    "celcoin-naturalperson-api-openapi.yml",
-    "celcoin-outstandingbalance-api-openapi.yml",
-    "celcoin-proposal-api-openapi.yml",
-    "celcoin-settlement-api-openapi.yml",
-    "celcoin-taggingjourney-api-openapi.yml"
+    "_original/celcoin-billissuance-settlement-openapi.json",
+    "_original/celcoin-credit-openapi.json",
+    "_original/celcoin-onboarding-openapi.json"
   ],
   "outputs": [
+    "celcoin-settlement-api-openapi.yml",
     "celcoin-annotationcompetencecalendar-api-openapi.yml",
     "celcoin-bankcorrespondentagent-api-openapi.yml",
     "celcoin-consignee-api-openapi.yml",
-    "celcoin-files-api-openapi.yml",
     "celcoin-guarantee-api-openapi.yml",
     "celcoin-legacyguarantee-api-openapi.yml",
-    "celcoin-legalperson-api-openapi.yml",
-    "celcoin-naturalperson-api-openapi.yml",
     "celcoin-outstandingbalance-api-openapi.yml",
     "celcoin-proposal-api-openapi.yml",
-    "celcoin-settlement-api-openapi.yml",
+    "celcoin-files-api-openapi.yml",
+    "celcoin-legalperson-api-openapi.yml",
+    "celcoin-naturalperson-api-openapi.yml",
     "celcoin-taggingjourney-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "celcoin-billissuance-settlement-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "celcoin-billissuance-settlement-openapi.json: declared missing tag: Settlement",
+    "celcoin-credit-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "celcoin-credit-openapi.json: declared missing tag: AnnotationCompetenceCalendar",
+    "celcoin-credit-openapi.json: declared missing tag: BankCorrespondentAgent",
+    "celcoin-credit-openapi.json: declared missing tag: Consignee",
+    "celcoin-credit-openapi.json: declared missing tag: Guarantee",
+    "celcoin-credit-openapi.json: declared missing tag: LegacyGuarantee",
+    "celcoin-credit-openapi.json: declared missing tag: OutstandingBalance",
+    "celcoin-credit-openapi.json: declared missing tag: Proposal",
+    "celcoin-onboarding-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "celcoin-onboarding-openapi.json: declared missing tag: Files",
+    "celcoin-onboarding-openapi.json: declared missing tag: LegalPerson",
+    "celcoin-onboarding-openapi.json: declared missing tag: NaturalPerson",
+    "celcoin-onboarding-openapi.json: declared missing tag: Proposal",
+    "celcoin-onboarding-openapi.json: declared missing tag: TaggingJourney",
+    "tag 'Proposal' spans 2 source specs (celcoin-credit-openapi.json, celcoin-onboarding-openapi.json): per-path servers applied",
+    "superseded outputs removed: celcoin-outstanding-balance-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 15 total)"
+  ],
+  "skipped": [
+    "celcoin-annotationcompetencecalendar-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-bankcorrespondentagent-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-consignee-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-guarantee-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-legacyguarantee-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-legalperson-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-naturalperson-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-outstanding-balance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-proposal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-settlement-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "celcoin-taggingjourney-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

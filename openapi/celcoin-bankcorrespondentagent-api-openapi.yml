@@ -1,9 +1,9 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar BankCorrespondentAgent API
-  version: v1.0.0
-servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+  title: Bank Correspondent Agent API
+  version: 1.0.0.0
+security:
+- Bearer: []
 tags:
 - name: BankCorrespondentAgent
 paths:
@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - BankCorrespondentAgent
-      summary: Creates a new bank correspondent agent.
+      summary: Creates a new bank correspondent agent
       requestBody:
         description: Data required to create the bank correspondent agent.
         content:
@@ -49,6 +49,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postCorrespAgent
+      x-operation-id-source: derived
     get:
       tags:
       - BankCorrespondentAgent
@@ -109,6 +111,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      summary: Get corresp agent
+      x-summary-source: derived
+      operationId: getCorrespAgent
+      x-operation-id-source: derived
   /bankcorrespondentagent/{correspAgentId}:
     put:
       tags:
@@ -166,6 +172,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: putBankcorrespondentagentByCorrespAgentId
+      x-operation-id-source: derived
     delete:
       tags:
       - BankCorrespondentAgent
@@ -208,8 +216,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: deleteBankcorrespondentagentByCorrespAgentId
+      x-operation-id-source: derived
 components:
   schemas:
+    UpdateBankCorrespondentAgentRequest:
+      type: object
+      properties:
+        socialName:
+          type:
+          - string
+          - 'null'
+        document:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     CreateCorrespAgentRequest:
       required:
       - consigneeId
@@ -219,52 +241,37 @@ components:
       type: object
       properties:
         correspondentAgencyId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         consigneeId:
           type: string
           format: uuid
         socialName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         document:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    BankCorrespondentAgentResponse:
-      required:
-      - consigneeId
-      - correspAgentId
-      - createdAt
-      - id
+    CreateCorrespAgentResponse:
       type: object
       properties:
         id:
           type: string
           format: uuid
-        correspAgentId:
-          type: string
-          nullable: true
+        correspondentAgencyId:
+          type:
+          - string
+          - 'null'
         consigneeId:
           type: string
           format: uuid
         createdAt:
           type: string
           format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-          nullable: true
-      additionalProperties: false
-    UpdateBankCorrespondentAgentRequest:
-      type: object
-      properties:
-        socialName:
-          type: string
-          nullable: true
-        document:
-          type: string
-          nullable: true
       additionalProperties: false
     GetCorrespAgentResponse:
       type: object
@@ -282,51 +289,41 @@ components:
           type: integer
           format: int64
         correspondents:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/CorrespondentAgent'
-          nullable: true
       additionalProperties: false
     Errs:
       type: object
       properties:
         code:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         message:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ErrorResponse:
       type: object
       properties:
         correlationId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         errors:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/Errs'
-          nullable: true
-      additionalProperties: false
-    CreateCorrespAgentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        correspondentAgencyId:
-          type: string
-          nullable: true
-        consigneeId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
       additionalProperties: false
     CorrespondentAgent:
       type: object
@@ -335,8 +332,9 @@ components:
           type: string
           format: uuid
         correspAgentId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         consigneeId:
           type: string
           format: uuid
@@ -344,13 +342,41 @@ components:
           type: string
           format: date-time
         updatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    BankCorrespondentAgentResponse:
+      required:
+      - consigneeId
+      - correspAgentId
+      - createdAt
+      - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        correspAgentId:
+          type:
+          - string
+          - 'null'
+        consigneeId:
+          type: string
+          format: uuid
+        createdAt:
           type: string
           format: date-time
-          nullable: true
+        updatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
   securitySchemes:
     Bearer:
       type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      scheme: bearer
       bearerFormat: JWT

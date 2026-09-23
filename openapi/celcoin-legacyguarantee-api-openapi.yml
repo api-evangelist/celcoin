@@ -1,9 +1,9 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar LegacyGuarantee API
-  version: v1.0.0
-servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+  title: Legacy Guarantee API
+  version: 1.0.0.0
+security:
+- Bearer: []
 tags:
 - name: LegacyGuarantee
 paths:
@@ -55,17 +55,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postGuaranteeRenegotiationLegacy
+      x-operation-id-source: derived
 components:
   schemas:
-    Errs:
+    ErrorResponse:
       type: object
       properties:
-        code:
-          type: string
-          nullable: true
-        message:
-          type: string
-          nullable: true
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
       additionalProperties: false
     RenegotiationGuaranteeLegacyRequest:
       required:
@@ -90,8 +100,9 @@ components:
           type: string
           format: uuid
         contractNumber:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         amount:
           type: number
           format: double
@@ -129,15 +140,17 @@ components:
           type: string
           format: date-time
         legacyAnnotations:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
             format: uuid
-          nullable: true
         expirationAt:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
       additionalProperties: false
     GuaranteeResponse:
       required:
@@ -152,30 +165,29 @@ components:
           type: string
           format: date-time
         status:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         annotationType:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    ErrorResponse:
+    Errs:
       type: object
       properties:
-        correlationId:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Errs'
-          nullable: true
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:
       type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      scheme: bearer
       bearerFormat: JWT

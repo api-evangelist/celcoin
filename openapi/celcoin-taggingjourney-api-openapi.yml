@@ -1,9 +1,12 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar TaggingJourney API
+  title: Onboarding.Proposal.Webservice Tagging Journey API
   version: v1.0.0
 servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+- url: https://sandbox.openfinance.celcoin.dev/onboarding/v1
+- url: https://api.openfinance.celcoin.com.br/onboarding/v1
+security:
+- Bearer: []
 tags:
 - name: TaggingJourney
 paths:
@@ -11,7 +14,7 @@ paths:
     get:
       tags:
       - TaggingJourney
-      summary: Busca o tageamento da jornada do webview de uma proposta.
+      summary: Busca o tageamento da jornada do webview de uma proposta
       parameters:
       - name: ProposalId
         in: query
@@ -58,119 +61,132 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: getOnboardingProposalTaggingJourney
+      x-operation-id-source: derived
 components:
   schemas:
-    Engine:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Nome do motor do navegador.
-          nullable: true
-          example: Google
-        version:
-          type: string
-          description: Versão do motor do navegador.
-          nullable: true
-          example: 126.0.0.0
-      additionalProperties: false
-    StepFunnel:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          description: Timestamp que iniciou a etapa.
-          nullable: true
-          example: '2024-07-25 18:19:54.11'
-        stepName:
-          type: string
-          description: "  Possíveis etapas:\r\n- STEP_CAMERA_ACCESS: Permissões de câmera.\r\n- STEP_COMPANY_ADDRESS: Endereço empresarial.\r\n- STEP_COMPANY_DATA: Dados empresariais.\r\n- STEP_CUSTOM: Etapa customizada.\r\n- STEP_CUSTOM_FORM: Formulário.\r\n- STEP_DATA_CONFIRMATION: Dados pessoais.\r\n- STEP_DD: Captura de Documento.\r\n- STEP_DD_PREVIEW: Preview do documento.\r\n- STEP_DISPATCH_ADDRESS: Endereço residencial.\r\n- STEP_DOCUMENT_TYPE: Tipo de documento.\r\n- STEP_DOCUMENT_ISSUED_COUNTRY: País de emissão do documento.\r\n- STEP_USING_TERMS: Aceite de termos de uso.\r\n- STEP_DONE: Tudo certo.\r\n- STEP_EMAIL_VALIDATION: Validar email.\r\n- STEP_EMPLOYEE_DATA: Dados do funcionário.\r\n- STEP_FLOW_CHOICE: Decisão.\r\n- STEP_INCOME: Faturamento.\r\n- STEP_INSTRUCTIONS: Instruções.\r\n- STEP_PARTNER: Quadro societário.\r\n- STEP_LIVENESS_IPROOV: Prova de vida (Nova).\r\n- STEP_LIVENESS_IPROOV_PREVIEW: Pré-visualização da Prova de Vida (Nova).\r\n- STEP_PFL: Selfie.\r\n- STEP_PFL_PREVIEW: Preview da selfie.\r\n- STEP_FA: Autenticação Facial.\r\n- STEP_FA_PREVIEW: Pré-visualização da Autenticação Facial (Antiga).\r\n- STEP_FACE_AUTH_IPROOV: Autenticação Facial (Nova).\r\n- STEP_FACE_AUTH_IPROOV_PREVIEW: Pré-visualização da Autenticação Facial (Nova).\r\n- STEP_PF_PF_DATA: Dados da pessoa relacionada.\r\n- STEP_PHONE_NUMBER_VALIDATION: Validar telefone.\r\n- STEP_QSA: Quem é você?\r\n- STEP_SEND_DOCUMENT_TYPE: Forma de envio de documento.\r\n- STEP_UPLOAD_DOCUMENT: Upload de arquivos de documento.\r\n- STEP_WELCOME: Boas vindas ao usuário.\r\n- STEP_NEW_ACCESS: Novo acesso."
-          nullable: true
-          example: STEP_DONE-1
-        secondsFromPrevious:
-          type: integer
-          description: Tempo na etapa anterior (em segundos).
-          format: int32
-          nullable: true
-          example: -32
-        secondsFromNext:
-          type: integer
-          description: Tempo na etapa informada (em segundos).
-          format: int32
-          nullable: true
-          example: 1
-        deviceBrowserName:
-          type: string
-          description: Nome do navegador.
-          nullable: true
-          example: Safari
-        deviceOsName:
-          type: string
-          description: Nome do sistema operacional.
-          nullable: true
-          example: iOS
-        deviceOsVersion:
-          type: string
-          description: Versão do sistema operacional.
-          nullable: true
-          example: 17.4.1
-        devicePlatformType:
-          type: string
-          description: Tipo da plataforma.
-          nullable: true
-          example: mobile
-      additionalProperties: false
-    Platform:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Tipo da plataforma.
-          nullable: true
-          example: Crowdfunding
-        vendor:
-          type: string
-          description: Fornecedor.
-          nullable: true
-          example: Crowdcube
-        model:
-          type: string
-          description: Modelo.
-          nullable: true
-          example: Equity-Based
-      additionalProperties: false
     Browser:
       type: object
       properties:
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Nome do navegador.
-          nullable: true
           example: Chrome
         version:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Versão do navegador.
-          nullable: true
           example: 126.0.0.0
       additionalProperties: false
     Os:
       type: object
       properties:
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Nome do sistema operacional.
-          nullable: true
           example: Android
         version:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Versão do sistema operacional.
-          nullable: true
           example: '10'
         versionname:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Nome da versão do sistema operacional.
-          nullable: true
           example: 10.1.0
+      additionalProperties: false
+    TagginJourneyResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/TagginJourneyResponse'
+      additionalProperties: false
+    TagginJourneyResponse:
+      type: object
+      properties:
+        proposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador da proposta.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: CPF ou CNPJ da proposta.
+          example: '12345678'
+        processedAt:
+          type:
+          - string
+          - 'null'
+          description: Data de processamento da url.
+          example: '2024-08-14 09:40:20.09'
+        status:
+          type:
+          - string
+          - 'null'
+          description: 'Status da jornada:
+
+            - COMPLETED
+
+            - PENDING'
+          example: COMPLETED
+        link:
+          type:
+          - string
+          - 'null'
+          description: Link do webview.
+          example: https://trustyourid.cadastro.io/e32b99c477a00171716aas
+        totalDevices:
+          type:
+          - integer
+          - 'null'
+          description: Quantidade de dispositivos que acessaram o webview.
+          format: int32
+          example: 1
+        devices:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DevicesFunnel'
+          description: Dispositivos que acessaram o webview.
+        lastStep:
+          $ref: '#/components/schemas/StepFunnel'
+        stepsArray:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/StepFunnel'
+          description: Lista das etapas da jornada.
       additionalProperties: false
     DevicesFunnel:
       type: object
@@ -184,42 +200,189 @@ components:
         engine:
           $ref: '#/components/schemas/Engine'
         useragent:
-          type: string
+          type:
+          - string
+          - 'null'
           description: String de texto que contém informações sobre o navegador.
-          nullable: true
           example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
       additionalProperties: false
-    TagginJourneyResponseSuccessResponse:
+    Engine:
       type: object
       properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do motor do navegador.
+          example: Google
         version:
-          type: string
-          description: Versão da api.
-          nullable: true
-          example: 1.0.0
-        status:
-          type: string
-          description: Status da solicitação.
-          nullable: true
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/TagginJourneyResponse'
+          type:
+          - string
+          - 'null'
+          description: Versão do motor do navegador.
+          example: 126.0.0.0
+      additionalProperties: false
+    StepFunnel:
+      type: object
+      properties:
+        timestamp:
+          type:
+          - string
+          - 'null'
+          description: Timestamp que iniciou a etapa.
+          example: '2024-07-25 18:19:54.11'
+        stepName:
+          type:
+          - string
+          - 'null'
+          description: '  Possíveis etapas:
+
+            - STEP_CAMERA_ACCESS: Permissões de câmera.
+
+            - STEP_COMPANY_ADDRESS: Endereço empresarial.
+
+            - STEP_COMPANY_DATA: Dados empresariais.
+
+            - STEP_CUSTOM: Etapa customizada.
+
+            - STEP_CUSTOM_FORM: Formulário.
+
+            - STEP_DATA_CONFIRMATION: Dados pessoais.
+
+            - STEP_DD: Captura de Documento.
+
+            - STEP_DD_PREVIEW: Preview do documento.
+
+            - STEP_DISPATCH_ADDRESS: Endereço residencial.
+
+            - STEP_DOCUMENT_TYPE: Tipo de documento.
+
+            - STEP_DOCUMENT_ISSUED_COUNTRY: País de emissão do documento.
+
+            - STEP_USING_TERMS: Aceite de termos de uso.
+
+            - STEP_DONE: Tudo certo.
+
+            - STEP_EMAIL_VALIDATION: Validar email.
+
+            - STEP_EMPLOYEE_DATA: Dados do funcionário.
+
+            - STEP_FLOW_CHOICE: Decisão.
+
+            - STEP_INCOME: Faturamento.
+
+            - STEP_INSTRUCTIONS: Instruções.
+
+            - STEP_PARTNER: Quadro societário.
+
+            - STEP_LIVENESS_IPROOV: Prova de vida (Nova).
+
+            - STEP_LIVENESS_IPROOV_PREVIEW: Pré-visualização da Prova de Vida (Nova).
+
+            - STEP_PFL: Selfie.
+
+            - STEP_PFL_PREVIEW: Preview da selfie.
+
+            - STEP_FA: Autenticação Facial.
+
+            - STEP_FA_PREVIEW: Pré-visualização da Autenticação Facial (Antiga).
+
+            - STEP_FACE_AUTH_IPROOV: Autenticação Facial (Nova).
+
+            - STEP_FACE_AUTH_IPROOV_PREVIEW: Pré-visualização da Autenticação Facial (Nova).
+
+            - STEP_PF_PF_DATA: Dados da pessoa relacionada.
+
+            - STEP_PHONE_NUMBER_VALIDATION: Validar telefone.
+
+            - STEP_QSA: Quem é você?
+
+            - STEP_SEND_DOCUMENT_TYPE: Forma de envio de documento.
+
+            - STEP_UPLOAD_DOCUMENT: Upload de arquivos de documento.
+
+            - STEP_WELCOME: Boas vindas ao usuário.
+
+            - STEP_NEW_ACCESS: Novo acesso.'
+          example: STEP_DONE-1
+        secondsFromPrevious:
+          type:
+          - integer
+          - 'null'
+          description: Tempo na etapa anterior (em segundos).
+          format: int32
+          example: -32
+        secondsFromNext:
+          type:
+          - integer
+          - 'null'
+          description: Tempo na etapa informada (em segundos).
+          format: int32
+          example: 1
+        deviceBrowserName:
+          type:
+          - string
+          - 'null'
+          description: Nome do navegador.
+          example: Safari
+        deviceOsName:
+          type:
+          - string
+          - 'null'
+          description: Nome do sistema operacional.
+          example: iOS
+        deviceOsVersion:
+          type:
+          - string
+          - 'null'
+          description: Versão do sistema operacional.
+          example: 17.4.1
+        devicePlatformType:
+          type:
+          - string
+          - 'null'
+          description: Tipo da plataforma.
+          example: mobile
       additionalProperties: false
     ErrorResponse:
       type: object
       properties:
         version:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Versão da api.
-          nullable: true
           example: 1.0.0
         status:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Status da solicitação.
-          nullable: true
           example: SUCCESS
         error:
           $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    Platform:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+          description: Tipo da plataforma.
+          example: Crowdfunding
+        vendor:
+          type:
+          - string
+          - 'null'
+          description: Fornecedor.
+          example: Crowdcube
+        model:
+          type:
+          - string
+          - 'null'
+          description: Modelo.
+          example: Equity-Based
       additionalProperties: false
     ResponseError:
       required:
@@ -238,63 +401,9 @@ components:
           description: Mensagem de erro.
           example: Ocorreu um erro interno durante a chamada da api..
       additionalProperties: false
-    TagginJourneyResponse:
-      type: object
-      properties:
-        proposalId:
-          type: string
-          description: Identificador da proposta.
-          nullable: true
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
-          type: string
-          description: Identificador único fornecido pelo cliente.
-          nullable: true
-          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
-        documentNumber:
-          type: string
-          description: CPF ou CNPJ da proposta.
-          nullable: true
-          example: '12345678'
-        processedAt:
-          type: string
-          description: Data de processamento da url.
-          nullable: true
-          example: '2024-08-14 09:40:20.09'
-        status:
-          type: string
-          description: "Status da jornada:\r\n- COMPLETED\r\n- PENDING"
-          nullable: true
-          example: COMPLETED
-        link:
-          type: string
-          description: Link do webview.
-          nullable: true
-          example: https://trustyourid.cadastro.io/e32b99c477a00171716aas
-        totalDevices:
-          type: integer
-          description: Quantidade de dispositivos que acessaram o webview.
-          format: int32
-          nullable: true
-          example: 1
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/DevicesFunnel'
-          description: Dispositivos que acessaram o webview.
-          nullable: true
-        lastStep:
-          $ref: '#/components/schemas/StepFunnel'
-        stepsArray:
-          type: array
-          items:
-            $ref: '#/components/schemas/StepFunnel'
-          description: Lista das etapas da jornada.
-          nullable: true
-      additionalProperties: false
   securitySchemes:
     Bearer:
-      type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
-      bearerFormat: JWT
+      type: apiKey
+      description: '[API V5] - Please enter into field the word ''Bearer'' following by space and the access_token (JWT)'
+      name: Authorization
+      in: header

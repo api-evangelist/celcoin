@@ -1,9 +1,12 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar NaturalPerson API
+  title: Onboarding.Proposal.Webservice Natural Person API
   version: v1.0.0
 servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+- url: https://sandbox.openfinance.celcoin.dev/onboarding/v1
+- url: https://api.openfinance.celcoin.com.br/onboarding/v1
+security:
+- Bearer: []
 tags:
 - name: NaturalPerson
 paths:
@@ -11,7 +14,7 @@ paths:
     post:
       tags:
       - NaturalPerson
-      summary: Cria uma nova proposta de criação de conta Pessoa Física.
+      summary: Cria uma nova proposta de criação de conta Pessoa Física
       requestBody:
         content:
           application/json:
@@ -57,11 +60,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '422':
           description: Unprocessable Entity
+      operationId: postOnboardingProposalNaturalPerson
+      x-operation-id-source: derived
   /onboarding-proposal/account/{account}/natural-person:
     put:
       tags:
       - NaturalPerson
-      summary: Criação de proposta para atualização de dados cadastrais de uma Pessoa Física.
+      summary: Criação de proposta para atualização de dados cadastrais de uma Pessoa Física
       parameters:
       - name: account
         in: path
@@ -117,8 +122,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: putOnboardingProposalAccountByAccountNaturalPerson
+      x-operation-id-source: derived
 components:
   schemas:
+    NaturalPersonUpdateResponse:
+      type: object
+      properties:
+        updateProposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador único da atualização criada.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: '123456'
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: Número do documento do titular da conta.
+          example: '33333333333'
+        account:
+          type:
+          - string
+          - 'null'
+          description: Número da conta.
+          example: '300539137126128'
+      additionalProperties: false
     AddressRequest:
       required:
       - city
@@ -147,9 +182,10 @@ components:
           description: Número do endereço.
           example: '313'
         addressComplement:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Complemento do endereço.
-          nullable: true
           example: Em frente ao parque.
         neighborhood:
           maxLength: 200
@@ -170,6 +206,24 @@ components:
           example: SP
       additionalProperties: false
       description: Endereço.
+    NaturalPersonUpdateResponseProcessingResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/NaturalPersonUpdateResponse'
+      additionalProperties: false
     FileRequest:
       required:
       - data
@@ -179,7 +233,61 @@ components:
         type:
           minLength: 1
           type: string
-          description: "Tipo de file:\r\n- OUTROS,\r\n- CNH_FRONT,\r\n- CNH_BACK,\r\n- RG_FRONT,\r\n- RG_BACK,\r\n- RNE_FRONT,\r\n- RNE_BACK,\r\n- CONTRATO_SOCIAL,\r\n- DOCUMENTO_FINANCEIRO,\r\n- PROCURACAO_PODERES,\r\n- SELFIE,\r\n- RNM_FRONT,\r\n- RNM_BACK,\r\n- CRLV_FRONT,\r\n- CRLV_BACK,\r\n- CTPS_FRONT,\r\n- CTPS_BACK,\r\n- PASSPORT_FRONT,\r\n- PASSPORT_BACK,\r\n- OUTROS_FRONT,\r\n- OUTROS_BACK,\r\n- DRE,\r\n- COMPROVANTE_RESIDENCIA,\r\n- COMPROVANTE_RENDA,\r\n- DOCUMENTO_LEGAL,\r\n- DECLARACAO_ANUAL,\r\n- DECLARACAO_CONFIRMACAO"
+          description: 'Tipo de file:
+
+            - OUTROS,
+
+            - CNH_FRONT,
+
+            - CNH_BACK,
+
+            - RG_FRONT,
+
+            - RG_BACK,
+
+            - RNE_FRONT,
+
+            - RNE_BACK,
+
+            - CONTRATO_SOCIAL,
+
+            - DOCUMENTO_FINANCEIRO,
+
+            - PROCURACAO_PODERES,
+
+            - SELFIE,
+
+            - RNM_FRONT,
+
+            - RNM_BACK,
+
+            - CRLV_FRONT,
+
+            - CRLV_BACK,
+
+            - CTPS_FRONT,
+
+            - CTPS_BACK,
+
+            - PASSPORT_FRONT,
+
+            - PASSPORT_BACK,
+
+            - OUTROS_FRONT,
+
+            - OUTROS_BACK,
+
+            - DRE,
+
+            - COMPROVANTE_RESIDENCIA,
+
+            - COMPROVANTE_RENDA,
+
+            - DOCUMENTO_LEGAL,
+
+            - DECLARACAO_ANUAL,
+
+            - DECLARACAO_CONFIRMACAO'
           example: RG_FRONT
         data:
           minLength: 1
@@ -188,140 +296,6 @@ components:
           example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
       additionalProperties: false
       description: Representante/Sócio
-    NaturalPersonUpdateRequest:
-      required:
-      - address
-      - clientCode
-      - email
-      - fullName
-      - motherName
-      - phoneNumber
-      type: object
-      properties:
-        clientCode:
-          minLength: 1
-          type: string
-          description: Identificador único fornecido pelo cliente.
-          example: '123456'
-        phoneNumber:
-          maxLength: 14
-          minLength: 1
-          type: string
-          description: Número telefone contato do titular da conta.
-          example: '+5512981175554'
-        email:
-          maxLength: 100
-          minLength: 1
-          type: string
-          description: E-mail do titular da conta.
-          example: email@email.com
-        motherName:
-          minLength: 1
-          type: string
-          description: Nome da mãe do titular da conta.
-          example: Nome Sobrenome
-        fullName:
-          maxLength: 120
-          minLength: 1
-          type: string
-          description: Nome completo do titular da conta.
-          example: Nome Sobrenome
-        socialName:
-          type: string
-          description: Nome social do titular da conta.
-          nullable: true
-          example: Nome
-        address:
-          $ref: '#/components/schemas/AddressRequest'
-      additionalProperties: false
-    NaturalPersonUpdateResponse:
-      type: object
-      properties:
-        updateProposalId:
-          type: string
-          description: Identificador único da atualização criada.
-          nullable: true
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
-          type: string
-          description: Identificador único fornecido pelo cliente.
-          nullable: true
-          example: '123456'
-        documentNumber:
-          type: string
-          description: Número do documento do titular da conta.
-          nullable: true
-          example: '33333333333'
-        account:
-          type: string
-          description: Número da conta.
-          nullable: true
-          example: '300539137126128'
-      additionalProperties: false
-    NaturalPersonUpdateResponseProcessingResponse:
-      type: object
-      properties:
-        version:
-          type: string
-          description: Versão da api.
-          nullable: true
-          example: 1.0.0
-        status:
-          type: string
-          description: Status da solicitação.
-          nullable: true
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/NaturalPersonUpdateResponse'
-      additionalProperties: false
-    NaturalPersonResponseProcessingResponse:
-      type: object
-      properties:
-        version:
-          type: string
-          description: Versão da api.
-          nullable: true
-          example: 1.0.0
-        status:
-          type: string
-          description: Status da solicitação.
-          nullable: true
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/NaturalPersonResponse'
-      additionalProperties: false
-    FinancialDetails:
-      type: object
-      properties:
-        declaredIncome:
-          type: string
-          nullable: true
-        declaredIncomeDescription:
-          type: string
-          nullable: true
-        presumedIncome:
-          type: string
-          nullable: true
-        presumedIncomeDescription:
-          type: string
-          nullable: true
-        occupation:
-          type: string
-          nullable: true
-        occupationDescription:
-          type: string
-          nullable: true
-        netWorth:
-          type: string
-          nullable: true
-        netWorthDescription:
-          type: string
-          nullable: true
-        createdAt:
-          type: string
-          format: date-time
-          nullable: true
-      additionalProperties: false
     NaturalPersonRequest:
       required:
       - address
@@ -370,9 +344,10 @@ components:
           description: Nome completo do titular da conta.
           example: Nome Sobrenome
         socialName:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Nome social do titular da conta.
-          nullable: true
           example: Carlos
         birthDate:
           minLength: 1
@@ -389,30 +364,122 @@ components:
         onboardingType:
           minLength: 1
           type: string
-          description: "Tipo de Onboarding:\r\n- Se BAAS: Sera criada uma proposta de pessoa física para criar conta no BAAS"
+          description: 'Tipo de Onboarding:
+
+            - Se BAAS: Sera criada uma proposta de pessoa física para criar conta no BAAS'
           default: BAAS
           example: BAAS
         files:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/FileRequest'
           description: Documentos Enviados
-          nullable: true
         financialDetails:
           $ref: '#/components/schemas/FinancialDetails'
+      additionalProperties: false
+    NaturalPersonResponseProcessingResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/NaturalPersonResponse'
+      additionalProperties: false
+    NaturalPersonResponse:
+      type: object
+      properties:
+        proposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador da proposta criada.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: CPF da proposta criada.
+          example: '12345678900'
+      additionalProperties: false
+    NaturalPersonUpdateRequest:
+      required:
+      - address
+      - clientCode
+      - email
+      - fullName
+      - motherName
+      - phoneNumber
+      type: object
+      properties:
+        clientCode:
+          minLength: 1
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          example: '123456'
+        phoneNumber:
+          maxLength: 14
+          minLength: 1
+          type: string
+          description: Número telefone contato do titular da conta.
+          example: '+5512981175554'
+        email:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: E-mail do titular da conta.
+          example: email@email.com
+        motherName:
+          minLength: 1
+          type: string
+          description: Nome da mãe do titular da conta.
+          example: Nome Sobrenome
+        fullName:
+          maxLength: 120
+          minLength: 1
+          type: string
+          description: Nome completo do titular da conta.
+          example: Nome Sobrenome
+        socialName:
+          type:
+          - string
+          - 'null'
+          description: Nome social do titular da conta.
+          example: Nome
+        address:
+          $ref: '#/components/schemas/AddressRequest'
       additionalProperties: false
     ErrorResponse:
       type: object
       properties:
         version:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Versão da api.
-          nullable: true
           example: 1.0.0
         status:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Status da solicitação.
-          nullable: true
           example: SUCCESS
         error:
           $ref: '#/components/schemas/ResponseError'
@@ -434,28 +501,50 @@ components:
           description: Mensagem de erro.
           example: Ocorreu um erro interno durante a chamada da api..
       additionalProperties: false
-    NaturalPersonResponse:
+    FinancialDetails:
       type: object
       properties:
-        proposalId:
-          type: string
-          description: Identificador da proposta criada.
-          nullable: true
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
-          type: string
-          description: Identificador único fornecido pelo cliente.
-          nullable: true
-          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
-        documentNumber:
-          type: string
-          description: CPF da proposta criada.
-          nullable: true
-          example: '12345678900'
+        declaredIncome:
+          type:
+          - string
+          - 'null'
+        declaredIncomeDescription:
+          type:
+          - string
+          - 'null'
+        presumedIncome:
+          type:
+          - string
+          - 'null'
+        presumedIncomeDescription:
+          type:
+          - string
+          - 'null'
+        occupation:
+          type:
+          - string
+          - 'null'
+        occupationDescription:
+          type:
+          - string
+          - 'null'
+        netWorth:
+          type:
+          - string
+          - 'null'
+        netWorthDescription:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
   securitySchemes:
     Bearer:
-      type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
-      bearerFormat: JWT
+      type: apiKey
+      description: '[API V5] - Please enter into field the word ''Bearer'' following by space and the access_token (JWT)'
+      name: Authorization
+      in: header

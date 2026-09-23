@@ -1,9 +1,9 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar API
-  version: v1.0.0
-servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+  title: Annotation Competence Calendar API
+  version: 1.0.0.0
+security:
+- Bearer: []
 tags:
 - name: AnnotationCompetenceCalendar
 paths:
@@ -56,75 +56,94 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      summary: Get annotation competence calendar
+      x-summary-source: derived
+      operationId: getAnnotationCompetenceCalendar
+      x-operation-id-source: derived
 components:
   schemas:
-    AnnotationCompetenceCalendarResponse:
+    ErrorResponse:
       type: object
       properties:
-        consultedCompetencePeriod:
-          type: string
-          nullable: true
-        currentCompetencePeriod:
-          type: string
-          nullable: true
-        startCompetencePeriod:
-          type: string
-          nullable: true
-        endCompetencePeriod:
-          type: string
-          nullable: true
-        initNotificationInfoDate:
-          type: string
-          nullable: true
-        endNotificationInfoDate:
-          type: string
-          nullable: true
-        initLimitBookkeepingDate:
-          type: string
-          nullable: true
-        endLimitBookkeepingDate:
-          type: string
-          nullable: true
-        paymentTransferDocDate:
-          type: string
-          nullable: true
-        limitTransferDate:
-          type: string
-          nullable: true
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
       additionalProperties: false
     Errs:
       type: object
       properties:
         code:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         message:
-          type: string
-          nullable: true
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        correlationId:
-          type: string
-          nullable: true
-        status:
-          type: string
-          nullable: true
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Errs'
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     AnnotationCompetenceCalendarQueryType:
       enum:
       - COMPETENCE_INFO
       - CALENDAR_DETAILS
       type: string
+    AnnotationCompetenceCalendarResponse:
+      type: object
+      properties:
+        consultedCompetencePeriod:
+          type:
+          - string
+          - 'null'
+        currentCompetencePeriod:
+          type:
+          - string
+          - 'null'
+        startCompetencePeriod:
+          type:
+          - string
+          - 'null'
+        endCompetencePeriod:
+          type:
+          - string
+          - 'null'
+        initNotificationInfoDate:
+          type:
+          - string
+          - 'null'
+        endNotificationInfoDate:
+          type:
+          - string
+          - 'null'
+        initLimitBookkeepingDate:
+          type:
+          - string
+          - 'null'
+        endLimitBookkeepingDate:
+          type:
+          - string
+          - 'null'
+        paymentTransferDocDate:
+          type:
+          - string
+          - 'null'
+        limitTransferDate:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
   securitySchemes:
     Bearer:
       type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      scheme: bearer
       bearerFormat: JWT

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance--webservice AnnotationCompetenceCalendar Settlement API
+  title: billissuance--webservice Settlement API
   version: v1.0.0
 servers:
 - url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
@@ -11,7 +11,7 @@ paths:
     post:
       tags:
       - Settlement
-      summary: Inclusão da baixa do boleto.
+      summary: Inclusão da baixa do boleto
       requestBody:
         description: Requisição para baixa dos boletos.
         content:
@@ -90,11 +90,13 @@ paths:
                 $ref: '#/components/schemas/WebExceptionResponse'
       security:
       - Bearer: []
+      operationId: postSettlement
+      x-operation-id-source: derived
   /settlement/{id}:
     get:
       tags:
       - Settlement
-      summary: Consulta da baixa do boleto.
+      summary: Consulta da baixa do boleto
       parameters:
       - name: id
         in: path
@@ -166,46 +168,118 @@ paths:
                 $ref: '#/components/schemas/WebExceptionResponse'
       security:
       - Bearer: []
+      operationId: getSettlementById
+      x-operation-id-source: derived
 components:
   schemas:
-    WebExceptionResponse:
+    Settlement:
       type: object
       properties:
-        code:
+        id:
           type: string
-          description: Propriedade `Code` Código da exceção.
-          nullable: true
-        statusCode:
+          description: Propriedade `Id` Identificador único gerado automaticamente.
+          example: 66144a44ae0569aaf2d67b73
+        requestId:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `RequestId` Identificador único da requisição.
+          example: 0000000002-240517-000000000000000001
+        settlementOrigin:
+          $ref: '#/components/schemas/SettlementOrigin'
+        settlementType:
+          $ref: '#/components/schemas/SettlementType'
+        billId:
+          type: string
+          description: Propriedade `Id` Identificador único do boleto.
+          example: 66144a44ae0569aaf2d67b73
+        billNumber:
+          type:
+          - integer
+          - 'null'
+          description: Propriedade `BillNumber` Código indentificador do boleto na JD.
+          format: int64
+          example: 2.0221215e+19
+        barcode:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Barcode` Código de barras.
+          example: 07799707771500000100000029170110202309261131
+        settlementNumber:
+          type:
+          - integer
+          - 'null'
+          description: Propriedade `SettlementNumber` Código indentificador da baixa na JD.
+          format: int64
+          example: 2.0221215e+19
+        settlementReferenceNumber:
+          type:
+          - integer
+          - 'null'
+          description: Propriedade `SettlementReferenceNumber` Número Referência Atual Cadastro da Baixa.
+          format: int64
+          example: 3024061305151268898
+        status:
+          $ref: '#/components/schemas/SettlementStatus'
+        issuerISPB:
           type: integer
-          description: Propriedade `StatusCode` Código de status da exceção.
+          description: Propriedade `IssuerISPB`.
           format: int32
-        message:
-          type: string
-          description: Propriedade `StatusCode` Mensagem da exceção.
-          nullable: true
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebExceptionDetails'
-          description: Propriedade `Errors` Lista detalhes da exceção.
-          nullable: true
-      additionalProperties: false
-      description: Classe `WebExceptionResponse` Modelo de resposta de erro.
-    Tag:
-      type: object
-      properties:
-        key:
-          type: string
-          description: Propriedade `Name` Chave da tag.
-          nullable: true
-          example: IDSAP
+          example: 13935893
+        receiverISPB:
+          type: integer
+          description: Propriedade `ReceiverISPB`.
+          format: int32
+          example: 13935893
         value:
+          type:
+          - number
+          - 'null'
+          description: Propriedade `Value` Valor da baixa.
+          format: double
+          example: 145.2
+        receivableScheduleDelay:
+          type: integer
+          description: Propriedade `ReceivableScheduleDelay` Atraso do agendamento do recebimento.
+          format: int32
+          example: 0
+        receivableScheduleDate:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `ReceivableScheduleDate` Data do agendamento do recebimento.
+          format: date-time
+        tags:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: Propriedade `Tags` Lista de tags da baixa do boleto.
+        created:
           type: string
-          description: Propriedade `Name` Valor da tag.
-          nullable: true
-          example: '125262'
+          description: Propriedade `Created` Data de inclusão.
+          format: date-time
+        updated:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Updated` Data de alteração.
+          format: date-time
+        transactionIdIntegration:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `TransactionIdIntegration` ID da transação do integrador.
+        account:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Account` Conta do beneficiário.
+          example: '56532352571'
       additionalProperties: false
-      description: Classe `Tag` Modelo de tag de marcação da baixa.
+      description: Classe `Settlement` Modelo de baixa.
     SettlementOrigin:
       enum:
       - INTERBANCARIA
@@ -213,6 +287,40 @@ components:
       type: string
       description: Valores `SettlementOrigin` Tipo de origem da baixa.<p>Values:</p><ul><li><i>INTERBANCARIA</i> - Origem interbancaria.</li><li><i>INTRABANCARIA</i> - Origem intrabancaria.</li></ul>
       example: INTERBANCARIA
+    WebExceptionDetails:
+      type: object
+      properties:
+        field:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Field` Informação do campo com erro.
+        description:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Propriedade `Description` Mensagem de descrição do erro.
+      additionalProperties: false
+      description: Classe `WebExceptionDetails` Modelo de resposta de detalhes do erro.
+    Tag:
+      type: object
+      properties:
+        key:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Name` Chave da tag.
+          example: IDSAP
+        value:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Name` Valor da tag.
+          example: '125262'
+      additionalProperties: false
+      description: Classe `Tag` Modelo de tag de marcação da baixa.
     SettlementIssuanceRequest:
       required:
       - bankNumber
@@ -245,132 +353,14 @@ components:
           format: int64
           example: 143
         tags:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/TagRequest'
           description: Propriedade `Tags` Lista de tags de marcação.
-          nullable: true
       additionalProperties: false
       description: Classe `SettlementIssuanceRequest` Modelo de requisição de inclusão de baixa via ponta destinatária.
-    SettlementType:
-      enum:
-      - SOLICITACAO_CEDENTE
-      - SOLICITACAO_DESTINATARIA
-      type: string
-      description: Valores `SettlementType` Tipo de baixa.<p>Values:</p><ul><li><i>SOLICITACAO_CEDENTE</i> - Baixa Solicitação Cedente.</li><li><i>SOLICITACAO_DESTINATARIA</i> - Baixa Solicitação Destinataria.</li></ul>
-      example: SOLICITACAO_CEDENTE
-    Settlement:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Propriedade `Id` Identificador único gerado automaticamente.
-          example: 66144a44ae0569aaf2d67b73
-        requestId:
-          type: string
-          description: Propriedade `RequestId` Identificador único da requisição.
-          nullable: true
-          example: 0000000002-240517-000000000000000001
-        settlementOrigin:
-          $ref: '#/components/schemas/SettlementOrigin'
-        settlementType:
-          $ref: '#/components/schemas/SettlementType'
-        billId:
-          type: string
-          description: Propriedade `Id` Identificador único do boleto.
-          example: 66144a44ae0569aaf2d67b73
-        billNumber:
-          type: integer
-          description: Propriedade `BillNumber` Código indentificador do boleto na JD.
-          format: int64
-          nullable: true
-          example: 2.0221215e+19
-        barcode:
-          type: string
-          description: Propriedade `Barcode` Código de barras.
-          nullable: true
-          example: 07799707771500000100000029170110202309261131
-        settlementNumber:
-          type: integer
-          description: Propriedade `SettlementNumber` Código indentificador da baixa na JD.
-          format: int64
-          nullable: true
-          example: 2.0221215e+19
-        settlementReferenceNumber:
-          type: integer
-          description: Propriedade `SettlementReferenceNumber` Número Referência Atual Cadastro da Baixa.
-          format: int64
-          nullable: true
-          example: 3024061305151268898
-        status:
-          $ref: '#/components/schemas/SettlementStatus'
-        issuerISPB:
-          type: integer
-          description: Propriedade `IssuerISPB`.
-          format: int32
-          example: 13935893
-        receiverISPB:
-          type: integer
-          description: Propriedade `ReceiverISPB`.
-          format: int32
-          example: 13935893
-        value:
-          type: number
-          description: Propriedade `Value` Valor da baixa.
-          format: double
-          nullable: true
-          example: 145.2
-        receivableScheduleDelay:
-          type: integer
-          description: Propriedade `ReceivableScheduleDelay` Atraso do agendamento do recebimento.
-          format: int32
-          example: 0
-        receivableScheduleDate:
-          type: string
-          description: Propriedade `ReceivableScheduleDate` Data do agendamento do recebimento.
-          format: date-time
-          nullable: true
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-          description: Propriedade `Tags` Lista de tags da baixa do boleto.
-          nullable: true
-        created:
-          type: string
-          description: Propriedade `Created` Data de inclusão.
-          format: date-time
-        updated:
-          type: string
-          description: Propriedade `Updated` Data de alteração.
-          format: date-time
-          nullable: true
-        transactionIdIntegration:
-          type: string
-          description: Propriedade `TransactionIdIntegration` ID da transação do integrador.
-          nullable: true
-        account:
-          type: string
-          description: Propriedade `Account` Conta do beneficiário.
-          nullable: true
-          example: '56532352571'
-      additionalProperties: false
-      description: Classe `Settlement` Modelo de baixa.
-    WebExceptionDetails:
-      type: object
-      properties:
-        field:
-          type: string
-          description: Propriedade `Field` Informação do campo com erro.
-          nullable: true
-        description:
-          type: array
-          items:
-            type: string
-          description: Propriedade `Description` Mensagem de descrição do erro.
-          nullable: true
-      additionalProperties: false
-      description: Classe `WebExceptionDetails` Modelo de resposta de detalhes do erro.
     TagRequest:
       required:
       - key
@@ -391,6 +381,13 @@ components:
           example: '125262'
       additionalProperties: false
       description: Classe `TagRequest` Modelo de requisição de tag de marcação da baixa.
+    SettlementType:
+      enum:
+      - SOLICITACAO_CEDENTE
+      - SOLICITACAO_DESTINATARIA
+      type: string
+      description: Valores `SettlementType` Tipo de baixa.<p>Values:</p><ul><li><i>SOLICITACAO_CEDENTE</i> - Baixa Solicitação Cedente.</li><li><i>SOLICITACAO_DESTINATARIA</i> - Baixa Solicitação Destinataria.</li></ul>
+      example: SOLICITACAO_CEDENTE
     SettlementStatus:
       enum:
       - PROCESSAMENTO
@@ -402,6 +399,32 @@ components:
       type: string
       description: Valores `SettlementStatus` Situação da baixa.<p>Values:</p><ul><li><i>PROCESSAMENTO</i> - Processamento.</li><li><i>REJEITADA</i> - Rejeitada.</li><li><i>REGISTRADA</i> - Registrada.</li><li><i>CANCELADA</i> - Cancelada.</li><li><i>DISTRIBUIDA</i> - Distribuida.</li><li><i>OCORRENCIA</i> - Ocorrência.</li></ul>
       example: PROCESSAMENTO
+    WebExceptionResponse:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Code` Código da exceção.
+        statusCode:
+          type: integer
+          description: Propriedade `StatusCode` Código de status da exceção.
+          format: int32
+        message:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `StatusCode` Mensagem da exceção.
+        details:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/WebExceptionDetails'
+          description: Propriedade `Errors` Lista detalhes da exceção.
+      additionalProperties: false
+      description: Classe `WebExceptionResponse` Modelo de resposta de erro.
   securitySchemes:
     Bearer:
       type: http

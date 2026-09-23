@@ -1,9 +1,9 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar Consignee API
-  version: v1.0.0
-servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+  title: Consignee API
+  version: 1.0.0.0
+security:
+- Bearer: []
 tags:
 - name: Consignee
 paths:
@@ -29,6 +29,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateConsigneeResponse'
+      summary: Create consignee
+      x-summary-source: derived
+      operationId: postConsignee
+      x-operation-id-source: derived
     put:
       tags:
       - Consignee
@@ -50,6 +54,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConsigneeResponse'
+      summary: Replace consignee
+      x-summary-source: derived
+      operationId: putConsignee
+      x-operation-id-source: derived
     get:
       tags:
       - Consignee
@@ -66,6 +74,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConsigneeResponse'
+      summary: Get consignee
+      x-summary-source: derived
+      operationId: getConsignee
+      x-operation-id-source: derived
     delete:
       tags:
       - Consignee
@@ -87,50 +99,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteConsigneeResponse'
+      summary: Delete consignee
+      x-summary-source: derived
+      operationId: deleteConsignee
+      x-operation-id-source: derived
 components:
   schemas:
-    TypeProduct:
+    CreditProviderType:
       enum:
-      - LOAN
-      - CARD_CREDIT
-      - CARD_BENEFICIARY
-      - MONTHLY_DESC
-      - SYNDICAL_DESC
-      - PORTABILITY
+      - SIAPE
+      - CT
+      - FGTS
+      - INSS
+      - ECONSIG_ARMY
+      - FACIL_PI
       type: string
-    CreateAgenciesResponse:
-      type: object
-      properties:
-        agencyId:
-          type: string
-          format: uuid
-        name:
-          type: string
-          nullable: true
-      additionalProperties: false
-    ConsigneeResponse:
-      type: object
-      properties:
-        consigneeId:
-          type: string
-          format: uuid
-        name:
-          type: string
-          nullable: true
-        certificateName:
-          type: string
-          nullable: true
-        uf:
-          type: string
-          nullable: true
-        client:
-          $ref: '#/components/schemas/ClientResponse'
-        agencies:
-          type: array
-          items:
-            $ref: '#/components/schemas/AgenciesResponse'
-          nullable: true
-      additionalProperties: false
     CreateConsigneeResponse:
       required:
       - status
@@ -140,13 +123,306 @@ components:
           type: string
           format: uuid
         agencies:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/CreateAgenciesResponse'
-          nullable: true
         status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AgenciesRequest:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        password:
+          type:
+          - string
+          - 'null'
+        user:
+          type:
+          - string
+          - 'null'
+        agencyType:
+          $ref: '#/components/schemas/CreditProviderType'
+        apiKey:
+          type:
+          - string
+          - 'null'
+        registrationName:
+          type:
+          - string
+          - 'null'
+        rubricConfigs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RubricConfigRequest'
+      additionalProperties: false
+    RubricConfigRequest:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        partnerCode:
+          type:
+          - string
+          - 'null'
+        serviceCode:
+          type:
+          - string
+          - 'null'
+        typeProduct:
+          $ref: '#/components/schemas/TypeProduct'
+      additionalProperties: false
+    TypeProduct:
+      enum:
+      - LOAN
+      - CARD_CREDIT
+      - CARD_BENEFICIARY
+      - MONTHLY_DESC
+      - SYNDICAL_DESC
+      - PORTABILITY
+      type: string
+    UpdateRubricConfigRequest:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        partnerCode:
+          type:
+          - string
+          - 'null'
+        serviceCode:
+          type:
+          - string
+          - 'null'
+        typeProduct:
+          $ref: '#/components/schemas/TypeProduct'
+        exclude:
+          type: boolean
+      additionalProperties: false
+    CreateAgenciesResponse:
+      type: object
+      properties:
+        agencyId:
           type: string
-          nullable: true
+          format: uuid
+        name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ConsigneeResponse:
+      type: object
+      properties:
+        consigneeId:
+          type: string
+          format: uuid
+        name:
+          type:
+          - string
+          - 'null'
+        certificateName:
+          type:
+          - string
+          - 'null'
+        uf:
+          type:
+          - string
+          - 'null'
+        client:
+          $ref: '#/components/schemas/ClientResponse'
+        agencies:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AgenciesResponse'
+      additionalProperties: false
+    RubricConfigResponse:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        partnerCode:
+          type:
+          - string
+          - 'null'
+        serviceCode:
+          type:
+          - string
+          - 'null'
+        typeProduct:
+          $ref: '#/components/schemas/TypeProduct'
+      additionalProperties: false
+    ClientResponse:
+      type: object
+      properties:
+        clientId:
+          type:
+          - string
+          - 'null'
+        localId:
+          type:
+          - string
+          - 'null'
+        userId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AgenciesResponse:
+      type: object
+      properties:
+        agencyId:
+          type: string
+          format: uuid
+        code:
+          type:
+          - string
+          - 'null'
+        password:
+          type:
+          - string
+          - 'null'
+        user:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        apiKey:
+          type:
+          - string
+          - 'null'
+        registrationName:
+          type:
+          - string
+          - 'null'
+        rubricConfigs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RubricConfigResponse'
+        updateAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    UpdateAgenciesResquest:
+      type: object
+      properties:
+        agencyId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        code:
+          type:
+          - string
+          - 'null'
+        password:
+          type:
+          - string
+          - 'null'
+        user:
+          type:
+          - string
+          - 'null'
+        agencyType:
+          $ref: '#/components/schemas/CreditProviderType'
+        apiKey:
+          type:
+          - string
+          - 'null'
+        registrationName:
+          type:
+          - string
+          - 'null'
+        rubricConfigs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UpdateRubricConfigRequest'
+      additionalProperties: false
+    CreateConsigneeRequest:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        certificateName:
+          type:
+          - string
+          - 'null'
+        uf:
+          type:
+          - string
+          - 'null'
+        agencies:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AgenciesRequest'
+      additionalProperties: false
+    DeleteConsigneeResponse:
+      type: object
+      properties:
+        consigneeId:
+          type: string
+          format: uuid
+        name:
+          type:
+          - string
+          - 'null'
+        certificateName:
+          type:
+          - string
+          - 'null'
+        uf:
+          type:
+          - string
+          - 'null'
+        client:
+          $ref: '#/components/schemas/ClientResponse'
+        agency:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AgenciesResponse'
       additionalProperties: false
     UpdateConsigneeRequest:
       required:
@@ -157,232 +433,27 @@ components:
           type: string
           format: uuid
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         certificateName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         uf:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         agencies:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/UpdateAgenciesResquest'
-          nullable: true
-      additionalProperties: false
-    UpdateRubricConfigRequest:
-      type: object
-      properties:
-        code:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        partnerCode:
-          type: string
-          nullable: true
-        serviceCode:
-          type: string
-          nullable: true
-        typeProduct:
-          $ref: '#/components/schemas/TypeProduct'
-        exclude:
-          type: boolean
-      additionalProperties: false
-    AgenciesRequest:
-      type: object
-      properties:
-        code:
-          type: string
-          nullable: true
-        password:
-          type: string
-          nullable: true
-        user:
-          type: string
-          nullable: true
-        agencyType:
-          $ref: '#/components/schemas/CreditProviderType'
-        apiKey:
-          type: string
-          nullable: true
-        registrationName:
-          type: string
-          nullable: true
-        rubricConfigs:
-          type: array
-          items:
-            $ref: '#/components/schemas/RubricConfigRequest'
-          nullable: true
-      additionalProperties: false
-    UpdateAgenciesResquest:
-      type: object
-      properties:
-        agencyId:
-          type: string
-          format: uuid
-          nullable: true
-        code:
-          type: string
-          nullable: true
-        password:
-          type: string
-          nullable: true
-        user:
-          type: string
-          nullable: true
-        agencyType:
-          $ref: '#/components/schemas/CreditProviderType'
-        apiKey:
-          type: string
-          nullable: true
-        registrationName:
-          type: string
-          nullable: true
-        rubricConfigs:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateRubricConfigRequest'
-          nullable: true
-      additionalProperties: false
-    AgenciesResponse:
-      type: object
-      properties:
-        agencyId:
-          type: string
-          format: uuid
-        code:
-          type: string
-          nullable: true
-        password:
-          type: string
-          nullable: true
-        user:
-          type: string
-          nullable: true
-        name:
-          type: string
-          nullable: true
-        apiKey:
-          type: string
-          nullable: true
-        registrationName:
-          type: string
-          nullable: true
-        rubricConfigs:
-          type: array
-          items:
-            $ref: '#/components/schemas/RubricConfigResponse'
-          nullable: true
-        updateAt:
-          type: string
-          format: date-time
-          nullable: true
-      additionalProperties: false
-    CreateConsigneeRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          nullable: true
-        certificateName:
-          type: string
-          nullable: true
-        uf:
-          type: string
-          nullable: true
-        agencies:
-          type: array
-          items:
-            $ref: '#/components/schemas/AgenciesRequest'
-          nullable: true
-      additionalProperties: false
-    CreditProviderType:
-      enum:
-      - SIAPE
-      - CT
-      - FGTS
-      - INSS
-      - ECONSIG_ARMY
-      - FACIL_PI
-      type: string
-    RubricConfigResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        partnerCode:
-          type: string
-          nullable: true
-        serviceCode:
-          type: string
-          nullable: true
-        typeProduct:
-          $ref: '#/components/schemas/TypeProduct'
-      additionalProperties: false
-    RubricConfigRequest:
-      type: object
-      properties:
-        code:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        partnerCode:
-          type: string
-          nullable: true
-        serviceCode:
-          type: string
-          nullable: true
-        typeProduct:
-          $ref: '#/components/schemas/TypeProduct'
-      additionalProperties: false
-    DeleteConsigneeResponse:
-      type: object
-      properties:
-        consigneeId:
-          type: string
-          format: uuid
-        name:
-          type: string
-          nullable: true
-        certificateName:
-          type: string
-          nullable: true
-        uf:
-          type: string
-          nullable: true
-        client:
-          $ref: '#/components/schemas/ClientResponse'
-        agency:
-          type: array
-          items:
-            $ref: '#/components/schemas/AgenciesResponse'
-          nullable: true
-      additionalProperties: false
-    ClientResponse:
-      type: object
-      properties:
-        clientId:
-          type: string
-          nullable: true
-        localId:
-          type: string
-          nullable: true
-        userId:
-          type: string
-          nullable: true
       additionalProperties: false
   securitySchemes:
     Bearer:
       type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      scheme: bearer
       bearerFormat: JWT

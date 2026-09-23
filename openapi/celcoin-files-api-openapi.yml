@@ -1,9 +1,12 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: billissuance-settlement-webservice AnnotationCompetenceCalendar Files API
+  title: Onboarding.Proposal.Webservice Files API
   version: v1.0.0
 servers:
-- url: https://sandbox.openfinance.celcoin.dev/billissuance/v1
+- url: https://sandbox.openfinance.celcoin.dev/onboarding/v1
+- url: https://api.openfinance.celcoin.com.br/onboarding/v1
+security:
+- Bearer: []
 tags:
 - name: Files
 paths:
@@ -11,7 +14,7 @@ paths:
     get:
       tags:
       - Files
-      summary: Busca um arquivo ou uma lista de arquivos.
+      summary: Busca um arquivo ou uma lista de arquivos
       parameters:
       - name: ProposalId
         in: query
@@ -58,80 +61,95 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: getOnboardingProposalFiles
+      x-operation-id-source: derived
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        version:
-          type: string
-          description: Versão da api.
-          nullable: true
-          example: 1.0.0
-        status:
-          type: string
-          description: Status da solicitação.
-          nullable: true
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
     BlobFile:
       type: object
       properties:
         type:
-          type: string
-          description: "Tipo do arquivo\r\n- CNH_FRONT,\r\n- CNH_BACK,\r\n- RG_FRONT,\r\n- RG_BACK,\r\n- RNE_FRONT,\r\n- RNE_BACK,\r\n- CONTRATO_SOCIAL,\r\n- DOCUMENTO_FINANCEIRO,\r\n- PROCURACAO_PODERES,\r\n- SELFIE"
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: 'Tipo do arquivo
+
+            - CNH_FRONT,
+
+            - CNH_BACK,
+
+            - RG_FRONT,
+
+            - RG_BACK,
+
+            - RNE_FRONT,
+
+            - RNE_BACK,
+
+            - CONTRATO_SOCIAL,
+
+            - DOCUMENTO_FINANCEIRO,
+
+            - PROCURACAO_PODERES,
+
+            - SELFIE'
         url:
-          type: string
+          type:
+          - string
+          - 'null'
           description: URL para acessar o arquivo.
-          nullable: true
         expirationTime:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Tempo de expiração da URL.
-          nullable: true
       additionalProperties: false
       description: Arquivo do Blob
     SearchFilesResponse:
       type: object
       properties:
         files:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/BlobFile'
-          nullable: true
         clientCode:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Identificador único fornecido pelo cliente.
-          nullable: true
           example: 123abdgh-c11f-4c88-af6b-d227d88b5183
         documentNumber:
-          type: string
+          type:
+          - string
+          - 'null'
           description: CPF ou CNPJ vinculado à proposta.
-          nullable: true
           example: '12345678909'
         proposalId:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Identificador da proposta.
-          nullable: true
           example: ab11113e-f123-4a7f-9010-99b064038038
       additionalProperties: false
-    SearchFilesResponseSuccessResponse:
+    ErrorResponse:
       type: object
       properties:
         version:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Versão da api.
-          nullable: true
           example: 1.0.0
         status:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Status da solicitação.
-          nullable: true
           example: SUCCESS
-        body:
-          $ref: '#/components/schemas/SearchFilesResponse'
+        error:
+          $ref: '#/components/schemas/ResponseError'
       additionalProperties: false
     ResponseError:
       required:
@@ -150,9 +168,27 @@ components:
           description: Mensagem de erro.
           example: Ocorreu um erro interno durante a chamada da api..
       additionalProperties: false
+    SearchFilesResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/SearchFilesResponse'
+      additionalProperties: false
   securitySchemes:
     Bearer:
-      type: http
-      description: Autenticação utilizando JTW Bearer Token
-      scheme: Bearer
-      bearerFormat: JWT
+      type: apiKey
+      description: '[API V5] - Please enter into field the word ''Bearer'' following by space and the access_token (JWT)'
+      name: Authorization
+      in: header
