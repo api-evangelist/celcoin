@@ -65,22 +65,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Browser:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do navegador.
-          example: Chrome
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do navegador.
-          example: 126.0.0.0
-      additionalProperties: false
     Os:
       type: object
       properties:
@@ -102,6 +86,80 @@ components:
           - 'null'
           description: Nome da versão do sistema operacional.
           example: 10.1.0
+      additionalProperties: false
+    Browser:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do navegador.
+          example: Chrome
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão do navegador.
+          example: 126.0.0.0
+      additionalProperties: false
+    Platform:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+          description: Tipo da plataforma.
+          example: Crowdfunding
+        vendor:
+          type:
+          - string
+          - 'null'
+          description: Fornecedor.
+          example: Crowdcube
+        model:
+          type:
+          - string
+          - 'null'
+          description: Modelo.
+          example: Equity-Based
+      additionalProperties: false
+    DevicesFunnel:
+      type: object
+      properties:
+        browser:
+          $ref: '#/components/schemas/Browser'
+        os:
+          $ref: '#/components/schemas/Os'
+        platform:
+          $ref: '#/components/schemas/Platform'
+        engine:
+          $ref: '#/components/schemas/Engine'
+        useragent:
+          type:
+          - string
+          - 'null'
+          description: String de texto que contém informações sobre o navegador.
+          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
       additionalProperties: false
     TagginJourneyResponseSuccessResponse:
       type: object
@@ -188,23 +246,22 @@ components:
             $ref: '#/components/schemas/StepFunnel'
           description: Lista das etapas da jornada.
       additionalProperties: false
-    DevicesFunnel:
+    ResponseError:
+      required:
+      - errorCode
+      - message
       type: object
       properties:
-        browser:
-          $ref: '#/components/schemas/Browser'
-        os:
-          $ref: '#/components/schemas/Os'
-        platform:
-          $ref: '#/components/schemas/Platform'
-        engine:
-          $ref: '#/components/schemas/Engine'
-        useragent:
-          type:
-          - string
-          - 'null'
-          description: String de texto que contém informações sobre o navegador.
-          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
       additionalProperties: false
     Engine:
       type: object
@@ -343,63 +400,6 @@ components:
           - 'null'
           description: Tipo da plataforma.
           example: mobile
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
-    Platform:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-          description: Tipo da plataforma.
-          example: Crowdfunding
-        vendor:
-          type:
-          - string
-          - 'null'
-          description: Fornecedor.
-          example: Crowdcube
-        model:
-          type:
-          - string
-          - 'null'
-          description: Modelo.
-          example: Equity-Based
-      additionalProperties: false
-    ResponseError:
-      required:
-      - errorCode
-      - message
-      type: object
-      properties:
-        errorCode:
-          minLength: 1
-          type: string
-          description: Código de erro gerado pela Celcoin.
-          example: OIE999
-        message:
-          minLength: 1
-          type: string
-          description: Mensagem de erro.
-          example: Ocorreu um erro interno durante a chamada da api..
       additionalProperties: false
   securitySchemes:
     Bearer:

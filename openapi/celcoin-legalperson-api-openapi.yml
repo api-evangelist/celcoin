@@ -64,152 +64,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    LegalPersonResponse:
+    LegalPersonResponseProcessingResponse:
       type: object
       properties:
-        proposalId:
+        version:
           type:
           - string
           - 'null'
-          description: Identificador da proposta criada.
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
+          description: Versão da api.
+          example: 1.0.0
+        status:
           type:
           - string
           - 'null'
-          description: Identificador único fornecido pelo cliente.
-          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
-        documentNumber:
-          type:
-          - string
-          - 'null'
-          description: CNPJ da proposta criada.
-          example: '12345678900001'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/LegalPersonResponse'
       additionalProperties: false
-    AddressRequest:
-      required:
-      - city
-      - neighborhood
-      - number
-      - postalCode
-      - state
-      - street
-      type: object
-      properties:
-        postalCode:
-          maxLength: 8
-          minLength: 1
-          type: string
-          description: Número do CEP.
-          example: '12211400'
-        street:
-          maxLength: 200
-          minLength: 1
-          type: string
-          description: Nome da rua.
-          example: Rua da Liberdade
-        number:
-          minLength: 1
-          type: string
-          description: Número do endereço.
-          example: '313'
-        addressComplement:
-          type:
-          - string
-          - 'null'
-          description: Complemento do endereço.
-          example: Em frente ao parque.
-        neighborhood:
-          maxLength: 200
-          minLength: 1
-          type: string
-          description: Nome do bairro.
-          example: Casa Verde
-        city:
-          maxLength: 100
-          minLength: 1
-          type: string
-          description: Nome da Cidade.
-          example: São Paulo
-        state:
-          minLength: 1
-          type: string
-          description: Sigla do Estado referente ao endereço informado.
-          example: SP
-      additionalProperties: false
-      description: Endereço.
-    FileRequest:
-      required:
-      - data
-      - type
-      type: object
-      properties:
-        type:
-          minLength: 1
-          type: string
-          description: 'Tipo de file:
-
-            - OUTROS,
-
-            - CNH_FRONT,
-
-            - CNH_BACK,
-
-            - RG_FRONT,
-
-            - RG_BACK,
-
-            - RNE_FRONT,
-
-            - RNE_BACK,
-
-            - CONTRATO_SOCIAL,
-
-            - DOCUMENTO_FINANCEIRO,
-
-            - PROCURACAO_PODERES,
-
-            - SELFIE,
-
-            - RNM_FRONT,
-
-            - RNM_BACK,
-
-            - CRLV_FRONT,
-
-            - CRLV_BACK,
-
-            - CTPS_FRONT,
-
-            - CTPS_BACK,
-
-            - PASSPORT_FRONT,
-
-            - PASSPORT_BACK,
-
-            - OUTROS_FRONT,
-
-            - OUTROS_BACK,
-
-            - DRE,
-
-            - COMPROVANTE_RESIDENCIA,
-
-            - COMPROVANTE_RENDA,
-
-            - DOCUMENTO_LEGAL,
-
-            - DECLARACAO_ANUAL,
-
-            - DECLARACAO_CONFIRMACAO'
-          example: RG_FRONT
-        data:
-          minLength: 1
-          type: string
-          description: URL do arquivo.
-          example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
-      additionalProperties: false
-      description: Representante/Sócio
     OwnerRequest:
       required:
       - address
@@ -284,23 +156,6 @@ components:
           $ref: '#/components/schemas/OwnerFinancialDetailsRequest'
       additionalProperties: false
       description: Representante/Sócio
-    ResponseError:
-      required:
-      - errorCode
-      - message
-      type: object
-      properties:
-        errorCode:
-          minLength: 1
-          type: string
-          description: Código de erro gerado pela Celcoin.
-          example: OIE999
-        message:
-          minLength: 1
-          type: string
-          description: Mensagem de erro.
-          example: Ocorreu um erro interno durante a chamada da api..
-      additionalProperties: false
     OwnerFinancialDetailsRequest:
       type: object
       properties:
@@ -330,23 +185,6 @@ components:
           example: OPRB01
       additionalProperties: false
       description: Detalhes financeiros do sócio/representante.
-    CompanyFinancialDetailsRequest:
-      type: object
-      properties:
-        declaredCompanyRevenue:
-          type:
-          - string
-          - 'null'
-          description: Faturamento declarado da empresa.
-          example: DCRB01
-        presumedCompanyRevenue:
-          type:
-          - string
-          - 'null'
-          description: Faturamento presumido da empresa.
-          example: PCRB01
-      additionalProperties: false
-      description: Detalhes financeiros da empresa.
     ErrorResponse:
       type: object
       properties:
@@ -364,24 +202,6 @@ components:
           example: SUCCESS
         error:
           $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
-    LegalPersonResponseProcessingResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/LegalPersonResponse'
       additionalProperties: false
     LegalPersonRequest:
       required:
@@ -467,6 +287,186 @@ components:
           description: Documentos Enviados
         financialCompanyDetails:
           $ref: '#/components/schemas/CompanyFinancialDetailsRequest'
+      additionalProperties: false
+    AddressRequest:
+      required:
+      - city
+      - neighborhood
+      - number
+      - postalCode
+      - state
+      - street
+      type: object
+      properties:
+        postalCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+          description: Número do CEP.
+          example: '12211400'
+        street:
+          maxLength: 200
+          minLength: 1
+          type: string
+          description: Nome da rua.
+          example: Rua da Liberdade
+        number:
+          minLength: 1
+          type: string
+          description: Número do endereço.
+          example: '313'
+        addressComplement:
+          type:
+          - string
+          - 'null'
+          description: Complemento do endereço.
+          example: Em frente ao parque.
+        neighborhood:
+          maxLength: 200
+          minLength: 1
+          type: string
+          description: Nome do bairro.
+          example: Casa Verde
+        city:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Nome da Cidade.
+          example: São Paulo
+        state:
+          minLength: 1
+          type: string
+          description: Sigla do Estado referente ao endereço informado.
+          example: SP
+      additionalProperties: false
+      description: Endereço.
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
+    FileRequest:
+      required:
+      - data
+      - type
+      type: object
+      properties:
+        type:
+          minLength: 1
+          type: string
+          description: 'Tipo de file:
+
+            - OUTROS,
+
+            - CNH_FRONT,
+
+            - CNH_BACK,
+
+            - RG_FRONT,
+
+            - RG_BACK,
+
+            - RNE_FRONT,
+
+            - RNE_BACK,
+
+            - CONTRATO_SOCIAL,
+
+            - DOCUMENTO_FINANCEIRO,
+
+            - PROCURACAO_PODERES,
+
+            - SELFIE,
+
+            - RNM_FRONT,
+
+            - RNM_BACK,
+
+            - CRLV_FRONT,
+
+            - CRLV_BACK,
+
+            - CTPS_FRONT,
+
+            - CTPS_BACK,
+
+            - PASSPORT_FRONT,
+
+            - PASSPORT_BACK,
+
+            - OUTROS_FRONT,
+
+            - OUTROS_BACK,
+
+            - DRE,
+
+            - COMPROVANTE_RESIDENCIA,
+
+            - COMPROVANTE_RENDA,
+
+            - DOCUMENTO_LEGAL,
+
+            - DECLARACAO_ANUAL,
+
+            - DECLARACAO_CONFIRMACAO'
+          example: RG_FRONT
+        data:
+          minLength: 1
+          type: string
+          description: URL do arquivo.
+          example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
+      additionalProperties: false
+      description: Representante/Sócio
+    CompanyFinancialDetailsRequest:
+      type: object
+      properties:
+        declaredCompanyRevenue:
+          type:
+          - string
+          - 'null'
+          description: Faturamento declarado da empresa.
+          example: DCRB01
+        presumedCompanyRevenue:
+          type:
+          - string
+          - 'null'
+          description: Faturamento presumido da empresa.
+          example: PCRB01
+      additionalProperties: false
+      description: Detalhes financeiros da empresa.
+    LegalPersonResponse:
+      type: object
+      properties:
+        proposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador da proposta criada.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: CNPJ da proposta criada.
+          example: '12345678900001'
       additionalProperties: false
   securitySchemes:
     Bearer:

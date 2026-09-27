@@ -38,7 +38,6 @@ x-docs-platform-confidence: high
 x-docs-platform-checked: 2026-09-21
 tags:
   - Banking as a Service
-  - Backend-as-a-Service
   - Pix
   - Boleto
   - TED
@@ -53,7 +52,6 @@ tags:
   - Financial Infrastructure
 tags_raw:
   - Banking as a Service
-  - BaaS
   - Pix
   - Boleto
   - TED

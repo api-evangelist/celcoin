@@ -245,18 +245,14 @@ components:
           items:
             $ref: '#/components/schemas/Contact'
       additionalProperties: false
-    Contact:
-      required:
-      - contactValue
-      type: object
-      properties:
-        contactType:
-          $ref: '#/components/schemas/ProposalContact'
-        contactValue:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
+    ProposalContact:
+      enum:
+      - URL
+      - WHATSAPP
+      - PHONE
+      - EMAIL
+      - OTHER
+      type: string
     ErrorResponse:
       type: object
       properties:
@@ -275,14 +271,18 @@ components:
           items:
             $ref: '#/components/schemas/Errs'
       additionalProperties: false
-    ProposalContact:
-      enum:
-      - URL
-      - WHATSAPP
-      - PHONE
-      - EMAIL
-      - OTHER
-      type: string
+    Contact:
+      required:
+      - contactValue
+      type: object
+      properties:
+        contactType:
+          $ref: '#/components/schemas/ProposalContact'
+        contactValue:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Errs:
       type: object
       properties:
@@ -317,6 +317,24 @@ components:
           - string
           - 'null'
           format: date-time
+      additionalProperties: false
+    SearchProposalResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/SearchProposalResponse'
       additionalProperties: false
     ProposalResponse:
       type: object
@@ -391,69 +409,6 @@ components:
             $ref: '#/components/schemas/DocumentscopyResponse'
       additionalProperties: false
       description: Proposta(s) retornada(s).
-    SearchProposalResponse:
-      type: object
-      properties:
-        limit:
-          type: integer
-          description: Total de propostas.
-          format: int32
-        currentPage:
-          type: integer
-          description: Página atual.
-          format: int32
-        limitPerPage:
-          type: integer
-          description: Total de propostas por página.
-          format: int32
-        totalPages:
-          type: integer
-          description: Total de páginas retornadas.
-          format: int32
-        totalItems:
-          type: integer
-          description: Total de propostas retornadas.
-          format: int32
-        proposal:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProposalResponse'
-      additionalProperties: false
-    RejectedReasonResponse:
-      type: object
-      properties:
-        errorCode:
-          type:
-          - string
-          - 'null'
-          description: Código de erro referente à rejeição da proposta.
-        message:
-          type:
-          - string
-          - 'null'
-          description: Motivo da rejeição da proposta.
-      additionalProperties: false
-      description: Motivo pelo qual a proposta foi rejeitada.
-    SearchProposalResponseSuccessResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/SearchProposalResponse'
-      additionalProperties: false
     ErrorResponse_2:
       type: object
       properties:
@@ -471,23 +426,6 @@ components:
           example: SUCCESS
         error:
           $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
-    ResponseError:
-      required:
-      - errorCode
-      - message
-      type: object
-      properties:
-        errorCode:
-          minLength: 1
-          type: string
-          description: Código de erro gerado pela Celcoin.
-          example: OIE999
-        message:
-          minLength: 1
-          type: string
-          description: Mensagem de erro.
-          example: Ocorreu um erro interno durante a chamada da api..
       additionalProperties: false
     DocumentscopyResponse:
       type: object
@@ -542,6 +480,68 @@ components:
           format: date-time
       additionalProperties: false
       description: Documentoscopia(s) retornada(s).
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
+    RejectedReasonResponse:
+      type: object
+      properties:
+        errorCode:
+          type:
+          - string
+          - 'null'
+          description: Código de erro referente à rejeição da proposta.
+        message:
+          type:
+          - string
+          - 'null'
+          description: Motivo da rejeição da proposta.
+      additionalProperties: false
+      description: Motivo pelo qual a proposta foi rejeitada.
+    SearchProposalResponse:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: Total de propostas.
+          format: int32
+        currentPage:
+          type: integer
+          description: Página atual.
+          format: int32
+        limitPerPage:
+          type: integer
+          description: Total de propostas por página.
+          format: int32
+        totalPages:
+          type: integer
+          description: Total de páginas retornadas.
+          format: int32
+        totalItems:
+          type: integer
+          description: Total de propostas retornadas.
+          format: int32
+        proposal:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProposalResponse'
+      additionalProperties: false
   securitySchemes:
     Bearer:
       type: http

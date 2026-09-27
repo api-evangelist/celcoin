@@ -59,24 +59,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        correlationId:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
-      additionalProperties: false
     RenegotiationGuaranteeLegacyRequest:
       required:
       - amount
@@ -152,6 +134,36 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
+      additionalProperties: false
+    Errs:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     GuaranteeResponse:
       required:
       - annotationType
@@ -169,18 +181,6 @@ components:
           - string
           - 'null'
         annotationType:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
           type:
           - string
           - 'null'

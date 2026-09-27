@@ -199,6 +199,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    OutstandingBalancePaymentResponse:
+      type: object
+      properties:
+        outstandingBalancePaymentId:
+          type: string
+          format: uuid
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     OutstandingBalanceRejectedResponse:
       type: object
       properties:
@@ -213,18 +228,74 @@ components:
           type: string
           format: date-time
       additionalProperties: false
-    OutstandingBalanceInformedResponse:
+    InfoAccount:
       required:
-      - status
+      - bank
+      - branch
+      - number
+      type: object
+      properties:
+        bank:
+          type:
+          - string
+          - 'null'
+        branch:
+          type:
+          - string
+          - 'null'
+        number:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SettledPurchaseResponse:
       type: object
       properties:
         outstandingBalanceInformedId:
           type: string
           format: uuid
-        createdAt:
+        statusOutstandingBalanceInformed:
+          type:
+          - string
+          - 'null'
+        updateAt:
           type: string
           format: date-time
+        annotationId:
+          type: string
+          format: uuid
+        statusAnnotation:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
         status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
+      additionalProperties: false
+    OutstandingBalanceRejectedRequest:
+      required:
+      - outstandingBalanceInformedId
+      type: object
+      properties:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        description:
           type:
           - string
           - 'null'
@@ -269,43 +340,18 @@ components:
         infoAccount:
           $ref: '#/components/schemas/InfoAccount'
       additionalProperties: false
-    SettledPurchaseResponse:
+    OutstandingBalanceInformedResponse:
+      required:
+      - status
       type: object
       properties:
         outstandingBalanceInformedId:
           type: string
           format: uuid
-        statusOutstandingBalanceInformed:
-          type:
-          - string
-          - 'null'
-        updateAt:
+        createdAt:
           type: string
           format: date-time
-        annotationId:
-          type: string
-          format: uuid
-        statusAnnotation:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    InfoAccount:
-      required:
-      - bank
-      - branch
-      - number
-      type: object
-      properties:
-        bank:
-          type:
-          - string
-          - 'null'
-        branch:
-          type:
-          - string
-          - 'null'
-        number:
+        status:
           type:
           - string
           - 'null'
@@ -313,52 +359,6 @@ components:
     Errs:
       type: object
       properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        correlationId:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
-      additionalProperties: false
-    OutstandingBalanceRejectedRequest:
-      required:
-      - outstandingBalanceInformedId
-      type: object
-      properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        description:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    OutstandingBalancePaymentResponse:
-      type: object
-      properties:
-        outstandingBalancePaymentId:
-          type: string
-          format: uuid
         code:
           type:
           - string
