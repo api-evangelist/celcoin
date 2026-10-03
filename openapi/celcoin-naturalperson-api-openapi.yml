@@ -126,139 +126,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    NaturalPersonUpdateResponse:
-      type: object
-      properties:
-        updateProposalId:
-          type:
-          - string
-          - 'null'
-          description: Identificador único da atualização criada.
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
-          type:
-          - string
-          - 'null'
-          description: Identificador único fornecido pelo cliente.
-          example: '123456'
-        documentNumber:
-          type:
-          - string
-          - 'null'
-          description: Número do documento do titular da conta.
-          example: '33333333333'
-        account:
-          type:
-          - string
-          - 'null'
-          description: Número da conta.
-          example: '300539137126128'
-      additionalProperties: false
-    NaturalPersonResponseProcessingResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/NaturalPersonResponse'
-      additionalProperties: false
-    NaturalPersonResponse:
-      type: object
-      properties:
-        proposalId:
-          type:
-          - string
-          - 'null'
-          description: Identificador da proposta criada.
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
-          type:
-          - string
-          - 'null'
-          description: Identificador único fornecido pelo cliente.
-          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
-        documentNumber:
-          type:
-          - string
-          - 'null'
-          description: CPF da proposta criada.
-          example: '12345678900'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
-    NaturalPersonUpdateRequest:
-      required:
-      - address
-      - clientCode
-      - email
-      - fullName
-      - motherName
-      - phoneNumber
-      type: object
-      properties:
-        clientCode:
-          minLength: 1
-          type: string
-          description: Identificador único fornecido pelo cliente.
-          example: '123456'
-        phoneNumber:
-          maxLength: 14
-          minLength: 1
-          type: string
-          description: Número telefone contato do titular da conta.
-          example: '+5512981175554'
-        email:
-          maxLength: 100
-          minLength: 1
-          type: string
-          description: E-mail do titular da conta.
-          example: email@email.com
-        motherName:
-          minLength: 1
-          type: string
-          description: Nome da mãe do titular da conta.
-          example: Nome Sobrenome
-        fullName:
-          maxLength: 120
-          minLength: 1
-          type: string
-          description: Nome completo do titular da conta.
-          example: Nome Sobrenome
-        socialName:
-          type:
-          - string
-          - 'null'
-          description: Nome social do titular da conta.
-          example: Nome
-        address:
-          $ref: '#/components/schemas/AddressRequest'
-      additionalProperties: false
     AddressRequest:
       required:
       - city
@@ -329,6 +196,95 @@ components:
         body:
           $ref: '#/components/schemas/NaturalPersonUpdateResponse'
       additionalProperties: false
+    FileRequest:
+      required:
+      - data
+      - type
+      type: object
+      properties:
+        type:
+          minLength: 1
+          type: string
+          description: 'Tipo de file:
+
+            - OUTROS,
+
+            - CNH_FRONT,
+
+            - CNH_BACK,
+
+            - RG_FRONT,
+
+            - RG_BACK,
+
+            - RNE_FRONT,
+
+            - RNE_BACK,
+
+            - CONTRATO_SOCIAL,
+
+            - DOCUMENTO_FINANCEIRO,
+
+            - PROCURACAO_PODERES,
+
+            - SELFIE,
+
+            - RNM_FRONT,
+
+            - RNM_BACK,
+
+            - CRLV_FRONT,
+
+            - CRLV_BACK,
+
+            - CTPS_FRONT,
+
+            - CTPS_BACK,
+
+            - PASSPORT_FRONT,
+
+            - PASSPORT_BACK,
+
+            - OUTROS_FRONT,
+
+            - OUTROS_BACK,
+
+            - DRE,
+
+            - COMPROVANTE_RESIDENCIA,
+
+            - COMPROVANTE_RENDA,
+
+            - DOCUMENTO_LEGAL,
+
+            - DECLARACAO_ANUAL,
+
+            - DECLARACAO_CONFIRMACAO'
+          example: RG_FRONT
+        data:
+          minLength: 1
+          type: string
+          description: URL do arquivo.
+          example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
+      additionalProperties: false
+      description: Representante/Sócio
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
     FinancialDetails:
       type: object
       properties:
@@ -369,6 +325,139 @@ components:
           - string
           - 'null'
           format: date-time
+      additionalProperties: false
+    NaturalPersonResponse:
+      type: object
+      properties:
+        proposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador da proposta criada.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: CPF da proposta criada.
+          example: '12345678900'
+      additionalProperties: false
+    NaturalPersonResponseProcessingResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/NaturalPersonResponse'
+      additionalProperties: false
+    NaturalPersonUpdateResponse:
+      type: object
+      properties:
+        updateProposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador único da atualização criada.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: '123456'
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: Número do documento do titular da conta.
+          example: '33333333333'
+        account:
+          type:
+          - string
+          - 'null'
+          description: Número da conta.
+          example: '300539137126128'
+      additionalProperties: false
+    NaturalPersonUpdateRequest:
+      required:
+      - address
+      - clientCode
+      - email
+      - fullName
+      - motherName
+      - phoneNumber
+      type: object
+      properties:
+        clientCode:
+          minLength: 1
+          type: string
+          description: Identificador único fornecido pelo cliente.
+          example: '123456'
+        phoneNumber:
+          maxLength: 14
+          minLength: 1
+          type: string
+          description: Número telefone contato do titular da conta.
+          example: '+5512981175554'
+        email:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: E-mail do titular da conta.
+          example: email@email.com
+        motherName:
+          minLength: 1
+          type: string
+          description: Nome da mãe do titular da conta.
+          example: Nome Sobrenome
+        fullName:
+          maxLength: 120
+          minLength: 1
+          type: string
+          description: Nome completo do titular da conta.
+          example: Nome Sobrenome
+        socialName:
+          type:
+          - string
+          - 'null'
+          description: Nome social do titular da conta.
+          example: Nome
+        address:
+          $ref: '#/components/schemas/AddressRequest'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
       additionalProperties: false
     NaturalPersonRequest:
       required:
@@ -453,95 +542,6 @@ components:
         financialDetails:
           $ref: '#/components/schemas/FinancialDetails'
       additionalProperties: false
-    ResponseError:
-      required:
-      - errorCode
-      - message
-      type: object
-      properties:
-        errorCode:
-          minLength: 1
-          type: string
-          description: Código de erro gerado pela Celcoin.
-          example: OIE999
-        message:
-          minLength: 1
-          type: string
-          description: Mensagem de erro.
-          example: Ocorreu um erro interno durante a chamada da api..
-      additionalProperties: false
-    FileRequest:
-      required:
-      - data
-      - type
-      type: object
-      properties:
-        type:
-          minLength: 1
-          type: string
-          description: 'Tipo de file:
-
-            - OUTROS,
-
-            - CNH_FRONT,
-
-            - CNH_BACK,
-
-            - RG_FRONT,
-
-            - RG_BACK,
-
-            - RNE_FRONT,
-
-            - RNE_BACK,
-
-            - CONTRATO_SOCIAL,
-
-            - DOCUMENTO_FINANCEIRO,
-
-            - PROCURACAO_PODERES,
-
-            - SELFIE,
-
-            - RNM_FRONT,
-
-            - RNM_BACK,
-
-            - CRLV_FRONT,
-
-            - CRLV_BACK,
-
-            - CTPS_FRONT,
-
-            - CTPS_BACK,
-
-            - PASSPORT_FRONT,
-
-            - PASSPORT_BACK,
-
-            - OUTROS_FRONT,
-
-            - OUTROS_BACK,
-
-            - DRE,
-
-            - COMPROVANTE_RESIDENCIA,
-
-            - COMPROVANTE_RENDA,
-
-            - DOCUMENTO_LEGAL,
-
-            - DECLARACAO_ANUAL,
-
-            - DECLARACAO_CONFIRMACAO'
-          example: RG_FRONT
-        data:
-          minLength: 1
-          type: string
-          description: URL do arquivo.
-          example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
-      additionalProperties: false
-      description: Representante/Sócio
   securitySchemes:
     Bearer:
       type: apiKey

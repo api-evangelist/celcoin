@@ -65,70 +65,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    SearchFilesResponse:
-      type: object
-      properties:
-        files:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/BlobFile'
-        clientCode:
-          type:
-          - string
-          - 'null'
-          description: Identificador único fornecido pelo cliente.
-          example: 123abdgh-c11f-4c88-af6b-d227d88b5183
-        documentNumber:
-          type:
-          - string
-          - 'null'
-          description: CPF ou CNPJ vinculado à proposta.
-          example: '12345678909'
-        proposalId:
-          type:
-          - string
-          - 'null'
-          description: Identificador da proposta.
-          example: ab11113e-f123-4a7f-9010-99b064038038
-      additionalProperties: false
-    SearchFilesResponseSuccessResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/SearchFilesResponse'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
     ResponseError:
       required:
       - errorCode
@@ -186,6 +122,70 @@ components:
           description: Tempo de expiração da URL.
       additionalProperties: false
       description: Arquivo do Blob
+    SearchFilesResponse:
+      type: object
+      properties:
+        files:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/BlobFile'
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: 123abdgh-c11f-4c88-af6b-d227d88b5183
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: CPF ou CNPJ vinculado à proposta.
+          example: '12345678909'
+        proposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador da proposta.
+          example: ab11113e-f123-4a7f-9010-99b064038038
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    SearchFilesResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/SearchFilesResponse'
+      additionalProperties: false
   securitySchemes:
     Bearer:
       type: apiKey

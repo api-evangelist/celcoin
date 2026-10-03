@@ -65,44 +65,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Os:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do sistema operacional.
-          example: Android
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do sistema operacional.
-          example: '10'
-        versionname:
-          type:
-          - string
-          - 'null'
-          description: Nome da versão do sistema operacional.
-          example: 10.1.0
-      additionalProperties: false
-    Browser:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do navegador.
-          example: Chrome
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do navegador.
-          example: 126.0.0.0
-      additionalProperties: false
     Platform:
       type: object
       properties:
@@ -125,42 +87,6 @@ components:
           description: Modelo.
           example: Equity-Based
       additionalProperties: false
-    DevicesFunnel:
-      type: object
-      properties:
-        browser:
-          $ref: '#/components/schemas/Browser'
-        os:
-          $ref: '#/components/schemas/Os'
-        platform:
-          $ref: '#/components/schemas/Platform'
-        engine:
-          $ref: '#/components/schemas/Engine'
-        useragent:
-          type:
-          - string
-          - 'null'
-          description: String de texto que contém informações sobre o navegador.
-          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
     TagginJourneyResponseSuccessResponse:
       type: object
       properties:
@@ -179,72 +105,23 @@ components:
         body:
           $ref: '#/components/schemas/TagginJourneyResponse'
       additionalProperties: false
-    TagginJourneyResponse:
+    DevicesFunnel:
       type: object
       properties:
-        proposalId:
+        browser:
+          $ref: '#/components/schemas/Browser'
+        os:
+          $ref: '#/components/schemas/Os'
+        platform:
+          $ref: '#/components/schemas/Platform'
+        engine:
+          $ref: '#/components/schemas/Engine'
+        useragent:
           type:
           - string
           - 'null'
-          description: Identificador da proposta.
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
-          type:
-          - string
-          - 'null'
-          description: Identificador único fornecido pelo cliente.
-          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
-        documentNumber:
-          type:
-          - string
-          - 'null'
-          description: CPF ou CNPJ da proposta.
-          example: '12345678'
-        processedAt:
-          type:
-          - string
-          - 'null'
-          description: Data de processamento da url.
-          example: '2024-08-14 09:40:20.09'
-        status:
-          type:
-          - string
-          - 'null'
-          description: 'Status da jornada:
-
-            - COMPLETED
-
-            - PENDING'
-          example: COMPLETED
-        link:
-          type:
-          - string
-          - 'null'
-          description: Link do webview.
-          example: https://trustyourid.cadastro.io/e32b99c477a00171716aas
-        totalDevices:
-          type:
-          - integer
-          - 'null'
-          description: Quantidade de dispositivos que acessaram o webview.
-          format: int32
-          example: 1
-        devices:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DevicesFunnel'
-          description: Dispositivos que acessaram o webview.
-        lastStep:
-          $ref: '#/components/schemas/StepFunnel'
-        stepsArray:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/StepFunnel'
-          description: Lista das etapas da jornada.
+          description: String de texto que contém informações sobre o navegador.
+          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
       additionalProperties: false
     ResponseError:
       required:
@@ -277,6 +154,22 @@ components:
           - string
           - 'null'
           description: Versão do motor do navegador.
+          example: 126.0.0.0
+      additionalProperties: false
+    Browser:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do navegador.
+          example: Chrome
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão do navegador.
           example: 126.0.0.0
       additionalProperties: false
     StepFunnel:
@@ -400,6 +293,113 @@ components:
           - 'null'
           description: Tipo da plataforma.
           example: mobile
+      additionalProperties: false
+    TagginJourneyResponse:
+      type: object
+      properties:
+        proposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador da proposta.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: CPF ou CNPJ da proposta.
+          example: '12345678'
+        processedAt:
+          type:
+          - string
+          - 'null'
+          description: Data de processamento da url.
+          example: '2024-08-14 09:40:20.09'
+        status:
+          type:
+          - string
+          - 'null'
+          description: 'Status da jornada:
+
+            - COMPLETED
+
+            - PENDING'
+          example: COMPLETED
+        link:
+          type:
+          - string
+          - 'null'
+          description: Link do webview.
+          example: https://trustyourid.cadastro.io/e32b99c477a00171716aas
+        totalDevices:
+          type:
+          - integer
+          - 'null'
+          description: Quantidade de dispositivos que acessaram o webview.
+          format: int32
+          example: 1
+        devices:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DevicesFunnel'
+          description: Dispositivos que acessaram o webview.
+        lastStep:
+          $ref: '#/components/schemas/StepFunnel'
+        stepsArray:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/StepFunnel'
+          description: Lista das etapas da jornada.
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    Os:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do sistema operacional.
+          example: Android
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão do sistema operacional.
+          example: '10'
+        versionname:
+          type:
+          - string
+          - 'null'
+          description: Nome da versão do sistema operacional.
+          example: 10.1.0
       additionalProperties: false
   securitySchemes:
     Bearer:

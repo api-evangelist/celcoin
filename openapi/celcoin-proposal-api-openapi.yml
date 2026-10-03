@@ -198,79 +198,6 @@ paths:
     - url: https://api.openfinance.celcoin.com.br/onboarding/v1
 components:
   schemas:
-    ProposalLinkedRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        proposalNumber:
-          type:
-          - string
-          - 'null'
-        proposalValidity:
-          type: string
-          format: date-time
-        installmentQuantity:
-          type: integer
-          format: int32
-        installmentAmount:
-          type: number
-          format: double
-        availableBalance:
-          type: number
-          format: double
-        amount:
-          type: number
-          format: double
-        iof:
-          type: number
-          format: double
-        anualTax:
-          type: number
-          format: double
-        cet:
-          type: number
-          format: double
-        interestTax:
-          type: number
-          format: double
-        monthlyCet:
-          type: number
-          format: double
-        contacts:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Contact'
-      additionalProperties: false
-    ProposalContact:
-      enum:
-      - URL
-      - WHATSAPP
-      - PHONE
-      - EMAIL
-      - OTHER
-      type: string
-    ErrorResponse:
-      type: object
-      properties:
-        correlationId:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
-      additionalProperties: false
     Contact:
       required:
       - contactValue
@@ -318,6 +245,124 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
+    ProposalContact:
+      enum:
+      - URL
+      - WHATSAPP
+      - PHONE
+      - EMAIL
+      - OTHER
+      type: string
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
+      additionalProperties: false
+    ProposalLinkedRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        proposalNumber:
+          type:
+          - string
+          - 'null'
+        proposalValidity:
+          type: string
+          format: date-time
+        installmentQuantity:
+          type: integer
+          format: int32
+        installmentAmount:
+          type: number
+          format: double
+        availableBalance:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+        iof:
+          type: number
+          format: double
+        anualTax:
+          type: number
+          format: double
+        cet:
+          type: number
+          format: double
+        interestTax:
+          type: number
+          format: double
+        monthlyCet:
+          type: number
+          format: double
+        contacts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Contact'
+      additionalProperties: false
+    SearchProposalResponse:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: Total de propostas.
+          format: int32
+        currentPage:
+          type: integer
+          description: Página atual.
+          format: int32
+        limitPerPage:
+          type: integer
+          description: Total de propostas por página.
+          format: int32
+        totalPages:
+          type: integer
+          description: Total de páginas retornadas.
+          format: int32
+        totalItems:
+          type: integer
+          description: Total de propostas retornadas.
+          format: int32
+        proposal:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProposalResponse'
+      additionalProperties: false
+    RejectedReasonResponse:
+      type: object
+      properties:
+        errorCode:
+          type:
+          - string
+          - 'null'
+          description: Código de erro referente à rejeição da proposta.
+        message:
+          type:
+          - string
+          - 'null'
+          description: Motivo da rejeição da proposta.
+      additionalProperties: false
+      description: Motivo pelo qual a proposta foi rejeitada.
     SearchProposalResponseSuccessResponse:
       type: object
       properties:
@@ -335,6 +380,23 @@ components:
           example: SUCCESS
         body:
           $ref: '#/components/schemas/SearchProposalResponse'
+      additionalProperties: false
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
       additionalProperties: false
     ProposalResponse:
       type: object
@@ -480,68 +542,6 @@ components:
           format: date-time
       additionalProperties: false
       description: Documentoscopia(s) retornada(s).
-    ResponseError:
-      required:
-      - errorCode
-      - message
-      type: object
-      properties:
-        errorCode:
-          minLength: 1
-          type: string
-          description: Código de erro gerado pela Celcoin.
-          example: OIE999
-        message:
-          minLength: 1
-          type: string
-          description: Mensagem de erro.
-          example: Ocorreu um erro interno durante a chamada da api..
-      additionalProperties: false
-    RejectedReasonResponse:
-      type: object
-      properties:
-        errorCode:
-          type:
-          - string
-          - 'null'
-          description: Código de erro referente à rejeição da proposta.
-        message:
-          type:
-          - string
-          - 'null'
-          description: Motivo da rejeição da proposta.
-      additionalProperties: false
-      description: Motivo pelo qual a proposta foi rejeitada.
-    SearchProposalResponse:
-      type: object
-      properties:
-        limit:
-          type: integer
-          description: Total de propostas.
-          format: int32
-        currentPage:
-          type: integer
-          description: Página atual.
-          format: int32
-        limitPerPage:
-          type: integer
-          description: Total de propostas por página.
-          format: int32
-        totalPages:
-          type: integer
-          description: Total de páginas retornadas.
-          format: int32
-        totalItems:
-          type: integer
-          description: Total de propostas retornadas.
-          format: int32
-        proposal:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProposalResponse'
-      additionalProperties: false
   securitySchemes:
     Bearer:
       type: http

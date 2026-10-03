@@ -220,40 +220,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    UpdateBankCorrespondentAgentRequest:
-      type: object
-      properties:
-        socialName:
-          type:
-          - string
-          - 'null'
-        document:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CorrespondentAgent:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        correspAgentId:
-          type:
-          - string
-          - 'null'
-        consigneeId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
     CreateCorrespAgentRequest:
       required:
       - consigneeId
@@ -289,6 +255,84 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    UpdateBankCorrespondentAgentRequest:
+      type: object
+      properties:
+        socialName:
+          type:
+          - string
+          - 'null'
+        document:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CorrespondentAgent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        correspAgentId:
+          type:
+          - string
+          - 'null'
+        consigneeId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    BankCorrespondentAgentResponse:
+      required:
+      - consigneeId
+      - correspAgentId
+      - createdAt
+      - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        correspAgentId:
+          type:
+          - string
+          - 'null'
+        consigneeId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    CreateCorrespAgentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        correspondentAgencyId:
+          type:
+          - string
+          - 'null'
+        consigneeId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
       additionalProperties: false
     ErrorResponse:
       type: object
@@ -329,50 +373,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/CorrespondentAgent'
-      additionalProperties: false
-    CreateCorrespAgentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        correspondentAgencyId:
-          type:
-          - string
-          - 'null'
-        consigneeId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-      additionalProperties: false
-    BankCorrespondentAgentResponse:
-      required:
-      - consigneeId
-      - correspAgentId
-      - createdAt
-      - id
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        correspAgentId:
-          type:
-          - string
-          - 'null'
-        consigneeId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
       additionalProperties: false
   securitySchemes:
     Bearer:
