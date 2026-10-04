@@ -172,17 +172,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    SettlementStatus:
+    SettlementType:
       enum:
-      - PROCESSAMENTO
-      - REJEITADA
-      - REGISTRADA
-      - CANCELADA
-      - DISTRIBUIDA
-      - OCORRENCIA
+      - SOLICITACAO_CEDENTE
+      - SOLICITACAO_DESTINATARIA
       type: string
-      description: Valores `SettlementStatus` Situação da baixa.<p>Values:</p><ul><li><i>PROCESSAMENTO</i> - Processamento.</li><li><i>REJEITADA</i> - Rejeitada.</li><li><i>REGISTRADA</i> - Registrada.</li><li><i>CANCELADA</i> - Cancelada.</li><li><i>DISTRIBUIDA</i> - Distribuida.</li><li><i>OCORRENCIA</i> - Ocorrência.</li></ul>
-      example: PROCESSAMENTO
+      description: Valores `SettlementType` Tipo de baixa.<p>Values:</p><ul><li><i>SOLICITACAO_CEDENTE</i> - Baixa Solicitação Cedente.</li><li><i>SOLICITACAO_DESTINATARIA</i> - Baixa Solicitação Destinataria.</li></ul>
+      example: SOLICITACAO_CEDENTE
     Settlement:
       type: object
       properties:
@@ -291,6 +287,67 @@ components:
           example: '56532352571'
       additionalProperties: false
       description: Classe `Settlement` Modelo de baixa.
+    SettlementOrigin:
+      enum:
+      - INTERBANCARIA
+      - INTRABANCARIA
+      type: string
+      description: Valores `SettlementOrigin` Tipo de origem da baixa.<p>Values:</p><ul><li><i>INTERBANCARIA</i> - Origem interbancaria.</li><li><i>INTRABANCARIA</i> - Origem intrabancaria.</li></ul>
+      example: INTERBANCARIA
+    WebExceptionDetails:
+      type: object
+      properties:
+        field:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Field` Informação do campo com erro.
+        description:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Propriedade `Description` Mensagem de descrição do erro.
+      additionalProperties: false
+      description: Classe `WebExceptionDetails` Modelo de resposta de detalhes do erro.
+    TagRequest:
+      required:
+      - key
+      - value
+      type: object
+      properties:
+        key:
+          maxLength: 50
+          minLength: 1
+          type: string
+          description: Propriedade `Name` Chave da tag.
+          example: IDSAP
+        value:
+          maxLength: 50
+          minLength: 1
+          type: string
+          description: Propriedade `Name` Valor da tag.
+          example: '125262'
+      additionalProperties: false
+      description: Classe `TagRequest` Modelo de requisição de tag de marcação da baixa.
+    Tag:
+      type: object
+      properties:
+        key:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Name` Chave da tag.
+          example: IDSAP
+        value:
+          type:
+          - string
+          - 'null'
+          description: Propriedade `Name` Valor da tag.
+          example: '125262'
+      additionalProperties: false
+      description: Classe `Tag` Modelo de tag de marcação da baixa.
     SettlementIssuanceRequest:
       required:
       - bankNumber
@@ -331,54 +388,6 @@ components:
           description: Propriedade `Tags` Lista de tags de marcação.
       additionalProperties: false
       description: Classe `SettlementIssuanceRequest` Modelo de requisição de inclusão de baixa via ponta destinatária.
-    WebExceptionDetails:
-      type: object
-      properties:
-        field:
-          type:
-          - string
-          - 'null'
-          description: Propriedade `Field` Informação do campo com erro.
-        description:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: Propriedade `Description` Mensagem de descrição do erro.
-      additionalProperties: false
-      description: Classe `WebExceptionDetails` Modelo de resposta de detalhes do erro.
-    SettlementType:
-      enum:
-      - SOLICITACAO_CEDENTE
-      - SOLICITACAO_DESTINATARIA
-      type: string
-      description: Valores `SettlementType` Tipo de baixa.<p>Values:</p><ul><li><i>SOLICITACAO_CEDENTE</i> - Baixa Solicitação Cedente.</li><li><i>SOLICITACAO_DESTINATARIA</i> - Baixa Solicitação Destinataria.</li></ul>
-      example: SOLICITACAO_CEDENTE
-    Tag:
-      type: object
-      properties:
-        key:
-          type:
-          - string
-          - 'null'
-          description: Propriedade `Name` Chave da tag.
-          example: IDSAP
-        value:
-          type:
-          - string
-          - 'null'
-          description: Propriedade `Name` Valor da tag.
-          example: '125262'
-      additionalProperties: false
-      description: Classe `Tag` Modelo de tag de marcação da baixa.
-    SettlementOrigin:
-      enum:
-      - INTERBANCARIA
-      - INTRABANCARIA
-      type: string
-      description: Valores `SettlementOrigin` Tipo de origem da baixa.<p>Values:</p><ul><li><i>INTERBANCARIA</i> - Origem interbancaria.</li><li><i>INTRABANCARIA</i> - Origem intrabancaria.</li></ul>
-      example: INTERBANCARIA
     WebExceptionResponse:
       type: object
       properties:
@@ -405,26 +414,17 @@ components:
           description: Propriedade `Errors` Lista detalhes da exceção.
       additionalProperties: false
       description: Classe `WebExceptionResponse` Modelo de resposta de erro.
-    TagRequest:
-      required:
-      - key
-      - value
-      type: object
-      properties:
-        key:
-          maxLength: 50
-          minLength: 1
-          type: string
-          description: Propriedade `Name` Chave da tag.
-          example: IDSAP
-        value:
-          maxLength: 50
-          minLength: 1
-          type: string
-          description: Propriedade `Name` Valor da tag.
-          example: '125262'
-      additionalProperties: false
-      description: Classe `TagRequest` Modelo de requisição de tag de marcação da baixa.
+    SettlementStatus:
+      enum:
+      - PROCESSAMENTO
+      - REJEITADA
+      - REGISTRADA
+      - CANCELADA
+      - DISTRIBUIDA
+      - OCORRENCIA
+      type: string
+      description: Valores `SettlementStatus` Situação da baixa.<p>Values:</p><ul><li><i>PROCESSAMENTO</i> - Processamento.</li><li><i>REJEITADA</i> - Rejeitada.</li><li><i>REGISTRADA</i> - Registrada.</li><li><i>CANCELADA</i> - Cancelada.</li><li><i>DISTRIBUIDA</i> - Distribuida.</li><li><i>OCORRENCIA</i> - Ocorrência.</li></ul>
+      example: PROCESSAMENTO
   securitySchemes:
     Bearer:
       type: http

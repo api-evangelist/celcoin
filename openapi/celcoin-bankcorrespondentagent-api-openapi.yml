@@ -220,14 +220,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CreateCorrespAgentRequest:
-      required:
-      - consigneeId
-      - correspondentAgencyId
-      - document
-      - socialName
+    CreateCorrespAgentResponse:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
         correspondentAgencyId:
           type:
           - string
@@ -235,38 +233,9 @@ components:
         consigneeId:
           type: string
           format: uuid
-        socialName:
-          type:
-          - string
-          - 'null'
-        document:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    UpdateBankCorrespondentAgentRequest:
-      type: object
-      properties:
-        socialName:
-          type:
-          - string
-          - 'null'
-        document:
-          type:
-          - string
-          - 'null'
+        createdAt:
+          type: string
+          format: date-time
       additionalProperties: false
     CorrespondentAgent:
       type: object
@@ -289,6 +258,24 @@ components:
           - string
           - 'null'
           format: date-time
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
       additionalProperties: false
     BankCorrespondentAgentResponse:
       required:
@@ -317,12 +304,14 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    CreateCorrespAgentResponse:
+    CreateCorrespAgentRequest:
+      required:
+      - consigneeId
+      - correspondentAgencyId
+      - document
+      - socialName
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         correspondentAgencyId:
           type:
           - string
@@ -330,27 +319,38 @@ components:
         consigneeId:
           type: string
           format: uuid
-        createdAt:
-          type: string
-          format: date-time
+        socialName:
+          type:
+          - string
+          - 'null'
+        document:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    ErrorResponse:
+    UpdateBankCorrespondentAgentRequest:
       type: object
       properties:
-        correlationId:
+        socialName:
           type:
           - string
           - 'null'
-        status:
+        document:
           type:
           - string
           - 'null'
-        errors:
+      additionalProperties: false
+    Errs:
+      type: object
+      properties:
+        code:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
+        message:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     GetCorrespAgentResponse:
       type: object

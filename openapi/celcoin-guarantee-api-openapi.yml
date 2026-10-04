@@ -1283,68 +1283,161 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    GuaranteeResponse:
-      required:
-      - annotationType
-      - status
+    GuaranteeAlterRequest:
       type: object
       properties:
+        balanceCheckId:
+          type:
+          - string
+          - 'null'
+          format: uuid
         annotationId:
           type: string
           format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        status:
+          readOnly: true
+        amount:
           type:
-          - string
+          - number
           - 'null'
-        annotationType:
+          format: double
+        netAmount:
           type:
-          - string
+          - number
           - 'null'
-      additionalProperties: false
-    PortabilityAlterOwnerResponse:
-      required:
-      - annotationId
-      type: object
-      properties:
-        code:
+          format: double
+        interestTax:
           type:
-          - string
+          - number
           - 'null'
-        message:
+          format: double
+        iof:
           type:
-          - string
+          - number
           - 'null'
+          format: double
+        cet:
+          type:
+          - number
+          - 'null'
+          format: double
+        installmentAmount:
+          type:
+          - number
+          - 'null'
+          format: double
+        installmentQuantity:
+          type:
+          - integer
+          - 'null'
+          format: int32
         initDiscountDate:
           type:
           - string
           - 'null'
+          format: date-time
+        periods:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Period'
+        pin:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    PaymentNoteItemResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        externalId:
+          type:
+          - string
+          - 'null'
+        eventType:
+          type:
+          - string
+          - 'null'
+        consigneeId:
+          type: string
+          format: uuid
+        agencyId:
+          type: string
+          format: uuid
+        annotationId:
+          type:
+          - string
+          - 'null'
+          format: uuid
         contractNumber:
           type:
           - string
           - 'null'
-        oldAplicantAgency:
+        amount:
+          type: number
+          format: double
+        createdAt:
+          type: string
+          format: date-time
+        metadata:
           type:
-          - string
+          - object
           - 'null'
-        newApplicantAgency:
+          additionalProperties: {}
+      additionalProperties: false
+    OwnershipChangeDetail:
+      required:
+      - annotationId
+      - cbcBuyer
+      type: object
+      properties:
+        cbcBuyer:
           type:
           - string
           - 'null'
         annotationId:
           type: string
           format: uuid
-        status:
+      additionalProperties: false
+    AuthorizationPortability:
+      type: object
+      properties:
+        typeProduct:
+          type:
+          - string
+          - 'null'
+        authorized:
+          type: boolean
+        validity:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        contractPort:
+          $ref: '#/components/schemas/ContractInfo'
+        availableBalance:
+          type: number
+          format: double
+      additionalProperties: false
+    ContractDataResponse:
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        updateAt:
+          type: string
+          format: date-time
+        codigoReturn:
           type:
           - string
           - 'null'
       additionalProperties: false
-    CancelAnticipationResponse:
-      required:
-      - code
-      - message
+    Errs:
       type: object
       properties:
         code:
@@ -1356,88 +1449,59 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ActionType:
-      enum:
-      - START_ANNOTATION
-      - END_ANNOTATION
-      - ALTER_ANNOTATION
-      - REVERT_ANNOTATION
-      - REACTIVATE_ANNOTATION
-      - ADD_CONTRACT
-      - SUSPEND_ANNOTATION
-      - CHANGE_OWNERSHIP
-      - CHANGE_OWNER_PORTABILIY
-      - ALTER_EXTERNAL_ANNOTATION_ACTIVE
-      - ALTER_EXTERNAL_ANNOTATION_DELETED
-      - ALTER_EXTERNAL_ANNOTATION_CLOSED
-      - ALTER_EXTERNAL_ANNOTATION_START_NEXT_COMPETENCE
-      - ALTER_EXTERNAL_ANNOTATION_DELETE_NEXT_COMPETENCE
-      - ALTER_EXTERNAL_ANNOTATION_SUSPENDED_ACP_APS
-      - ALTER_EXTERNAL_ANNOTATION_SUSPENDED_LEGAL_ACTION
-      - ALTER_EXTERNAL_ANNOTATION_SUSPENDED_BANK
-      type: string
-    ReasonReversal:
-      enum:
-      - WITHDRAWAL
-      - DEATH
-      - FRAUD
-      type: string
-    ExternalApplicant:
+    ConsultPaymentNoteListResponse:
       type: object
       properties:
-        consigneeCode:
-          type:
-          - string
-          - 'null'
-        consigneeName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    EmployeeLink:
-      type: object
-      properties:
-        employer:
-          $ref: '#/components/schemas/Employer'
-        employee:
-          $ref: '#/components/schemas/Employee'
-        products:
+        page:
+          type: integer
+          format: int32
+        pageCount:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int32
+        totalItens:
+          type: integer
+          format: int64
+        initDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        paymentNoteType:
+          $ref: '#/components/schemas/PaymentNoteType'
+        paymentNotes:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/Product'
-        config:
-          $ref: '#/components/schemas/Config'
-        metaData:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-        balanceCheckDate:
-          type: string
-          format: date-time
+            $ref: '#/components/schemas/PaymentNoteItemResponse'
       additionalProperties: false
-    CancelAnticipationRequest:
+    AnticipationInstallmentsResponse:
       type: object
       properties:
-        annotationId:
-          type: string
-          format: uuid
-        competence:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
           type:
           - string
           - 'null'
       additionalProperties: false
-    TypeProduct:
-      enum:
-      - LOAN
-      - CARD_CREDIT
-      - CARD_BENEFICIARY
-      - MONTHLY_DESC
-      - SYNDICAL_DESC
-      - PORTABILITY
-      type: string
+    Period:
+      type: object
+      properties:
+        creditDate:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
     Guarantee:
       type: object
       properties:
@@ -1555,10 +1619,7 @@ components:
           format: double
           readOnly: true
       additionalProperties: false
-    DetailsItem:
-      required:
-      - code
-      - message
+    ErrorAnnotation:
       type: object
       properties:
         code:
@@ -1570,112 +1631,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    GetLinksEmployeeResponse:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        document:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    StatusOperation:
-      enum:
-      - PROCESSING
-      - ERROR
-      - SUCCESS
-      - CANCELED
-      type: string
-    AnnotationScheduleConfigResponse:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: date
-        limitRange:
-          type: integer
-          format: int32
-        limitRangeType:
-          type:
-          - string
-          - 'null'
-        startHour:
-          type: string
-          format: time
-      additionalProperties: false
-    AnticipationInstallmentsResponse:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ConsentResponse:
-      required:
-      - returnMsg
-      type: object
-      properties:
-        returnMsg:
-          type:
-          - string
-          - 'null'
-        dateTime:
-          type: string
-          format: date-time
-      additionalProperties: false
-    Applicant:
-      type: object
-      properties:
-        document:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        consignee:
-          type: string
-          format: uuid
-          readOnly: true
-        agency:
-          type: string
-          format: uuid
-          readOnly: true
-      additionalProperties: false
-    BalancesChecksResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        employer:
-          $ref: '#/components/schemas/Employer'
-        employee:
-          $ref: '#/components/schemas/Employee'
-        product:
-          $ref: '#/components/schemas/Product'
-        config:
-          $ref: '#/components/schemas/Config'
-        createdAt:
-          type: string
-          format: date-time
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
-    GetLinksEmployerResponse:
+    Employer:
       type: object
       properties:
         code:
@@ -1695,75 +1651,104 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ReactivateAnnotationResponse:
+    ChangeOwnershipRequest:
       required:
-      - annotationId
-      - status
+      - agencyId
+      - changeOwnership
+      - consigneeId
+      type: object
+      properties:
+        consigneeId:
+          type: string
+          format: uuid
+        agencyId:
+          type: string
+          format: uuid
+        changeOwnership:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OwnershipChangeDetail'
+      additionalProperties: false
+    StatusContract:
+      enum:
+      - ERROR
+      - WAITING_ANNOTATION_CONFIRMATION
+      - WAITING_ANNOTATION_REGISTRATION
+      - REJECTED
+      - APPROVED
+      - CANCELED
+      - WAITING_CONFIRMATION
+      - WAITING_CANCELLATION
+      - WAITING_ALTERATION
+      - SETTLED
+      - WAITING_REACTIVATION
+      - WAITING_SUSPENDING
+      - SUSPENDED
+      - DEACTIVATED_RENEWED_LINK
+      - MIGRATED
+      - AVAILABLE_FOR_PURCHASE
+      - NOT_AVAILABLE_FOR_PURCHASE
+      - PURCHASED
+      - CREATED
+      - DEACTIVATED_TERMINATED_LINK
+      - WAITING_REGISTRATION_ATTEMPT_CANCELLATION
+      - UNKNOWN
+      type: string
+    ReasonReversal:
+      enum:
+      - WITHDRAWAL
+      - DEATH
+      - FRAUD
+      type: string
+    ConsentResponse:
+      required:
+      - returnMsg
+      type: object
+      properties:
+        returnMsg:
+          type:
+          - string
+          - 'null'
+        dateTime:
+          type: string
+          format: date-time
+      additionalProperties: false
+    AnticipationInstallmentsRequest:
       type: object
       properties:
         annotationId:
           type: string
           format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        status:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Period:
-      type: object
-      properties:
-        creditDate:
-          type:
-          - string
-          - 'null'
-        amount:
-          type: number
-          format: double
-      additionalProperties: false
-    Authorization:
-      type: object
-      properties:
-        details:
+        competences:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/AuthorizationDetail'
-          readOnly: true
-        portability:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AuthorizationPortability'
-          readOnly: true
+            type: string
       additionalProperties: false
-    ErrorAnnotation:
+    GuaranteeAnnotationScheduleConfigRequest:
       type: object
       properties:
-        code:
+        schedule:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/AnnotationScheduleDayRequest'
+        startDate:
           type:
           - string
           - 'null'
-        message:
+          format: date
+        limitRange:
           type:
-          - string
+          - integer
           - 'null'
-      additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
+          format: int32
+        limitRangeType:
+          $ref: '#/components/schemas/LimitRangeType'
       additionalProperties: false
     DeleteRefinancingResponse:
       required:
@@ -1781,6 +1766,65 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    PortabilityAlterOwnerResponse:
+      required:
+      - annotationId
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        initDiscountDate:
+          type:
+          - string
+          - 'null'
+        contractNumber:
+          type:
+          - string
+          - 'null'
+        oldAplicantAgency:
+          type:
+          - string
+          - 'null'
+        newApplicantAgency:
+          type:
+          - string
+          - 'null'
+        annotationId:
+          type: string
+          format: uuid
+        status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GetLinksResponse:
+      type: object
+      properties:
+        links:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetLinksLinkResponse'
+      additionalProperties: false
+    ExternalApplicant:
+      type: object
+      properties:
+        consigneeCode:
+          type:
+          - string
+          - 'null'
+        consigneeName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     PortabilityAlterOwnerRequest:
       type: object
       properties:
@@ -1792,7 +1836,241 @@ components:
           format: uuid
           readOnly: true
       additionalProperties: false
-    ListBalanceCheckResponse:
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
+      additionalProperties: false
+    ContractDataRequest:
+      required:
+      - annotationId
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        loanContract:
+          type:
+          - string
+          - 'null'
+        digitalSignatureIndicatorICPBrasil:
+          type: boolean
+        ip:
+          type:
+          - string
+          - 'null'
+        signatureDateTime:
+          type: string
+          format: date-time
+        illiteracyIndicator:
+          type: boolean
+        officialDocumentWithPhotoFront:
+          type:
+          - string
+          - 'null'
+        officialDocumentWithPhotoBack:
+          type:
+          - string
+          - 'null'
+        facialBiometricRecord:
+          type:
+          - string
+          - 'null'
+        biometricBase:
+          type:
+          - string
+          - 'null'
+        score:
+          type: number
+          format: double
+        validationIndicatorWithOfficialDoc:
+          type: boolean
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        device:
+          type:
+          - string
+          - 'null'
+        contractNsu:
+          type: integer
+          format: int64
+        authenticationType:
+          type: integer
+          format: int32
+        contractFileName:
+          type:
+          - string
+          - 'null'
+        preSignedLink:
+          type:
+          - string
+          - 'null'
+        contratoEmprestimoBytes:
+          type:
+          - string
+          - 'null'
+          format: byte
+          readOnly: true
+      additionalProperties: false
+    AuthorizationDetail:
+      type: object
+      properties:
+        typeProduct:
+          type:
+          - string
+          - 'null'
+        authorized:
+          type: boolean
+        validity:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    AnnotationScheduleConfigResponse:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date
+        limitRange:
+          type: integer
+          format: int32
+        limitRangeType:
+          type:
+          - string
+          - 'null'
+        startHour:
+          type: string
+          format: time
+      additionalProperties: false
+    PaymentNoteType:
+      enum:
+      - TRANSFER
+      - BOOKKEEPING
+      type: string
+    AnnotationScheduleDayRequest:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        netAmount:
+          type: number
+          format: double
+        interestTax:
+          type: number
+          format: double
+        iof:
+          type: number
+          format: double
+        cet:
+          type: number
+          format: double
+        installmentAmount:
+          type: number
+          format: double
+        installmentQuantity:
+          type: integer
+          format: int32
+        initDiscountDate:
+          type: string
+          format: date-time
+        initContractDate:
+          type: string
+          format: date-time
+        endContractDate:
+          type: string
+          format: date-time
+        anualTax:
+          type: number
+          format: double
+        monthlyCet:
+          type: number
+          format: double
+        periods:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Period'
+      additionalProperties: false
+    OperationAnnotation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        annotationId:
+          type: string
+          format: uuid
+        operationId:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/StatusOperation'
+        actionType:
+          $ref: '#/components/schemas/ActionType'
+        request:
+          $ref: '#/components/schemas/Guarantee'
+        error:
+          $ref: '#/components/schemas/ErrorAnnotation'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    ExcludeByPortabilityResponse:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        operations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OperationAnnotation'
+      additionalProperties: false
+    TypeProduct:
+      enum:
+      - LOAN
+      - CARD_CREDIT
+      - CARD_BENEFICIARY
+      - MONTHLY_DESC
+      - SYNDICAL_DESC
+      - PORTABILITY
+      type: string
+    ConsultAnnotationListResponse:
       type: object
       properties:
         page:
@@ -1817,41 +2095,33 @@ components:
           - string
           - 'null'
           format: date-time
-        balancesChecks:
+        annotations:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/BalancesChecksResponse'
+            $ref: '#/components/schemas/AnnotationResponse'
       additionalProperties: false
-    ExcludeByPortabilityResponse:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        operations:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OperationAnnotation'
-      additionalProperties: false
-    Config:
-      type: object
-      properties:
-        agency:
-          type: string
-          format: uuid
-        consignee:
-          type: string
-          format: uuid
-      additionalProperties: false
+    ActionType:
+      enum:
+      - START_ANNOTATION
+      - END_ANNOTATION
+      - ALTER_ANNOTATION
+      - REVERT_ANNOTATION
+      - REACTIVATE_ANNOTATION
+      - ADD_CONTRACT
+      - SUSPEND_ANNOTATION
+      - CHANGE_OWNERSHIP
+      - CHANGE_OWNER_PORTABILIY
+      - ALTER_EXTERNAL_ANNOTATION_ACTIVE
+      - ALTER_EXTERNAL_ANNOTATION_DELETED
+      - ALTER_EXTERNAL_ANNOTATION_CLOSED
+      - ALTER_EXTERNAL_ANNOTATION_START_NEXT_COMPETENCE
+      - ALTER_EXTERNAL_ANNOTATION_DELETE_NEXT_COMPETENCE
+      - ALTER_EXTERNAL_ANNOTATION_SUSPENDED_ACP_APS
+      - ALTER_EXTERNAL_ANNOTATION_SUSPENDED_LEGAL_ACTION
+      - ALTER_EXTERNAL_ANNOTATION_SUSPENDED_BANK
+      type: string
     AuthorizationDataResponse:
       type: object
       properties:
@@ -1863,30 +2133,106 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    AnticipationInstallmentsRequest:
+    Authorization:
+      type: object
+      properties:
+        details:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AuthorizationDetail'
+          readOnly: true
+        portability:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AuthorizationPortability'
+          readOnly: true
+      additionalProperties: false
+    CancelProcessAnnotationResponse:
+      required:
+      - annotationId
+      - status
       type: object
       properties:
         annotationId:
           type: string
           format: uuid
-        competences:
+        status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DeleteGuaranteeResponse:
+      required:
+      - annotationId
+      - status
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OperationAnnotationResponse:
+      type: object
+      properties:
+        operationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        actionType:
+          type:
+          - string
+          - 'null'
+        error:
+          $ref: '#/components/schemas/ErrorAnnotation'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        request:
+          $ref: '#/components/schemas/Guarantee'
+      additionalProperties: false
+    ChangeOwnershipResponse:
+      required:
+      - annotations
+      type: object
+      properties:
+        annotations:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/ChangeOwnershipResponseStatus'
       additionalProperties: false
-    Rubric:
+    PortabilityChangeUniqueNumberRequest:
       type: object
       properties:
-        code:
+        newPortabilityIdentifier:
           type:
           - string
           - 'null'
-        description:
-          type:
-          - string
-          - 'null'
+        annotationId:
+          type: string
+          format: uuid
+          readOnly: true
       additionalProperties: false
     GuaranteeRequest:
       required:
@@ -2004,6 +2350,26 @@ components:
           - 'null'
           readOnly: true
       additionalProperties: false
+    Product:
+      type: object
+      properties:
+        balanceCheckId:
+          type: string
+          format: uuid
+        authorization:
+          $ref: '#/components/schemas/Authorization'
+        rubric:
+          $ref: '#/components/schemas/Rubric'
+        agreement:
+          type:
+          - string
+          - 'null'
+        availableBalance:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
     ConsultAnnotationResponse:
       type: object
       properties:
@@ -2057,100 +2423,20 @@ components:
           items:
             $ref: '#/components/schemas/OperationAnnotationResponse'
       additionalProperties: false
-    DeleteGuaranteeResponse:
+    DetailsItem:
       required:
-      - annotationId
-      - status
+      - code
+      - message
       type: object
       properties:
-        annotationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        status:
+        code:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ContractDataResponse:
-      type: object
-      properties:
-        annotationId:
-          type: string
-          format: uuid
-        updateAt:
-          type: string
-          format: date-time
-        codigoReturn:
+        message:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Product:
-      type: object
-      properties:
-        balanceCheckId:
-          type: string
-          format: uuid
-        authorization:
-          $ref: '#/components/schemas/Authorization'
-        rubric:
-          $ref: '#/components/schemas/Rubric'
-        agreement:
-          type:
-          - string
-          - 'null'
-        availableBalance:
-          type:
-          - number
-          - 'null'
-          format: double
-      additionalProperties: false
-    CancelProcessAnnotationResponse:
-      required:
-      - annotationId
-      - status
-      type: object
-      properties:
-        annotationId:
-          type: string
-          format: uuid
-        status:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ConsultPaymentNoteListResponse:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-        pageCount:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int32
-        totalItens:
-          type: integer
-          format: int64
-        initDate:
-          type: string
-          format: date-time
-        endDate:
-          type: string
-          format: date-time
-        paymentNoteType:
-          $ref: '#/components/schemas/PaymentNoteType'
-        paymentNotes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PaymentNoteItemResponse'
       additionalProperties: false
     ContractInfo:
       type: object
@@ -2168,192 +2454,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ReasonEndContract:
-      enum:
-      - WITHDRAWAL
-      - INVALIDITY
-      - EARLY_SETTLEMENT
-      - LAWSUIT
-      - FRAUD
-      - OTHER
-      - CANCEL_CARD_CLIENT
-      - CANCEL_CARD_BANK
-      - CANCEL_OUT_REVERSION_DATE
-      type: string
-    GuaranteeAlterRequest:
-      type: object
-      properties:
-        balanceCheckId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        annotationId:
-          type: string
-          format: uuid
-          readOnly: true
-        amount:
-          type:
-          - number
-          - 'null'
-          format: double
-        netAmount:
-          type:
-          - number
-          - 'null'
-          format: double
-        interestTax:
-          type:
-          - number
-          - 'null'
-          format: double
-        iof:
-          type:
-          - number
-          - 'null'
-          format: double
-        cet:
-          type:
-          - number
-          - 'null'
-          format: double
-        installmentAmount:
-          type:
-          - number
-          - 'null'
-          format: double
-        installmentQuantity:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        initDiscountDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        periods:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Period'
-        pin:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      additionalProperties: false
-    GetLinksLinkResponse:
-      type: object
-      properties:
-        employer:
-          $ref: '#/components/schemas/GetLinksEmployerResponse'
-        employee:
-          $ref: '#/components/schemas/GetLinksEmployeeResponse'
-        metaData:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
-    AnnotationScheduleDayRequest:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        netAmount:
-          type: number
-          format: double
-        interestTax:
-          type: number
-          format: double
-        iof:
-          type: number
-          format: double
-        cet:
-          type: number
-          format: double
-        installmentAmount:
-          type: number
-          format: double
-        installmentQuantity:
-          type: integer
-          format: int32
-        initDiscountDate:
-          type: string
-          format: date-time
-        initContractDate:
-          type: string
-          format: date-time
-        endContractDate:
-          type: string
-          format: date-time
-        anualTax:
-          type: number
-          format: double
-        monthlyCet:
-          type: number
-          format: double
-        periods:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Period'
-      additionalProperties: false
-    AccountInfo:
-      type: object
-      properties:
-        bankAgencyCnpj:
-          type:
-          - string
-          - 'null'
-        correspondentCnpj:
-          type:
-          - string
-          - 'null'
-        correspondentCpf:
-          type:
-          - string
-          - 'null'
-        bank:
-          type:
-          - string
-          - 'null'
-        branch:
-          type:
-          - string
-          - 'null'
-        number:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ExcludedContractRequest:
-      type: object
-      properties:
-        annotationId:
-          type: string
-          format: uuid
-        lastPaidInstallment:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    GetLinksResponse:
-      type: object
-      properties:
-        links:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetLinksLinkResponse'
-      additionalProperties: false
-    AnnotationSuspendResponse:
+    GuaranteeAlterResponse:
       required:
       - annotationId
       - status
@@ -2370,15 +2471,34 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    CheckBalanceContractResponse:
+    ReasonEndContract:
+      enum:
+      - WITHDRAWAL
+      - INVALIDITY
+      - EARLY_SETTLEMENT
+      - LAWSUIT
+      - FRAUD
+      - OTHER
+      - CANCEL_CARD_CLIENT
+      - CANCEL_CARD_BANK
+      - CANCEL_OUT_REVERSION_DATE
+      type: string
+    Applicant:
       type: object
       properties:
-        links:
+        document:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/EmployeeLink'
+          readOnly: true
+        consignee:
+          type: string
+          format: uuid
+          readOnly: true
+        agency:
+          type: string
+          format: uuid
+          readOnly: true
       additionalProperties: false
     AccountRequest:
       type: object
@@ -2408,63 +2528,166 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ErrorResponse:
+    BalancesChecksResponse:
       type: object
       properties:
-        correlationId:
+        id:
+          type: string
+          format: uuid
+        employer:
+          $ref: '#/components/schemas/Employer'
+        employee:
+          $ref: '#/components/schemas/Employee'
+        product:
+          $ref: '#/components/schemas/Product'
+        config:
+          $ref: '#/components/schemas/Config'
+        createdAt:
+          type: string
+          format: date-time
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+    GetLinksEmployerResponse:
+      type: object
+      properties:
+        code:
           type:
           - string
           - 'null'
+        document:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        codeEmployee:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    LimitRangeType:
+      enum:
+      - HOUR
+      - DAY
+      type: string
+    ChangeOwnershipResponseStatus:
+      required:
+      - annotationId
+      - details
+      - status
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
         status:
           type:
           - string
           - 'null'
-        errors:
+        details:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/Errs'
+            $ref: '#/components/schemas/DetailsItem'
       additionalProperties: false
-    ExcludeByPortabilityRequest:
-      required:
-      - agencyId
-      - applicantAgency
-      - consigneeId
+    Rubric:
       type: object
       properties:
-        consigneeId:
-          type: string
-          format: uuid
-        agencyId:
-          type: string
-          format: uuid
-        applicantAgency:
-          type: integer
-          format: int32
-        excludedContracts:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ExcludedContractRequest'
-        portabilityIdentifier:
-          type: number
-          format: double
-      additionalProperties: false
-    OwnershipChangeDetail:
-      required:
-      - annotationId
-      - cbcBuyer
-      type: object
-      properties:
-        cbcBuyer:
+        code:
           type:
           - string
           - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CancelAnticipationRequest:
+      type: object
+      properties:
         annotationId:
           type: string
           format: uuid
+        competence:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CheckBalanceContractResponse:
+      type: object
+      properties:
+        links:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EmployeeLink'
+      additionalProperties: false
+    ReactivateAnnotationResponse:
+      required:
+      - annotationId
+      - status
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Config:
+      type: object
+      properties:
+        agency:
+          type: string
+          format: uuid
+        consignee:
+          type: string
+          format: uuid
+      additionalProperties: false
+    ExcludedContractRequest:
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        lastPaidInstallment:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    StatusOperation:
+      enum:
+      - PROCESSING
+      - ERROR
+      - SUCCESS
+      - CANCELED
+      type: string
+    GetLinksLinkResponse:
+      type: object
+      properties:
+        employer:
+          $ref: '#/components/schemas/GetLinksEmployerResponse'
+        employee:
+          $ref: '#/components/schemas/GetLinksEmployeeResponse'
+        metaData:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
       additionalProperties: false
     AuthorizationDataRequest:
       required:
@@ -2496,7 +2719,94 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    GuaranteeAlterResponse:
+    GetLinksEmployeeResponse:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        document:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmployeeLink:
+      type: object
+      properties:
+        employer:
+          $ref: '#/components/schemas/Employer'
+        employee:
+          $ref: '#/components/schemas/Employee'
+        products:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Product'
+        config:
+          $ref: '#/components/schemas/Config'
+        metaData:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+        balanceCheckDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ListBalanceCheckResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+          format: int32
+        pageCount:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int32
+        totalItens:
+          type: integer
+          format: int64
+        initDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        endDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        balancesChecks:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/BalancesChecksResponse'
+      additionalProperties: false
+    CancelAnticipationResponse:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AnnotationSuspendResponse:
       required:
       - annotationId
       - status
@@ -2509,6 +2819,43 @@ components:
           type: string
           format: date-time
         status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Employee:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        document:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GuaranteeResponse:
+      required:
+      - annotationType
+      - status
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+        annotationType:
           type:
           - string
           - 'null'
@@ -2539,375 +2886,11 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ChangeOwnershipResponse:
-      required:
-      - annotations
-      type: object
-      properties:
-        annotations:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ChangeOwnershipResponseStatus'
-      additionalProperties: false
-    AuthorizationDetail:
-      type: object
-      properties:
-        typeProduct:
-          type:
-          - string
-          - 'null'
-        authorized:
-          type: boolean
-        validity:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-      additionalProperties: false
-    PaymentNoteItemResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        externalId:
-          type:
-          - string
-          - 'null'
-        eventType:
-          type:
-          - string
-          - 'null'
-        consigneeId:
-          type: string
-          format: uuid
-        agencyId:
-          type: string
-          format: uuid
-        annotationId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        contractNumber:
-          type:
-          - string
-          - 'null'
-        amount:
-          type: number
-          format: double
-        createdAt:
-          type: string
-          format: date-time
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
-    ChangeOwnershipRequest:
-      required:
-      - agencyId
-      - changeOwnership
-      - consigneeId
-      type: object
-      properties:
-        consigneeId:
-          type: string
-          format: uuid
-        agencyId:
-          type: string
-          format: uuid
-        changeOwnership:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OwnershipChangeDetail'
-      additionalProperties: false
-    OperationAnnotationResponse:
-      type: object
-      properties:
-        operationId:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        actionType:
-          type:
-          - string
-          - 'null'
-        error:
-          $ref: '#/components/schemas/ErrorAnnotation'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        request:
-          $ref: '#/components/schemas/Guarantee'
-      additionalProperties: false
-    StatusContract:
-      enum:
-      - ERROR
-      - WAITING_ANNOTATION_CONFIRMATION
-      - WAITING_ANNOTATION_REGISTRATION
-      - REJECTED
-      - APPROVED
-      - CANCELED
-      - WAITING_CONFIRMATION
-      - WAITING_CANCELLATION
-      - WAITING_ALTERATION
-      - SETTLED
-      - WAITING_REACTIVATION
-      - WAITING_SUSPENDING
-      - SUSPENDED
-      - DEACTIVATED_RENEWED_LINK
-      - MIGRATED
-      - AVAILABLE_FOR_PURCHASE
-      - NOT_AVAILABLE_FOR_PURCHASE
-      - PURCHASED
-      - CREATED
-      - DEACTIVATED_TERMINATED_LINK
-      - WAITING_REGISTRATION_ATTEMPT_CANCELLATION
-      - UNKNOWN
-      type: string
     ConsultAnnotationType:
       enum:
       - NORMAL
       - PURCHASE
       - EXTERNAL
-      type: string
-    ContractDataRequest:
-      required:
-      - annotationId
-      type: object
-      properties:
-        annotationId:
-          type: string
-          format: uuid
-        loanContract:
-          type:
-          - string
-          - 'null'
-        digitalSignatureIndicatorICPBrasil:
-          type: boolean
-        ip:
-          type:
-          - string
-          - 'null'
-        signatureDateTime:
-          type: string
-          format: date-time
-        illiteracyIndicator:
-          type: boolean
-        officialDocumentWithPhotoFront:
-          type:
-          - string
-          - 'null'
-        officialDocumentWithPhotoBack:
-          type:
-          - string
-          - 'null'
-        facialBiometricRecord:
-          type:
-          - string
-          - 'null'
-        biometricBase:
-          type:
-          - string
-          - 'null'
-        score:
-          type: number
-          format: double
-        validationIndicatorWithOfficialDoc:
-          type: boolean
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        device:
-          type:
-          - string
-          - 'null'
-        contractNsu:
-          type: integer
-          format: int64
-        authenticationType:
-          type: integer
-          format: int32
-        contractFileName:
-          type:
-          - string
-          - 'null'
-        preSignedLink:
-          type:
-          - string
-          - 'null'
-        contratoEmprestimoBytes:
-          type:
-          - string
-          - 'null'
-          format: byte
-          readOnly: true
-      additionalProperties: false
-    GuaranteeAnnotationScheduleConfigRequest:
-      type: object
-      properties:
-        schedule:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/AnnotationScheduleDayRequest'
-        startDate:
-          type:
-          - string
-          - 'null'
-          format: date
-        limitRange:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        limitRangeType:
-          $ref: '#/components/schemas/LimitRangeType'
-      additionalProperties: false
-    OperationAnnotation:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        annotationId:
-          type: string
-          format: uuid
-        operationId:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/StatusOperation'
-        actionType:
-          $ref: '#/components/schemas/ActionType'
-        request:
-          $ref: '#/components/schemas/Guarantee'
-        error:
-          $ref: '#/components/schemas/ErrorAnnotation'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    PortabilityChangeUniqueNumberRequest:
-      type: object
-      properties:
-        newPortabilityIdentifier:
-          type:
-          - string
-          - 'null'
-        annotationId:
-          type: string
-          format: uuid
-          readOnly: true
-      additionalProperties: false
-    AuthorizationPortability:
-      type: object
-      properties:
-        typeProduct:
-          type:
-          - string
-          - 'null'
-        authorized:
-          type: boolean
-        validity:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        contractPort:
-          $ref: '#/components/schemas/ContractInfo'
-        availableBalance:
-          type: number
-          format: double
-      additionalProperties: false
-    Employer:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        document:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        codeEmployee:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PaymentNoteType:
-      enum:
-      - TRANSFER
-      - BOOKKEEPING
-      type: string
-    ConsultAnnotationListResponse:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-        pageCount:
-          type: integer
-          format: int64
-        pageSize:
-          type: integer
-          format: int32
-        totalItens:
-          type: integer
-          format: int64
-        initDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        endDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        annotations:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AnnotationResponse'
-      additionalProperties: false
-    LimitRangeType:
-      enum:
-      - HOUR
-      - DAY
       type: string
     AnnotationResponse:
       type: object
@@ -2962,42 +2945,59 @@ components:
           - 'null'
           additionalProperties: {}
       additionalProperties: false
-    ChangeOwnershipResponseStatus:
-      required:
-      - annotationId
-      - details
-      - status
+    AccountInfo:
       type: object
       properties:
-        annotationId:
-          type: string
-          format: uuid
-        status:
+        bankAgencyCnpj:
           type:
           - string
           - 'null'
-        details:
+        correspondentCnpj:
+          type:
+          - string
+          - 'null'
+        correspondentCpf:
+          type:
+          - string
+          - 'null'
+        bank:
+          type:
+          - string
+          - 'null'
+        branch:
+          type:
+          - string
+          - 'null'
+        number:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ExcludeByPortabilityRequest:
+      required:
+      - agencyId
+      - applicantAgency
+      - consigneeId
+      type: object
+      properties:
+        consigneeId:
+          type: string
+          format: uuid
+        agencyId:
+          type: string
+          format: uuid
+        applicantAgency:
+          type: integer
+          format: int32
+        excludedContracts:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/DetailsItem'
-      additionalProperties: false
-    Employee:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        document:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/ExcludedContractRequest'
+        portabilityIdentifier:
+          type: number
+          format: double
       additionalProperties: false
   securitySchemes:
     Bearer:

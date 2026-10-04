@@ -64,6 +64,41 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    ResponseError:
+      required:
+      - errorCode
+      - message
+      type: object
+      properties:
+        errorCode:
+          minLength: 1
+          type: string
+          description: Código de erro gerado pela Celcoin.
+          example: OIE999
+        message:
+          minLength: 1
+          type: string
+          description: Mensagem de erro.
+          example: Ocorreu um erro interno durante a chamada da api..
+      additionalProperties: false
     AddressRequest:
       required:
       - city
@@ -116,6 +151,41 @@ components:
           example: SP
       additionalProperties: false
       description: Endereço.
+    CompanyFinancialDetailsRequest:
+      type: object
+      properties:
+        declaredCompanyRevenue:
+          type:
+          - string
+          - 'null'
+          description: Faturamento declarado da empresa.
+          example: DCRB01
+        presumedCompanyRevenue:
+          type:
+          - string
+          - 'null'
+          description: Faturamento presumido da empresa.
+          example: PCRB01
+      additionalProperties: false
+      description: Detalhes financeiros da empresa.
+    LegalPersonResponseProcessingResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/LegalPersonResponse'
+      additionalProperties: false
     OwnerFinancialDetailsRequest:
       type: object
       properties:
@@ -145,6 +215,28 @@ components:
           example: OPRB01
       additionalProperties: false
       description: Detalhes financeiros do sócio/representante.
+    LegalPersonResponse:
+      type: object
+      properties:
+        proposalId:
+          type:
+          - string
+          - 'null'
+          description: Identificador da proposta criada.
+          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
+        clientCode:
+          type:
+          - string
+          - 'null'
+          description: Identificador único fornecido pelo cliente.
+          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
+        documentNumber:
+          type:
+          - string
+          - 'null'
+          description: CNPJ da proposta criada.
+          example: '12345678900001'
+      additionalProperties: false
     FileRequest:
       required:
       - data
@@ -217,45 +309,6 @@ components:
           example: https://t.ctcdn.com.br/lvns56iaSMyHvyTur4JeYS_NYeY=/i606944.png
       additionalProperties: false
       description: Representante/Sócio
-    ResponseError:
-      required:
-      - errorCode
-      - message
-      type: object
-      properties:
-        errorCode:
-          minLength: 1
-          type: string
-          description: Código de erro gerado pela Celcoin.
-          example: OIE999
-        message:
-          minLength: 1
-          type: string
-          description: Mensagem de erro.
-          example: Ocorreu um erro interno durante a chamada da api..
-      additionalProperties: false
-    LegalPersonResponse:
-      type: object
-      properties:
-        proposalId:
-          type:
-          - string
-          - 'null'
-          description: Identificador da proposta criada.
-          example: 12334dfb-4c4e-43fb-ad93-fa28e3123473
-        clientCode:
-          type:
-          - string
-          - 'null'
-          description: Identificador único fornecido pelo cliente.
-          example: 1234ab7c-2855-436b-9d19-8abcdc198e984
-        documentNumber:
-          type:
-          - string
-          - 'null'
-          description: CNPJ da proposta criada.
-          example: '12345678900001'
-      additionalProperties: false
     OwnerRequest:
       required:
       - address
@@ -414,59 +467,6 @@ components:
           description: Documentos Enviados
         financialCompanyDetails:
           $ref: '#/components/schemas/CompanyFinancialDetailsRequest'
-      additionalProperties: false
-    CompanyFinancialDetailsRequest:
-      type: object
-      properties:
-        declaredCompanyRevenue:
-          type:
-          - string
-          - 'null'
-          description: Faturamento declarado da empresa.
-          example: DCRB01
-        presumedCompanyRevenue:
-          type:
-          - string
-          - 'null'
-          description: Faturamento presumido da empresa.
-          example: PCRB01
-      additionalProperties: false
-      description: Detalhes financeiros da empresa.
-    LegalPersonResponseProcessingResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/LegalPersonResponse'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
       additionalProperties: false
   securitySchemes:
     Bearer:

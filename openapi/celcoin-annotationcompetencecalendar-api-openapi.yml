@@ -62,6 +62,41 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Errs:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
+      additionalProperties: false
+    AnnotationCompetenceCalendarQueryType:
+      enum:
+      - COMPETENCE_INFO
+      - CALENDAR_DETAILS
+      type: string
     AnnotationCompetenceCalendarResponse:
       type: object
       properties:
@@ -102,41 +137,6 @@ components:
           - string
           - 'null'
         limitTransferDate:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        correlationId:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
-      additionalProperties: false
-    AnnotationCompetenceCalendarQueryType:
-      enum:
-      - COMPETENCE_INFO
-      - CALENDAR_DETAILS
-      type: string
-    Errs:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
           type:
           - string
           - 'null'

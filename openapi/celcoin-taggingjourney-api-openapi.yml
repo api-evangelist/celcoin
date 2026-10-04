@@ -65,29 +65,23 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Platform:
+    Engine:
       type: object
       properties:
-        type:
+        name:
           type:
           - string
           - 'null'
-          description: Tipo da plataforma.
-          example: Crowdfunding
-        vendor:
+          description: Nome do motor do navegador.
+          example: Google
+        version:
           type:
           - string
           - 'null'
-          description: Fornecedor.
-          example: Crowdcube
-        model:
-          type:
-          - string
-          - 'null'
-          description: Modelo.
-          example: Equity-Based
+          description: Versão do motor do navegador.
+          example: 126.0.0.0
       additionalProperties: false
-    TagginJourneyResponseSuccessResponse:
+    ErrorResponse:
       type: object
       properties:
         version:
@@ -102,26 +96,8 @@ components:
           - 'null'
           description: Status da solicitação.
           example: SUCCESS
-        body:
-          $ref: '#/components/schemas/TagginJourneyResponse'
-      additionalProperties: false
-    DevicesFunnel:
-      type: object
-      properties:
-        browser:
-          $ref: '#/components/schemas/Browser'
-        os:
-          $ref: '#/components/schemas/Os'
-        platform:
-          $ref: '#/components/schemas/Platform'
-        engine:
-          $ref: '#/components/schemas/Engine'
-        useragent:
-          type:
-          - string
-          - 'null'
-          description: String de texto que contém informações sobre o navegador.
-          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+        error:
+          $ref: '#/components/schemas/ResponseError'
       additionalProperties: false
     ResponseError:
       required:
@@ -139,38 +115,6 @@ components:
           type: string
           description: Mensagem de erro.
           example: Ocorreu um erro interno durante a chamada da api..
-      additionalProperties: false
-    Engine:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do motor do navegador.
-          example: Google
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do motor do navegador.
-          example: 126.0.0.0
-      additionalProperties: false
-    Browser:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do navegador.
-          example: Chrome
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do navegador.
-          example: 126.0.0.0
       additionalProperties: false
     StepFunnel:
       type: object
@@ -294,6 +238,28 @@ components:
           description: Tipo da plataforma.
           example: mobile
       additionalProperties: false
+    Platform:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+          description: Tipo da plataforma.
+          example: Crowdfunding
+        vendor:
+          type:
+          - string
+          - 'null'
+          description: Fornecedor.
+          example: Crowdcube
+        model:
+          type:
+          - string
+          - 'null'
+          description: Modelo.
+          example: Equity-Based
+      additionalProperties: false
     TagginJourneyResponse:
       type: object
       properties:
@@ -361,23 +327,39 @@ components:
             $ref: '#/components/schemas/StepFunnel'
           description: Lista das etapas da jornada.
       additionalProperties: false
-    ErrorResponse:
+    Browser:
       type: object
       properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do navegador.
+          example: Chrome
         version:
           type:
           - string
           - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
+          description: Versão do navegador.
+          example: 126.0.0.0
+      additionalProperties: false
+    DevicesFunnel:
+      type: object
+      properties:
+        browser:
+          $ref: '#/components/schemas/Browser'
+        os:
+          $ref: '#/components/schemas/Os'
+        platform:
+          $ref: '#/components/schemas/Platform'
+        engine:
+          $ref: '#/components/schemas/Engine'
+        useragent:
           type:
           - string
           - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
+          description: String de texto que contém informações sobre o navegador.
+          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
       additionalProperties: false
     Os:
       type: object
@@ -400,6 +382,24 @@ components:
           - 'null'
           description: Nome da versão do sistema operacional.
           example: 10.1.0
+      additionalProperties: false
+    TagginJourneyResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/TagginJourneyResponse'
       additionalProperties: false
   securitySchemes:
     Bearer:

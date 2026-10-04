@@ -239,60 +239,43 @@ components:
         infoAccount:
           $ref: '#/components/schemas/InfoAccount'
       additionalProperties: false
-    OutstandingBalanceInformedResponse:
-      required:
-      - status
+    ErrorResponse:
       type: object
       properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
+        correlationId:
+          type:
+          - string
+          - 'null'
         status:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
+        errors:
           type:
-          - string
+          - array
           - 'null'
-        message:
-          type:
-          - string
-          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
       additionalProperties: false
-    OutstandingBalanceRejectedRequest:
+    InfoAccount:
       required:
-      - outstandingBalanceInformedId
+      - bank
+      - branch
+      - number
       type: object
       properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        description:
+        bank:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    OutstandingBalanceRejectedResponse:
-      type: object
-      properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        status:
+        branch:
           type:
           - string
           - 'null'
-        updateAt:
-          type: string
-          format: date-time
+        number:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     SettledPurchaseResponse:
       type: object
@@ -315,43 +298,60 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    InfoAccount:
+    OutstandingBalanceRejectedRequest:
       required:
-      - bank
-      - branch
-      - number
+      - outstandingBalanceInformedId
       type: object
       properties:
-        bank:
-          type:
-          - string
-          - 'null'
-        branch:
-          type:
-          - string
-          - 'null'
-        number:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        description:
           type:
           - string
           - 'null'
       additionalProperties: false
-    ErrorResponse:
+    Errs:
       type: object
       properties:
-        correlationId:
+        code:
           type:
           - string
           - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OutstandingBalanceInformedResponse:
+      required:
+      - status
+      type: object
+      properties:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
         status:
           type:
           - string
           - 'null'
-        errors:
+      additionalProperties: false
+    OutstandingBalanceRejectedResponse:
+      type: object
+      properties:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        status:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
+        updateAt:
+          type: string
+          format: date-time
       additionalProperties: false
     OutstandingBalancePaymentResponse:
       type: object

@@ -59,23 +59,14 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    GuaranteeResponse:
-      required:
-      - annotationType
-      - status
+    Errs:
       type: object
       properties:
-        annotationId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        status:
+        code:
           type:
           - string
           - 'null'
-        annotationType:
+        message:
           type:
           - string
           - 'null'
@@ -155,6 +146,27 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
+    GuaranteeResponse:
+      required:
+      - annotationType
+      - status
+      type: object
+      properties:
+        annotationId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+        annotationType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     ErrorResponse:
       type: object
       properties:
@@ -172,18 +184,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Errs'
-      additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:
