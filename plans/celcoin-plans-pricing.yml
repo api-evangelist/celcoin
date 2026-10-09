@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Celcoin Plans and Pricing
 description: Celcoin offers enterprise-grade Banking-as-a-Service infrastructure priced through direct commercial agreements. Pricing is not publicly listed and is negotiated based on transaction volume, product mix, and client profile. Contact Celcoin's commercial team for a custom quote.
 url: https://www.celcoin.com.br/developers/
@@ -47,3 +51,33 @@ plans:
 contact:
   url: https://www.celcoin.com.br/developers/
   notes: Contact via the developer hub or account manager to obtain a commercial proposal.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: BaaS - Banking as a Service
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: cel_payments - Payment Solutions
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: cel_credit - Credit as a Service
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: mybenk - White-Label Banking Platform
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
