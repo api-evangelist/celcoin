@@ -1,0 +1,52 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/celcoin/integrations
+- https://n8n.io/integrations/celcoin/
+- https://composio.dev/toolkits/celcoin
+- https://monid.ai/tools/celcoin
+checked:
+- https://composio.dev/toolkits/celcoin
+- https://data.directory.openbankingbrasil.org.br/participants
+- https://monid.ai/tools/celcoin
+- https://n8n.io/integrations/celcoin/
+- https://zapier.com/apps/celcoin/integrations
+summary: null
+marketplace_apps: []
+edges:
+- partner_name: Open Finance Brasil
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.directory.openbankingbrasil.org.br/participants
+  contract_reference:
+    register: Open Finance Brasil directory (Banco Central do Brasil)
+    spec_file: null
+    role: participant
+    registered_name: CELCOIN INSTITUICAO DE PAGAMENTO S.A.
+    register_id: c55ceb2e-c9fb-4989-8ed1-39208d6d7951
+    matched_domain: celcoin.com.br
+    api_families:
+    - accounts
+    - admin
+    - channels_electronic-channels
+    - channels_phone-channels
+    - consents
+    - customers-personal
+    - discovery_outages
+    - discovery_status
+    - enrollments
+    - opendata-accounts_personal-accounts
+    - opendata-unarranged_personal-unarranged-account-overdraft
+    - payments-consents
+    - payments-pix
+    - payments-pix-recurring-payments
+    - payments-pix-recurring-payments-automatic
+    - payments-recurring-consents
+    - payments-recurring-consents-automatic
+    - resources
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-12'
+templates: []
