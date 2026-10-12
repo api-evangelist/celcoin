@@ -41,3 +41,42 @@
     detected: '2026-10-12'
   status: not-a-workflow
   arazzo: null
+- slug: celcoin-openid-foundation-certification
+  label: OpenID Foundation certification
+  partner_name: OpenID Foundation certification
+  type: contract
+  channel: network-directory
+  evidence: https://openid.net/developers/certified-openid-connect-implementations/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: OpenID Foundation certified implementations
+    spec_file: null
+    role: certified-op,certified-rp
+    registered_name: Celcoin Instituição de Pagamento S.A.
+    products:
+    - Celcoin Open Finance v1.0.0
+    matched_domain: celcoin.com.br
+    api_families:
+    - FAPI2MS JAR
+    - FAPI2MS JARM
+    - FAPI2MsgSigningID1 OpenID RP w/ MTLS client auth, DPoP, JAR, JARM
+    - FAPI2MsgSigningID1 OpenID RP w/ MTLS client auth, MTLS constrain, JAR, JARM
+    - FAPI2MsgSigningID1 OpenID RP w/ Private Key, DPoP, JAR, JARM
+    - FAPI2MsgSigningID1 OpenID RP w/ Private Key, MTLS constrain, JAR, JARM
+    - FAPI2SP MTLS + DPOP
+    - FAPI2SP MTLS + MTLS
+    - FAPI2SP OpenID Connect
+    - FAPI2SP private key + DPOP
+    - FAPI2SP private key + MTLS
+    - fapi-2-0-op-security-profile-second-implementers-draft-message-signing-first-implementers-draft
+    - fapi-2-0-rp-security-profile-second-implementers-draft-message-signing-first-implementers-draft
+    - fapi1-op-brazil-open-banking
+    - fapi1-op-brazil-open-finance-fapi-br-v2
+    - fapi1-rp-brazil-open-banking
+    - fapi1-rp-brazil-open-finance-fapi-br-v2
+    api_families_basis: conformance profiles / certification levels passed
+    detected_by: sweep-identity.py
+    detected: '2026-10-13'
+  status: not-a-workflow
+  arazzo: null
