@@ -80,3 +80,100 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: celcoin-open-finance-brasil-functional-certification
+  label: Open Finance Brasil functional certification
+  partner_name: Open Finance Brasil functional certification
+  category: open finance conformance (Brazil)
+  type: register
+  channel: regulator-register
+  evidence: https://data.directory.openbankingbrasil.org.br/participants
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Open Finance Brasil directory, per-family CertificationStatus (submissions in github.com/OpenBanking-Brasil/conformance)
+    spec_file: null
+    standard: Open Finance Brasil
+    role: certified-participant
+    registrations:
+    - registered_name: CELCOIN INSTITUICAO DE PAGAMENTO S.A.
+      register_id: c55ceb2e-c9fb-4989-8ed1-39208d6d7951
+      cnpj: '13935893000109'
+      matched_domain: celcoin.com.br
+      matched_by: domain
+    certified_products:
+    - product: accounts
+      families:
+      - accounts
+      status: Self-Certified
+      expires: '2027-09-30'
+      certification_uri: https://github.com/OpenBanking-Brasil/conformance/blob/main/submissions/functional/accounts/2.4.1/13935893_openbanking-brazil-v5.1.17---accounts-v2.4_accounts_v2.4.1_29-10-2024.json
+    - product: customer-data
+      families:
+      - consents
+      - customers-personal
+      - resources
+      status: Self-Certified
+      expires: '2027-06-30'
+      certification_uri: https://github.com/OpenBanking-Brasil/conformance/blob/main/submissions/functional/consents/3.2.0/13935893_Celcoin-Openfinance-v2.0_consents_v3.2.0_15-05-2025.json
+    - product: open-data
+      families:
+      - channels_electronic-channels
+      - channels_phone-channels
+      - opendata-accounts_personal-accounts
+      - opendata-unarranged_personal-unarranged-account-overdraft
+      status: Self-Certified
+      expires: '2027-10-14'
+      certification_uri: https://web.conformance.directory.openbankingbrasil.org.br/plan-detail.html?plan=yMI8zbOas1POM&public=true
+    - product: payments
+      families:
+      - enrollments
+      - payments-consents
+      - payments-pix
+      status: Self-Certified
+      expires: '2027-10-01'
+      certification_uri: https://github.com/OpenBanking-Brasil/conformance/blob/main/submissions/functional/enrollments/2.2.0/13935893_Celcoin-Openfinance-v2.0_enrollments_v2.2.0_06-02-2026.json
+    - product: recurring-payments
+      families:
+      - payments-pix-recurring-payments
+      - payments-pix-recurring-payments-automatic
+      - payments-recurring-consents
+      - payments-recurring-consents-automatic
+      status: Self-Certified
+      expires: '2027-05-12'
+      certification_uri: https://github.com/OpenBanking-Brasil/conformance/blob/main/submissions/functional/automatic-payments/2.0.0/13935893_Celcoin-Openfinance-v2.0_automatic-payments_v2.0.0_23-04-2025.json
+    signal_note: one entry per PRODUCT TYPE, lapsed flagged; family counts are context, never read
+    detected_by: sweep-latam-open-finance.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: celcoin-pix-banco-central-do-brasil
+  label: Pix (Banco Central do Brasil)
+  partner_name: Pix (Banco Central do Brasil)
+  category: instant payments (Brazil)
+  type: register
+  channel: regulator-register
+  evidence: https://www.bcb.gov.br/estabilidadefinanceira/participantespix
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Pix participants (Banco Central do Brasil, https://www.bcb.gov.br/content/estabilidadefinanceira/participantes_pix/lista-participantes-instituicoes-em-adesao-pix-20261015.csv)
+    spec_file: null
+    standard: Pix
+    role: pix-participant
+    registrations:
+    - registered_name: CELCOIN IP S.A.
+      ispb: '13935893'
+      cnpj: 13.935.893/0001-09
+      institution_type: Instituição de Pagamento
+      spi_participation: Direta
+      pix_participation: Facultativa
+      pix_modality: Provedor de Conta Transacional
+      payment_initiation: true
+      matched_domain: celcoin.com.br
+      matched_by: domain
+      identity: Open Finance Brasil directory, same CNPJ 13935893000109 ('CELCOIN INSTITUICAO DE PAGAMENTO S.A.')
+    signal_note: 'participation only: the domain comes from a labelled lookup (registrations[].identity)'
+    detected_by: sweep-latam-open-finance.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
