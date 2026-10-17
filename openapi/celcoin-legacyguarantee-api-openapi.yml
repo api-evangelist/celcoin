@@ -59,6 +59,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        correlationId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
+      additionalProperties: false
     Errs:
       type: object
       properties:
@@ -166,24 +184,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        correlationId:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
       additionalProperties: false
   securitySchemes:
     Bearer:

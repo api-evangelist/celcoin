@@ -199,45 +199,59 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    OutstandingBalanceInformedRequest:
-      required:
-      - debtorBalanceAmount
-      - requestOutstandingBalanceId
+    Errs:
       type: object
       properties:
-        requestOutstandingBalanceId:
+        code:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OutstandingBalanceRejectedRequest:
+      required:
+      - outstandingBalanceInformedId
+      type: object
+      properties:
+        outstandingBalanceInformedId:
           type: string
           format: uuid
-        debtorBalanceAmount:
-          type: number
-          format: double
-        nameBeneficiary:
-          type:
-          - string
-          - 'null'
-        documentBenficiary:
-          type:
-          - string
-          - 'null'
-        expirationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
         description:
           type:
           - string
           - 'null'
-        detailOutstandingBalance:
+      additionalProperties: false
+    OutstandingBalanceRejectedResponse:
+      type: object
+      properties:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        status:
           type:
           - string
           - 'null'
-        proposalRefinancing:
+        updateAt:
+          type: string
+          format: date-time
+      additionalProperties: false
+    OutstandingBalancePaymentResponse:
+      type: object
+      properties:
+        outstandingBalancePaymentId:
+          type: string
+          format: uuid
+        code:
           type:
           - string
           - 'null'
-        infoAccount:
-          $ref: '#/components/schemas/InfoAccount'
+        message:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ErrorResponse:
       type: object
@@ -256,6 +270,22 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Errs'
+      additionalProperties: false
+    OutstandingBalanceInformedResponse:
+      required:
+      - status
+      type: object
+      properties:
+        outstandingBalanceInformedId:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     InfoAccount:
       required:
@@ -298,75 +328,45 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    OutstandingBalanceRejectedRequest:
+    OutstandingBalanceInformedRequest:
       required:
-      - outstandingBalanceInformedId
+      - debtorBalanceAmount
+      - requestOutstandingBalanceId
       type: object
       properties:
-        outstandingBalanceInformedId:
+        requestOutstandingBalanceId:
           type: string
           format: uuid
+        debtorBalanceAmount:
+          type: number
+          format: double
+        nameBeneficiary:
+          type:
+          - string
+          - 'null'
+        documentBenficiary:
+          type:
+          - string
+          - 'null'
+        expirationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
         description:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
+        detailOutstandingBalance:
           type:
           - string
           - 'null'
-        message:
+        proposalRefinancing:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    OutstandingBalanceInformedResponse:
-      required:
-      - status
-      type: object
-      properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        createdAt:
-          type: string
-          format: date-time
-        status:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    OutstandingBalanceRejectedResponse:
-      type: object
-      properties:
-        outstandingBalanceInformedId:
-          type: string
-          format: uuid
-        status:
-          type:
-          - string
-          - 'null'
-        updateAt:
-          type: string
-          format: date-time
-      additionalProperties: false
-    OutstandingBalancePaymentResponse:
-      type: object
-      properties:
-        outstandingBalancePaymentId:
-          type: string
-          format: uuid
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
+        infoAccount:
+          $ref: '#/components/schemas/InfoAccount'
       additionalProperties: false
   securitySchemes:
     Bearer:

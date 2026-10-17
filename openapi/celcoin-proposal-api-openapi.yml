@@ -198,23 +198,48 @@ paths:
     - url: https://api.openfinance.celcoin.com.br/onboarding/v1
 components:
   schemas:
-    ErrorResponse:
+    ProposalContact:
+      enum:
+      - URL
+      - WHATSAPP
+      - PHONE
+      - EMAIL
+      - OTHER
+      type: string
+    Errs:
       type: object
       properties:
-        correlationId:
+        code:
           type:
           - string
           - 'null'
-        status:
+        message:
           type:
           - string
           - 'null'
-        errors:
+      additionalProperties: false
+    ProposalLinkedResponse:
+      type: object
+      properties:
+        proposalId:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/Errs'
+          format: uuid
+        proposalNumber:
+          type:
+          - string
+          - 'null'
+        balanceCheckId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        proposalValidity:
+          type:
+          - string
+          - 'null'
+          format: date-time
       additionalProperties: false
     Contact:
       required:
@@ -228,26 +253,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Errs:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ProposalContact:
-      enum:
-      - URL
-      - WHATSAPP
-      - PHONE
-      - EMAIL
-      - OTHER
-      type: string
     ProposalLinkedRequest:
       type: object
       properties:
@@ -295,76 +300,23 @@ components:
           items:
             $ref: '#/components/schemas/Contact'
       additionalProperties: false
-    ProposalLinkedResponse:
+    ErrorResponse:
       type: object
       properties:
-        proposalId:
+        correlationId:
           type:
           - string
           - 'null'
-          format: uuid
-        proposalNumber:
-          type:
-          - string
-          - 'null'
-        balanceCheckId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        proposalValidity:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    SearchProposalResponse:
-      type: object
-      properties:
-        limit:
-          type: integer
-          description: Total de propostas.
-          format: int32
-        currentPage:
-          type: integer
-          description: Página atual.
-          format: int32
-        limitPerPage:
-          type: integer
-          description: Total de propostas por página.
-          format: int32
-        totalPages:
-          type: integer
-          description: Total de páginas retornadas.
-          format: int32
-        totalItems:
-          type: integer
-          description: Total de propostas retornadas.
-          format: int32
-        proposal:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ProposalResponse'
-      additionalProperties: false
-    ErrorResponse_2:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
         status:
           type:
           - string
           - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Errs'
       additionalProperties: false
     ResponseError:
       required:
@@ -474,6 +426,69 @@ components:
         body:
           $ref: '#/components/schemas/SearchProposalResponse'
       additionalProperties: false
+    RejectedReasonResponse:
+      type: object
+      properties:
+        errorCode:
+          type:
+          - string
+          - 'null'
+          description: Código de erro referente à rejeição da proposta.
+        message:
+          type:
+          - string
+          - 'null'
+          description: Motivo da rejeição da proposta.
+      additionalProperties: false
+      description: Motivo pelo qual a proposta foi rejeitada.
+    SearchProposalResponse:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: Total de propostas.
+          format: int32
+        currentPage:
+          type: integer
+          description: Página atual.
+          format: int32
+        limitPerPage:
+          type: integer
+          description: Total de propostas por página.
+          format: int32
+        totalPages:
+          type: integer
+          description: Total de páginas retornadas.
+          format: int32
+        totalItems:
+          type: integer
+          description: Total de propostas retornadas.
+          format: int32
+        proposal:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProposalResponse'
+      additionalProperties: false
+    ErrorResponse_2:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
     DocumentscopyResponse:
       type: object
       properties:
@@ -527,21 +542,6 @@ components:
           format: date-time
       additionalProperties: false
       description: Documentoscopia(s) retornada(s).
-    RejectedReasonResponse:
-      type: object
-      properties:
-        errorCode:
-          type:
-          - string
-          - 'null'
-          description: Código de erro referente à rejeição da proposta.
-        message:
-          type:
-          - string
-          - 'null'
-          description: Motivo da rejeição da proposta.
-      additionalProperties: false
-      description: Motivo pelo qual a proposta foi rejeitada.
   securitySchemes:
     Bearer:
       type: http

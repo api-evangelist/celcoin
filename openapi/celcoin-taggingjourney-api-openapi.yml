@@ -65,40 +65,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Engine:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do motor do navegador.
-          example: Google
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do motor do navegador.
-          example: 126.0.0.0
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        error:
-          $ref: '#/components/schemas/ResponseError'
-      additionalProperties: false
     ResponseError:
       required:
       - errorCode
@@ -238,6 +204,24 @@ components:
           description: Tipo da plataforma.
           example: mobile
       additionalProperties: false
+    DevicesFunnel:
+      type: object
+      properties:
+        browser:
+          $ref: '#/components/schemas/Browser'
+        os:
+          $ref: '#/components/schemas/Os'
+        platform:
+          $ref: '#/components/schemas/Platform'
+        engine:
+          $ref: '#/components/schemas/Engine'
+        useragent:
+          type:
+          - string
+          - 'null'
+          description: String de texto que contém informações sobre o navegador.
+          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
+      additionalProperties: false
     Platform:
       type: object
       properties:
@@ -259,6 +243,96 @@ components:
           - 'null'
           description: Modelo.
           example: Equity-Based
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        error:
+          $ref: '#/components/schemas/ResponseError'
+      additionalProperties: false
+    Browser:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do navegador.
+          example: Chrome
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão do navegador.
+          example: 126.0.0.0
+      additionalProperties: false
+    TagginJourneyResponseSuccessResponse:
+      type: object
+      properties:
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão da api.
+          example: 1.0.0
+        status:
+          type:
+          - string
+          - 'null'
+          description: Status da solicitação.
+          example: SUCCESS
+        body:
+          $ref: '#/components/schemas/TagginJourneyResponse'
+      additionalProperties: false
+    Os:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do sistema operacional.
+          example: Android
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão do sistema operacional.
+          example: '10'
+        versionname:
+          type:
+          - string
+          - 'null'
+          description: Nome da versão do sistema operacional.
+          example: 10.1.0
+      additionalProperties: false
+    Engine:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          description: Nome do motor do navegador.
+          example: Google
+        version:
+          type:
+          - string
+          - 'null'
+          description: Versão do motor do navegador.
+          example: 126.0.0.0
       additionalProperties: false
     TagginJourneyResponse:
       type: object
@@ -326,80 +400,6 @@ components:
           items:
             $ref: '#/components/schemas/StepFunnel'
           description: Lista das etapas da jornada.
-      additionalProperties: false
-    Browser:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do navegador.
-          example: Chrome
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do navegador.
-          example: 126.0.0.0
-      additionalProperties: false
-    DevicesFunnel:
-      type: object
-      properties:
-        browser:
-          $ref: '#/components/schemas/Browser'
-        os:
-          $ref: '#/components/schemas/Os'
-        platform:
-          $ref: '#/components/schemas/Platform'
-        engine:
-          $ref: '#/components/schemas/Engine'
-        useragent:
-          type:
-          - string
-          - 'null'
-          description: String de texto que contém informações sobre o navegador.
-          example: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36
-      additionalProperties: false
-    Os:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-          description: Nome do sistema operacional.
-          example: Android
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão do sistema operacional.
-          example: '10'
-        versionname:
-          type:
-          - string
-          - 'null'
-          description: Nome da versão do sistema operacional.
-          example: 10.1.0
-      additionalProperties: false
-    TagginJourneyResponseSuccessResponse:
-      type: object
-      properties:
-        version:
-          type:
-          - string
-          - 'null'
-          description: Versão da api.
-          example: 1.0.0
-        status:
-          type:
-          - string
-          - 'null'
-          description: Status da solicitação.
-          example: SUCCESS
-        body:
-          $ref: '#/components/schemas/TagginJourneyResponse'
       additionalProperties: false
   securitySchemes:
     Bearer:
