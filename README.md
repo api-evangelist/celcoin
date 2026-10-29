@@ -64,28 +64,149 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Celcoin is a Brazilian Banking-as-a-Service (BaaS) infratech platform providing REST APIs for Pix, boleto, TED transfers, bill payments, prepaid and post-paid cards, digital accounts, open banking integration, and credit operations. Processing over R$30 billion monthly across 6,000+ clients, Celcoin enables fintechs, digital banks, and enterprises to embed financial services without requiring a banking license.
+Celcoin is a Brazilian Banking-as-a-Service (BaaS) infratech platform that provides REST APIs for Pix, boleto, TED transfers, bill payments, prepaid and post-paid cards, digital account opening, open banking integration, and credit operations. Processing over R$30 billion monthly across 6,000+ clients, Celcoin enables fintechs, digital banks, and enterprises to embed financial services without a banking license.
 
-**Developer Hub:** https://developers.celcoin.com.br/  
-**API Documentation:** https://developers.celcoin.com.br/docs  
-**API Reference:** https://developers.celcoin.com.br/reference  
-**Status Page:** https://redecelcoin.statuspage.io/
+**Areas:** Banking as a Service · Pix · Boleto · TED · Bill Payments · Prepaid Cards · Digital Accounts · Open Banking · Open Finance · Credit · Fintech · Brazil
 
-## APIs Cataloged
+## Celcoin on APIs.io
 
-- **BaaS and Core Banking API** - Digital accounts, KYC, Pix, TED, boleto, and statements
-- **Card Solutions API** - White-label card issuance, management, and webhooks
-- **Payments API** - Bill payments, recharges, vehicle debit, and payment gateway
-- **Open Finance API** - Payment initiation, data sharing, and sweeping accounts
-- **Credit as a Service API** - CCB, escrow, consigned credit, and portfolio management
+Everything profiled for Celcoin is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/celcoin/](https://apis.io/providers/celcoin/)** — or go straight to one of the APIs or properties below.
 
-## Resources
+### APIs (15)
 
-- [Plans and Pricing](plans/celcoin-plans-pricing.yml)
-- [Rate Limits](rate-limits/celcoin-rate-limits.yml)
-- [FinOps](finops/celcoin-finops.yml)
-- [APIs.json](apis.yml)
+- [Celcoin Card Solutions API](https://apis.io/apis/celcoin/cards/) — APIs for white-label card account creation and management, card issuance and tracking, transaction simulation, post-paid invoice management, recurring…
+- [Celcoin Payments API](https://apis.io/apis/celcoin/payments/) — Embedded payment APIs covering bill payments, mobile recharges, vehicle debit, payment gateway with multi-acquirer support, Pix instant payments,…
+- [Celcoin Open Finance API](https://apis.io/apis/celcoin/open-finance/) — Open Finance and Open Banking APIs for Payment Initiation (ITP with and without redirect), account linking with FIDO biometrics, data sharing and consent…
+- [Celcoin AnnotationCompetenceCalendar API](https://apis.io/apis/celcoin/celcoin-annotationcompetencecalendar-api/) — The AnnotationCompetenceCalendar API from Celcoin — 1 operation(s) for annotationcompetencecalendar.
+- [Celcoin BankCorrespondentAgent API](https://apis.io/apis/celcoin/celcoin-bankcorrespondentagent-api/) — The BankCorrespondentAgent API from Celcoin — 2 operation(s) for bankcorrespondentagent.
+- [Celcoin Consignee API](https://apis.io/apis/celcoin/celcoin-consignee-api/) — The Consignee API from Celcoin — 1 operation(s) for consignee.
+- [Celcoin Files API](https://apis.io/apis/celcoin/celcoin-files-api/) — The Files API from Celcoin — 1 operation(s) for files.
+- [Celcoin Guarantee API](https://apis.io/apis/celcoin/celcoin-guarantee-api/) — The Guarantee API from Celcoin — 21 operation(s) for guarantee.
+- [Celcoin LegacyGuarantee API](https://apis.io/apis/celcoin/celcoin-legacyguarantee-api/) — The LegacyGuarantee API from Celcoin — 1 operation(s) for legacyguarantee.
+- [Celcoin LegalPerson API](https://apis.io/apis/celcoin/celcoin-legalperson-api/) — The LegalPerson API from Celcoin — 1 operation(s) for legalperson.
+- [Celcoin NaturalPerson API](https://apis.io/apis/celcoin/celcoin-naturalperson-api/) — The NaturalPerson API from Celcoin — 2 operation(s) for naturalperson.
+- [Celcoin Proposal API](https://apis.io/apis/celcoin/celcoin-proposal-api/) — The Proposal API from Celcoin — 2 operation(s) for proposal.
+- [Celcoin Settlement API](https://apis.io/apis/celcoin/celcoin-settlement-api/) — The Settlement API from Celcoin — 2 operation(s) for settlement.
+- [Celcoin TaggingJourney API](https://apis.io/apis/celcoin/celcoin-taggingjourney-api/) — The TaggingJourney API from Celcoin — 1 operation(s) for taggingjourney.
+- [Celcoin Outstanding Balance API](https://apis.io/apis/celcoin/celcoin-outstanding-balance-api/) — The Outstanding Balance API from Celcoin — 4 operation(s) for outstanding balance.
 
-## Maintainer
+### Published properties
 
-Kin Lane &lt;kin@apievangelist.com&gt;
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Celcoin Agentic Access](https://apis.io/agentic-access/celcoin/celcoin-agentic-access/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Celcoin Examples](https://apis.io/examples/celcoin/celcoin-examples/)
+
+#### Collections (12)
+
+Postman and Open Collection request collections.
+
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar API](https://apis.io/collections/celcoin/open-celcoin-annotationcompetencecalendar-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar BankCorrespondentAgent API](https://apis.io/collections/celcoin/open-celcoin-bankcorrespondentagent-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar Consignee API](https://apis.io/collections/celcoin/open-celcoin-consignee-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar Files API](https://apis.io/collections/celcoin/open-celcoin-files-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar Guarantee API](https://apis.io/collections/celcoin/open-celcoin-guarantee-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar LegacyGuarantee API](https://apis.io/collections/celcoin/open-celcoin-legacyguarantee-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar LegalPerson API](https://apis.io/collections/celcoin/open-celcoin-legalperson-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar NaturalPerson API](https://apis.io/collections/celcoin/open-celcoin-naturalperson-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar OutstandingBalance API](https://apis.io/collections/celcoin/open-celcoin-outstandingbalance-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar Proposal API](https://apis.io/collections/celcoin/open-celcoin-proposal-api/)
+- [billissuance--webservice AnnotationCompetenceCalendar Settlement API](https://apis.io/collections/celcoin/open-celcoin-settlement-api/)
+- [billissuance-settlement-webservice AnnotationCompetenceCalendar TaggingJourney API](https://apis.io/collections/celcoin/open-celcoin-taggingjourney-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Celcoin Authentication](https://apis.io/security/celcoin/celcoin-authentication/)
+- [Celcoin Domain Security](https://apis.io/security/celcoin/celcoin-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Celcoin Plans Pricing](https://apis.io/plans/celcoin/celcoin-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Celcoin Rate Limits](https://apis.io/rate-limits/celcoin/celcoin-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Celcoin Finops](https://apis.io/finops/celcoin/celcoin-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.celcoin.com.br/)
+- [Documentation](https://developers.celcoin.com.br/docs)
+- [Pricing](https://www.celcoin.com.br/developers/)
+- [Blog](https://www.celcoin.com.br/articles/)
+- [Status](https://redecelcoin.statuspage.io/)
+
+## API Evangelist rating
+
+**Kin Score 30.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 47.7 |
+| Contract governance | 13.6 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 18.4 |
+
+**Agent readiness 27.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.4** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/celcoin/](https://apis.io/providers/celcoin/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Celcoin: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/celcoin/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
